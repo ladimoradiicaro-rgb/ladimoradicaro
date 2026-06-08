@@ -4,6 +4,7 @@ const nav = document.querySelector("[data-nav]");
 const bookingForm = document.querySelector("[data-booking-form]");
 const carousels = document.querySelectorAll("[data-carousel]");
 const langButtons = document.querySelectorAll("[data-lang]");
+const languageSwitcher = document.querySelector("[data-language-switcher]");
 const floatingWhatsapp = document.querySelector("[data-floating-whatsapp]");
 const availabilityPanel = document.querySelector("[data-availability-panel]");
 const lightbox = document.querySelector("[data-lightbox]");
@@ -153,6 +154,7 @@ const translations = {
     "booking.checkin": "Check-in",
     "booking.checkout": "Check-out",
     "booking.guests": "Ospiti",
+    "booking.checkoutError": "Il check-out deve essere successivo al check-in.",
     "booking.rateNote": "Le tariffe variano in base al periodo, al numero di ospiti e alla durata del soggiorno.",
     "booking.availabilityLabel": "Disponibilità",
     "booking.availabilityEmpty": "Contattaci per verificare le date. Il calendario disponibilità potrà essere collegato qui appena sarà disponibile.",
@@ -299,6 +301,7 @@ const translations = {
     "booking.checkin": "Check-in",
     "booking.checkout": "Check-out",
     "booking.guests": "Guests",
+    "booking.checkoutError": "Check-out must be after check-in.",
     "booking.rateNote": "Rates vary depending on the period, number of guests and length of stay.",
     "booking.availabilityLabel": "Availability",
     "booking.availabilityEmpty": "Contact us to check your dates. The availability calendar can be connected here as soon as it is available.",
@@ -323,6 +326,7 @@ const translations = {
 let currentLanguage = localStorage.getItem("siteLanguage") || "it";
 let activeLightboxImages = [];
 let activeLightboxIndex = 0;
+let languageAnimationTimer;
 
 const getTranslation = (key) => translations[currentLanguage]?.[key] || translations.it[key] || "";
 
@@ -347,12 +351,14 @@ const updateHeader = () => {
 const closeMenu = () => {
   document.body.classList.remove("menu-open");
   toggle?.setAttribute("aria-expanded", "false");
+  toggle?.setAttribute("aria-label", currentLanguage === "en" ? "Open menu" : "Apri menu");
 };
 
 const applyLanguage = (language) => {
   currentLanguage = translations[language] ? language : "it";
   localStorage.setItem("siteLanguage", currentLanguage);
   document.documentElement.lang = currentLanguage;
+  languageSwitcher?.classList.toggle("is-en", currentLanguage === "en");
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const text = getTranslation(element.dataset.i18n);
@@ -366,6 +372,27 @@ const applyLanguage = (language) => {
     button.classList.toggle("is-active", isActive);
     button.setAttribute("aria-pressed", String(isActive));
   });
+
+  const menuIsOpen = document.body.classList.contains("menu-open");
+  toggle?.setAttribute("aria-label", menuIsOpen
+    ? (currentLanguage === "en" ? "Close menu" : "Chiudi menu")
+    : (currentLanguage === "en" ? "Open menu" : "Apri menu"));
+};
+
+const animateLanguageSwitch = () => {
+  window.clearTimeout(languageAnimationTimer);
+  document.body.classList.remove("language-transition");
+  languageSwitcher?.classList.remove("is-switching");
+
+  requestAnimationFrame(() => {
+    document.body.classList.add("language-transition");
+    languageSwitcher?.classList.add("is-switching");
+  });
+
+  languageAnimationTimer = window.setTimeout(() => {
+    document.body.classList.remove("language-transition");
+    languageSwitcher?.classList.remove("is-switching");
+  }, 620);
 };
 
 const setupAvailabilityCalendar = () => {
@@ -377,6 +404,16 @@ const setupAvailabilityCalendar = () => {
     <span>${getTranslation("booking.availabilityLabel")}</span>
     <iframe title="Calendario disponibilità La Dimora di Icaro" src="${availabilityCalendarUrl}" loading="lazy"></iframe>
   `;
+};
+
+const checkoutInput = bookingForm?.querySelector('input[name="checkout"]');
+
+const setCheckoutError = () => {
+  checkoutInput?.setCustomValidity(getTranslation("booking.checkoutError"));
+};
+
+const clearCheckoutError = () => {
+  checkoutInput?.setCustomValidity("");
 };
 
 const openLightbox = (images, index) => {
@@ -432,6 +469,9 @@ window.addEventListener("scroll", updateHeader, { passive: true });
 toggle?.addEventListener("click", () => {
   const isOpen = document.body.classList.toggle("menu-open");
   toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.setAttribute("aria-label", isOpen
+    ? (currentLanguage === "en" ? "Close menu" : "Chiudi menu")
+    : (currentLanguage === "en" ? "Open menu" : "Apri menu"));
 });
 
 nav?.addEventListener("click", (event) => {
@@ -442,9 +482,19 @@ nav?.addEventListener("click", (event) => {
 
 langButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    applyLanguage(button.dataset.lang);
-    setupAvailabilityCalendar();
-    trackEvent("language_change", { language: currentLanguage });
+    const nextLanguage = button.dataset.lang;
+    if (nextLanguage === currentLanguage) {
+      return;
+    }
+
+    animateLanguageSwitch();
+    closeMenu();
+  applyLanguage(nextLanguage);
+  if (checkoutInput?.validationMessage) {
+    setCheckoutError();
+  }
+  setupAvailabilityCalendar();
+  trackEvent("language_change", { language: currentLanguage });
   });
 });
 
@@ -465,7 +515,7 @@ document.querySelectorAll("[data-home-request]").forEach((link) => {
 
 bookingForm?.querySelectorAll('input[name="checkin"], input[name="checkout"]').forEach((input) => {
   input.addEventListener("input", () => {
-    bookingForm.querySelector('input[name="checkout"]')?.setCustomValidity("");
+    clearCheckoutError();
   });
 });
 
@@ -478,13 +528,13 @@ bookingForm?.addEventListener("submit", (event) => {
   const guests = data.get("guests");
 
   if (checkin && checkout && String(checkout) <= String(checkin)) {
-    bookingForm.querySelector('input[name="checkout"]')?.focus();
-    bookingForm.querySelector('input[name="checkout"]')?.setCustomValidity("Il check-out deve essere successivo al check-in.");
+    checkoutInput?.focus();
+    setCheckoutError();
     bookingForm.reportValidity();
     return;
   }
 
-  bookingForm.querySelector('input[name="checkout"]')?.setCustomValidity("");
+  clearCheckoutError();
 
   const text = currentLanguage === "en"
     ? [
