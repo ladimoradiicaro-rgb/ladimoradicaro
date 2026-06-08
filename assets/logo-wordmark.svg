@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 160" role="img" aria-labelledby="title desc">
+  <title id="title">La Dimora di Icaro</title>
+  <desc id="desc">Logo testuale trasparente di La Dimora di Icaro</desc>
+  <text
+    x="8"
+    y="104"
+    fill="#077cbd"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="78"
+    font-weight="700"
+    letter-spacing="-1"
+  >La Dimora</text>
+  <text
+    x="445"
+    y="104"
+    fill="#077cbd"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="56"
+    font-weight="700"
+    font-style="italic"
+  >di</text>
+  <text
+    x="525"
+    y="104"
+    fill="#ffa01c"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="78"
+    font-weight="700"
+    letter-spacing="-1"
+  >Icaro</text>
+</svg>
