@@ -233,14 +233,22 @@
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        font-size: 0.88rem;
-        font-weight: 700;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
         color: var(--blue);
         text-decoration: none;
-        padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 5vw, 5rem) 0;
-        display: block;
+        padding: 0.38rem 0.85rem 0.38rem 0.65rem;
+        border: 1.5px solid rgba(7,124,189,0.35);
+        border-radius: 999px;
+        background: rgba(7,124,189,0.05);
+        margin-bottom: 2rem;
+        transition: background 140ms ease, border-color 140ms ease;
       }
-      .back-link:hover { text-decoration: underline; }
+      .back-link:hover {
+        background: rgba(7,124,189,0.12);
+        border-color: var(--blue);
+      }
 
       @media (max-width: 640px) {
         .cards-grid.two-col { grid-template-columns: 1fr; }
@@ -288,7 +296,7 @@
 
       <!-- CARINI -->
       <section class="scopri-section">
-        <a class="back-link" href="index.html" style="padding:0 0 1.5rem;" data-i18n="scopri.back">← Torna alla home</a>
+        <a class="back-link" href="index.html" data-i18n="scopri.back">← Torna alla home</a>
         <div class="scopri-section-header">
           <p class="eyebrow" data-i18n="scopri.carini.eyebrow">A DUE PASSI · CARINI</p>
           <h2 data-i18n="scopri.carini.title">Il borgo di casa</h2>
