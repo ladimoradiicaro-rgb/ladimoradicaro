@@ -302,7 +302,7 @@ const translations = {
     "quick.flyLabel": "For flights",
     "quick.flyText": "12 minutes from the airport, convenient before or after your flight.",
     "quick.groupLabel": "For every group",
-    "quick.groupText": "Dimora Verde up to 7 guests, Dimora Blu up to 4, with dedicated adult limits.",
+    "quick.groupText": "Dimora Verde up to 7 guests, Dimora Blu up to 4, each with its own adult occupancy limit.",
     "homes.eyebrow": "The two homes",
     "homes.title": "Choose the home that fits your way of traveling.",
     "homes.copy": "La Dimora di Icaro welcomes families, couples and small groups with a simple feeling: arrive, leave your bags and find a real, cared-for home ready for you.",
