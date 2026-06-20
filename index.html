@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="La Dimora di Icaro: due case vacanza familiari a Carini, tra Palermo, mare e aeroporto Falcone Borsellino. Verifica disponibilità per Dimora Verde e Dimora Blu."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="La Dimora di Icaro | Case vacanza tra Palermo, mare e aeroporto" />
+    <meta
+      property="og:description"
+      content="Due dimore familiari a Carini, comode per Palermo, la spiaggia di Capaci e l'aeroporto Falcone Borsellino."
+    />
+    <meta property="og:url" content="https://www.ladimoradicaro.com/" />
+    <meta property="og:image" content="assets/hero-soggiorno-2400.jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>La Dimora di Icaro | Case vacanza tra Palermo, mare e aeroporto</title>
+    <link rel="icon" href="assets/logo-originale.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  <link rel="stylesheet" href="styles.css?v=20260620-menu-fix" />
+  <script defer src="script.js?v=20260616-availability-clean-1"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "La Dimora di Icaro",
+        "url": "https://www.ladimoradicaro.com/",
+        "image": "assets/hero-soggiorno-2400.jpeg",
+        "description": "Due case vacanza familiari a Carini, tra Palermo, l'aeroporto Falcone Borsellino e la spiaggia di Capaci.",
+        "email": "ladimoradiicaro@gmail.com",
+        "telephone": ["+393470395338", "+393493608146"],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Via Strada Statale Est, 157",
+          "addressLocality": "Carini",
+          "addressRegion": "PA",
+          "postalCode": "90044",
+          "addressCountry": "IT"
+        },
+        "areaServed": "Palermo, Aeroporto Falcone Borsellino, Sicilia",
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Wi-Fi", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Cucina attrezzata", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Aria condizionata", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Lavatrice", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Smart TV", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Doccia e bidet", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Parcheggio", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Veranda esterna", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Culla", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Barbecue", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Biancheria e asciugamani", "value": true }
+        ],
+        "containsPlace": [
+          {
+            "@type": "Accommodation",
+            "name": "La Dimora Verde",
+            "floorSize": { "@type": "QuantitativeValue", "value": 105, "unitCode": "MTK" },
+            "occupancy": { "@type": "QuantitativeValue", "maxValue": 7 },
+            "additionalProperty": [
+              { "@type": "PropertyValue", "name": "Ospiti adulti", "value": "Massimo 5 adulti" },
+              { "@type": "PropertyValue", "name": "Posti letto", "value": "2 camere principali e divano letto in zona giorno" }
+            ]
+          },
+          {
+            "@type": "Accommodation",
+            "name": "La Dimora Blu",
+            "floorSize": { "@type": "QuantitativeValue", "value": 40, "unitCode": "MTK" },
+            "occupancy": { "@type": "QuantitativeValue", "maxValue": 4 },
+            "additionalProperty": [
+              { "@type": "PropertyValue", "name": "Ospiti adulti", "value": "Massimo 2 adulti" }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#home" aria-label="La Dimora di Icaro">
+        <img class="brand-wordmark" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navigazione principale" data-nav>
+        <a href="#casa" data-i18n="nav.homes">Le dimore</a>
+        <a href="#posizione" data-i18n="nav.location">Posizione</a>
+        <a href="#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="scopri.html">Cosa vedere</a>
+        <a class="mobile-nav-action" href="#prenota" data-i18n="cta.book">Prenota</a>
+      </nav>
+
+      <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
+        <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
+          <span class="lang-badge" aria-hidden="true">🇮🇹</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
+          <span class="lang-badge" aria-hidden="true">🇬🇧</span>
+        </button>
+      </div>
+
+      <a class="header-action" href="#prenota" data-i18n="cta.book">Prenota</a>
+      <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-label="Benvenuto">
+        <div class="hero-media" role="img" aria-label="Casa siciliana luminosa e accogliente"></div>
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Tra Palermo, mare e aeroporto</p>
+          <h1 data-i18n="hero.title">Due dimore familiari tra Palermo, mare e aeroporto.</h1>
+          <p class="licence-note">CIN IT082021C23NRN5DBU - CIR 19082021C259979</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#prenota" data-i18n="cta.check">Verifica disponibilità</a>
+            <a class="button ghost" href="#posizione" data-i18n="cta.location">Scopri la posizione</a>
+          </div>
+        </div>
+        <aside class="arrival-card" aria-label="Punti forti">
+          <span data-i18n="hero.cardLabel">Arrivo semplice</span>
+          <strong data-i18n="hero.cardText">Check-in dalle 15:00, casa pronta e collegamenti rapidi.</strong>
+          <div class="arrival-grid">
+            <p><b>12 min</b><small data-i18n="hero.airportSmall">dall'aeroporto</small></p>
+            <p><b>600 m</b><small data-i18n="hero.stationSmall">dalla stazione</small></p>
+          </div>
+        </aside>
+      </section>
+
+      <section class="quick-paths" aria-label="Percorsi rapidi">
+        <a href="#posizione">
+          <span data-i18n="quick.touristsLabel">Per turisti</span>
+          <strong data-i18n="quick.touristsText">Una base familiare per scoprire Palermo, Carini e la costa.</strong>
+        </a>
+        <a href="#posizione">
+          <span data-i18n="quick.flyLabel">Per chi vola</span>
+          <strong data-i18n="quick.flyText">A 12 minuti dall'aeroporto, comoda prima o dopo il volo.</strong>
+        </a>
+        <a href="#casa">
+          <span data-i18n="quick.groupLabel">Per ogni gruppo</span>
+          <strong data-i18n="quick.groupText">Dimora Verde fino a 7 ospiti, Dimora Blu fino a 4, con limiti adulti dedicati.</strong>
+        </a>
+      </section>
+
+      <section id="casa" class="section house-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="homes.eyebrow">Le due case</p>
+          <h2 data-i18n="homes.title">Scegli la dimora più adatta al tuo modo di viaggiare.</h2>
+          <p data-i18n="homes.copy">
+            La Dimora di Icaro nasce per accogliere famiglie, coppie e piccoli gruppi con una sensazione semplice:
+            arrivare, posare le valigie e trovare una casa vera, curata e pronta.
+          </p>
+        </div>
+        <div class="homes-grid">
+          <article class="home-card green-home">
+            <div class="home-card-top">
+              <span data-i18n="homes.green.name">La Dimora Verde</span>
+              <small data-i18n="homes.green.meta">105 mq · fino a 7 ospiti · max 5 adulti</small>
+            </div>
+            <div class="home-card-main">
+              <h3 data-i18n="homes.green.title">La soluzione più grande, ideale per famiglie e gruppi.</h3>
+              <p data-i18n="homes.green.copy">Due camere principali, due bagni e un divano letto nella zona giorno: 3 posti letto distinti senza contare il divano come camera.</p>
+            </div>
+            <ul class="home-facts">
+              <li data-i18n="homes.green.feature1">Max 7 ospiti</li>
+              <li data-i18n="homes.green.feature3">2 camere</li>
+              <li data-i18n="homes.green.feature2">105 mq</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button ghost small" href="#foto-verde" data-i18n="cta.photos">Vedi foto</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Verde" data-i18n="cta.ask">Chiedi disponibilità</a>
+            </div>
+          </article>
+          <article class="home-card blue-home">
+            <div class="home-card-top">
+              <span data-i18n="homes.blue.name">La Dimora Blu</span>
+              <small data-i18n="homes.blue.meta">40 mq · fino a 4 ospiti · max 2 adulti</small>
+            </div>
+            <div class="home-card-main">
+              <h3 data-i18n="homes.blue.title">Più raccolta e pratica, perfetta per coppie o piccoli nuclei.</h3>
+              <p data-i18n="homes.blue.copy">Un letto matrimoniale, un divano letto e un bagno: una dimora semplice, luminosa e facile da vivere.</p>
+            </div>
+            <ul class="home-facts">
+              <li data-i18n="homes.blue.feature1">Max 4 ospiti</li>
+              <li data-i18n="homes.blue.feature3">1 camera</li>
+              <li data-i18n="homes.blue.feature2">40 mq</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button ghost small" href="#foto-blu" data-i18n="cta.photos">Vedi foto</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Blu" data-i18n="cta.ask">Chiedi disponibilità</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-galleries" aria-label="Foto delle dimore" id="foto-dimore">
+        <article class="home-gallery gallery-verde" id="foto-verde" data-gallery data-gallery-default="living-kitchen" data-gallery-active="living-kitchen">
+          <div class="gallery-copy">
+            <p class="eyebrow" data-i18n="gallery.greenEyebrow">Galleria completa</p>
+            <h2 data-i18n="gallery.green">La Dimora Verde</h2>
+          </div>
+
+          <div class="gallery-filter-bar" aria-label="Filtra foto Dimora Verde">
+            <button type="button" class="gallery-filter is-active" data-gallery-filter="living-kitchen" aria-pressed="true" data-i18n="gallery.filters.livingKitchen">Soggiorno e cucina</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="bedrooms" aria-pressed="false" data-i18n="gallery.filters.bedrooms">Camere</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="baths" aria-pressed="false" data-i18n="gallery.filters.baths">Bagni</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="outdoor" aria-pressed="false" data-i18n="gallery.filters.outdoor">Esterni</button>
+          </div>
+
+          <div class="single-gallery-grid" aria-label="Galleria fotografica Dimora Verde">
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-01.jpeg" alt="Soggiorno e cucina della Dimora Verde visti dal divano" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-02.jpeg" alt="Divano, tavolo da pranzo e cucina della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-03.jpeg" alt="Soggiorno con cucina a vista della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-04.jpeg" alt="Zona pranzo e divano della Dimora Verde con luce naturale" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-05.jpeg" alt="Tavolo da pranzo e cucina attrezzata della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-06.jpeg" alt="Cucina della Dimora Verde con luce dalla finestra" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-07.jpeg" alt="Cucina attrezzata della Dimora Verde con pensili verdi" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-08.jpeg" alt="Zona pranzo della Dimora Verde con tavolo e sedie" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-09.jpeg" alt="Credenza e zona pranzo della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-10.jpeg" alt="Tavolo da pranzo e soggiorno della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-12.jpeg" alt="Dettaglio del tavolo da pranzo e cucina della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-13.jpeg" alt="Passaggio verso la zona soggiorno e cucina della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/verde-soggiorno-cucina-14.jpeg" alt="Ingresso alla zona soggiorno e cucina della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-01.jpeg" alt="Camera singola della Dimora Verde con armadio a ponte azzurro" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-02.jpeg" alt="Camera singola della Dimora Verde con letto, finestra e scrivania" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-03.jpeg" alt="Letto singolo della Dimora Verde con armadio a ponte" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-04.jpeg" alt="Camera singola della Dimora Verde vista verso il corridoio" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-05.jpeg" alt="Camera singola della Dimora Verde con letto e arredi azzurri" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-06.jpeg" alt="Camera matrimoniale della Dimora Verde con armadio e finestra aperta" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-07.jpeg" alt="Camera matrimoniale luminosa della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-08.jpeg" alt="Letto matrimoniale della Dimora Verde con comodino e decorazioni" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-09.jpeg" alt="Camera matrimoniale della Dimora Verde vista dal letto" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-10.jpeg" alt="Letto matrimoniale della Dimora Verde con due comodini" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/verde-camere-11.jpeg" alt="Divano letto della Dimora Verde preparato per il soggiorno" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-01.jpeg" alt="Bagno della Dimora Verde con doccia, lavabo, wc e bidet" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-02.jpeg" alt="Bagno della Dimora Verde visto dall'ingresso con doccia e sanitari" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-03.jpeg" alt="Secondo bagno della Dimora Verde con doccia e finestra" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-04.jpeg" alt="Bagno della Dimora Verde con lavatrice e mobile lavabo" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-05.jpeg" alt="Secondo bagno della Dimora Verde con wc, bidet e doccia" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/verde-bagni-06.jpeg" alt="Mobile lavabo e bidet del secondo bagno della Dimora Verde" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/verde-esterni-03.jpeg" alt="Spazio esterno della Dimora Verde con zona pavimentata" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/verde-esterni-04.jpeg" alt="Vista degli esterni della Dimora Verde e dell'ingresso" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/verde-esterni-05.jpeg" alt="Esterni della Dimora Verde con area all'aperto" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/verde-esterni-06.jpeg" alt="Dettaglio degli spazi esterni della Dimora Verde" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+
+        <article class="home-gallery gallery-blu" id="foto-blu" data-gallery data-gallery-default="living-kitchen" data-gallery-active="living-kitchen">
+          <div class="gallery-copy">
+            <p class="eyebrow" data-i18n="gallery.blueEyebrow">Galleria completa</p>
+            <h2 data-i18n="gallery.blue">La Dimora Blu</h2>
+          </div>
+
+          <div class="gallery-filter-bar" aria-label="Filtra foto Dimora Blu">
+            <button type="button" class="gallery-filter is-active" data-gallery-filter="living-kitchen" aria-pressed="true" data-i18n="gallery.filters.livingKitchen">Soggiorno e cucina</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="bedrooms" aria-pressed="false" data-i18n="gallery.filters.bedroom">Camera</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="baths" aria-pressed="false" data-i18n="gallery.filters.bath">Bagno</button>
+            <button type="button" class="gallery-filter" data-gallery-filter="outdoor" aria-pressed="false" data-i18n="gallery.filters.outdoor">Esterni</button>
+          </div>
+
+          <div class="single-gallery-grid" aria-label="Galleria fotografica Dimora Blu">
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-01.jpeg" alt="Cucina e sala da pranzo della Dimora Blu con piano in legno e piastrelle decorate" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-02.jpeg" alt="Soggiorno della Dimora Blu con parete turchese, divano e tavolo da pranzo" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-03.jpeg" alt="Vista d'insieme del soggiorno e cucina della Dimora Blu" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-04.jpeg" alt="Zona divano e tavolo da pranzo della Dimora Blu con porta aperta sul terrazzo" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-05.jpeg" alt="Tavolo da pranzo della Dimora Blu con vista sulla porta d'ingresso" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-07.jpeg" alt="Vista laterale della cucina attrezzata della Dimora Blu con luce naturale" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="living-kitchen">
+              <img data-gallery-image src="assets/blu-soggiorno-cucina-08.jpeg" alt="Piano cottura e lavello della cucina della Dimora Blu con parete in maioliche" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-01.jpeg" alt="Camera matrimoniale della Dimora Blu con copriletto blu e uscita sul soggiorno" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-02.jpeg" alt="Camera della Dimora Blu con armadio a specchio e vista sul soggiorno" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-03.jpeg" alt="Letto matrimoniale della Dimora Blu con asciugamani arrotolati e testata in legno" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-04.jpeg" alt="Camera della Dimora Blu vista frontalmente con comodini illuminati e finestra" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-05.jpeg" alt="Camera della Dimora Blu con parete turchese, climatizzatore e armadio a specchio" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-06.jpeg" alt="Armadio a specchio scorrevole della camera della Dimora Blu" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="bedrooms">
+              <img data-gallery-image src="assets/blu-camere-07.jpeg" alt="Dettaglio degli asciugamani arrotolati sul letto blu della Dimora Blu con lampada accesa" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/blu-bagni-01.jpeg" alt="Bagno della Dimora Blu con doccia rivestita di maioliche decorate" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/blu-bagni-02.jpeg" alt="Bagno della Dimora Blu con wc, bidet e box doccia piastrellato" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="baths">
+              <img data-gallery-image src="assets/blu-bagni-03.jpeg" alt="Lavabo e lavatrice del bagno della Dimora Blu con vista sul soggiorno turchese" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/blu-esterni-01.jpeg" alt="Terrazzo della Dimora Blu con tavolino e sedie in ferro battuto" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/blu-esterni-02.jpeg" alt="Ingresso esterno della Dimora Blu con persiane in legno e facciata bianca" loading="lazy" />
+            </figure>
+            <figure data-gallery-category="outdoor">
+              <img data-gallery-image src="assets/blu-esterni-03.jpeg" alt="Pigna di ceramica sul tavolo in mosaico del terrazzo della Dimora Blu" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section id="posizione" class="section location-section">
+        <div class="map-panel">
+          <img src="assets/location-map-1800.jpeg" alt="Vista dall'alto della posizione in Via Strada Statale Est 157" loading="lazy" />
+        </div>
+        <div class="timeline" aria-label="Distanze utili">
+          <div class="route-card" aria-label="Indicazioni dall'aeroporto alla dimora">
+            <div class="route-card-header">
+              <span data-i18n="location.routeLabel">Dal terminal a casa</span>
+              <strong data-i18n="location.routeTitle">Aeroporto Falcone Borsellino → La Dimora di Icaro</strong>
+              <small data-i18n="location.routeTime">Circa 12 minuti in auto</small>
+            </div>
+            <ol class="route-steps">
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step1Title">Aeroporto</b><small data-i18n="location.step1Text">Partenza dal Falcone Borsellino.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step2Title">A29 verso Palermo</b><small data-i18n="location.step2Text">Percorso diretto e rapido.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step3Title">Uscita Carini</b><small data-i18n="location.step3Text">Esci a Carini e prosegui verso la dimora.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step4Title">La Dimora</b><small data-i18n="location.step4Text">Arrivo in Via Strada Statale Est, 157.</small></p>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <span data-i18n="location.airportLabel">Aeroporto</span>
+            <strong data-i18n="location.airportTitle">12 minuti</strong>
+            <p data-i18n="location.airportText">Dall'aeroporto Falcone Borsellino alla dimora in auto.</p>
+          </div>
+          <div>
+            <span data-i18n="location.cityLabel">Città</span>
+            <strong data-i18n="location.cityTitle">Palermo in 20-30 minuti</strong>
+            <p data-i18n="location.cityText">In auto, in base al traffico. In treno il centro di Palermo si raggiunge in circa 30 minuti.</p>
+          </div>
+          <div>
+            <span data-i18n="location.seaLabel">Mare</span>
+            <strong data-i18n="location.seaTitle">Spiaggia di Capaci a 8 minuti</strong>
+            <p data-i18n="location.seaText">Il mare di Capaci si raggiunge in circa 8 minuti in auto, ideale per giornate semplici tra spiaggia e rientro comodo.</p>
+          </div>
+          <div>
+            <span data-i18n="location.stationLabel">Stazione</span>
+            <strong data-i18n="location.stationTitle">A 600 metri</strong>
+            <p data-i18n="location.stationText">La stazione più vicina è raggiungibile anche a piedi.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="servizi" class="section experience-section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="services.eyebrow">Servizi inclusi</p>
+          <h2 data-i18n="services.title">Le comodità essenziali per un soggiorno semplice.</h2>
+        </div>
+        <div class="services-grid">
+          <article data-service-icon="wifi">
+            <h3 data-i18n="services.wifi.title">Wi-Fi</h3>
+            <p data-i18n="services.wifi.text">Connessione presente per lavorare, organizzare il viaggio o rilassarsi.</p>
+          </article>
+          <article data-service-icon="air">
+            <h3 data-i18n="services.air.title">Aria condizionata</h3>
+            <p data-i18n="services.air.text">Ambienti freschi e piacevoli anche nelle giornate più calde.</p>
+          </article>
+          <article data-service-icon="kitchen">
+            <h3 data-i18n="services.kitchen.title">Cucina attrezzata</h3>
+            <p data-i18n="services.kitchen.text">Tutto il necessario per colazioni, pranzi semplici e cene in casa.</p>
+          </article>
+          <article data-service-icon="wash">
+            <h3 data-i18n="services.wash.title">Lavatrice</h3>
+            <p data-i18n="services.wash.text">Comoda per soggiorni lunghi, famiglie e viaggi leggeri.</p>
+          </article>
+          <article data-service-icon="outdoor">
+            <h3 data-i18n="services.outdoor.title">Spazio esterno</h3>
+            <p data-i18n="services.outdoor.text">Veranda e aree esterne per vivere la casa anche fuori.</p>
+          </article>
+          <article data-service-icon="parking">
+            <h3 data-i18n="services.parking.title">Posto auto</h3>
+            <p data-i18n="services.parking.text">Parcheggio comodo per chi arriva in macchina o noleggia un'auto.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section direct-booking-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="direct.eyebrow">Prenotazione diretta</p>
+          <h2 data-i18n="direct.title">Perché prenotare direttamente dal sito.</h2>
+          <p data-i18n="direct.copy">
+            Parli con chi gestisce davvero la casa, chiarisci i dettagli prima dell'arrivo e scegli la dimora più adatta al tuo soggiorno.
+          </p>
+        </div>
+        <div class="direct-benefits">
+          <article>
+            <strong data-i18n="direct.b1.title">Contatto diretto</strong>
+            <p data-i18n="direct.b1.text">Risposte dirette da chi gestisce la casa, senza passaggi inutili.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b2.title">Disponibilità più chiare</strong>
+            <p data-i18n="direct.b2.text">Ti aiutiamo a verificare date, ospiti e durata del soggiorno.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b3.title">Scelta della dimora</strong>
+            <p data-i18n="direct.b3.text">Supporto per capire se è meglio Dimora Verde o Dimora Blu.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b4.title">Dettagli prima dell'arrivo</strong>
+            <p data-i18n="direct.b4.text">Informazioni precise su posizione, servizi e organizzazione.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b5.title">Sconti personalizzati</strong>
+            <p data-i18n="direct.b5.text">Per soggiorni più lunghi o richieste particolari possiamo valutare soluzioni dedicate.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="faq.eyebrow">Domande rapide</p>
+          <h2 data-i18n="faq.title">Le risposte che aiutano a prenotare con serenità.</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary data-i18n="faq.q1">Quale dimora devo scegliere?</summary>
+            <p data-i18n="faq.a1">La Dimora Verde è più grande, 105 mq e fino a 7 ospiti, con massimo 5 adulti. La Dimora Blu è più raccolta, 40 mq e fino a 4 ospiti, con massimo 2 adulti.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q4">Come verifico la disponibilità?</summary>
+            <p data-i18n="faq.a4">Consulta il calendario nella sezione Prenota: le date con eventi risultano occupate. Per confermare, puoi scriverci dal form o da WhatsApp.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q5">La casa è adatta a famiglie con bambini?</summary>
+            <p data-i18n="faq.a5">Sì, le dimore sono pensate per soggiorni familiari. È disponibile una culla su richiesta e consigliamo di indicare eventuali esigenze prima dell'arrivo.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q7">Come funziona il check-in?</summary>
+            <p data-i18n="faq.a7">Il check-in è disponibile dalle 15:00. Prima dell'arrivo riceverai le indicazioni necessarie per organizzare ingresso, orari e dettagli pratici.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q8">Sono possibili affitti transitori?</summary>
+            <p data-i18n="faq.a8">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="prenota" class="booking-section">
+        <div class="prenota-header">
+          <p class="eyebrow" data-i18n="booking.eyebrow">Prenota o chiedi informazioni</p>
+          <h2 data-i18n="booking.title">Raccontaci quando vorresti arrivare.</h2>
+        </div>
+        <div class="prenota-left">
+          <form class="booking-form" data-booking-form>
+            <label>
+              <span data-i18n="booking.home">Dimora</span>
+              <select name="home" required>
+                <option value="La Dimora Verde">La Dimora Verde</option>
+                <option value="La Dimora Blu">La Dimora Blu</option>
+                <option value="Da valutare insieme" data-i18n="booking.homeAny">Da valutare insieme</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="booking.checkin">Check-in</span>
+              <input type="date" name="checkin" required />
+            </label>
+            <label>
+              <span data-i18n="booking.checkout">Check-out</span>
+              <input type="date" name="checkout" required />
+            </label>
+            <label>
+              <span data-i18n="booking.guests">Ospiti</span>
+              <input type="number" name="guests" min="1" max="8" value="2" required />
+            </label>
+            <button class="button primary" type="submit" data-i18n="cta.request">Richiedi disponibilità</button>
+          </form>
+        </div>
+        <div class="prenota-right">
+          <div class="direct-links link-board" aria-label="Contatti e link utili">
+            <div class="link-board-header">
+              <span data-i18n="booking.channels">Canali ufficiali</span>
+              <p data-i18n="booking.channelsCopy">Scegli dove prenotare o contattaci via social.</p>
+            </div>
+            <div class="primary-links">
+              <a class="link-tile booking-tile" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="booking_click">
+                <small>Booking</small>
+                <strong data-i18n="links.booking">Prenota su Booking</strong>
+              </a>
+              <a class="link-tile" href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="airbnb_green_click">
+                <small>Airbnb</small>
+                <strong data-i18n="links.airbnbGreen">Prenota Dimora Verde</strong>
+              </a>
+              <a class="link-tile" href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="airbnb_blue_click">
+                <small>Airbnb</small>
+                <strong data-i18n="links.airbnbBlue">Prenota Dimora Blu</strong>
+              </a>
+            </div>
+            <div class="quick-links">
+              <a href="https://wa.me/393493608146" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp" data-track="whatsapp_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5.1 18.9 6 15.5a7 7 0 1 1 2.6 2.5z" />
+                  <path d="M9.2 8.8c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.3-.1.5.4.8 1.1 1.5 2 2 .2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.4.5 0 .5-.3 1.2-.7 1.5-.5.4-1.4.5-2.5.1-2.1-.7-4.6-2.8-5.5-5.1-.3-.8-.2-1.5.5-2.6z" />
+                </svg>
+              </a>
+              <a href="tel:+393470395338" aria-label="Telefono" title="Telefono" data-track="phone_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M7.2 4.8 9.4 9l-2 1.3c1 2.1 2.7 3.8 4.9 4.9l1.3-2 4.2 2.2-.7 3.2c-.2.8-.9 1.3-1.7 1.2C9.2 19.1 4.9 14.8 4.2 8.6c-.1-.8.4-1.5 1.2-1.7z" />
+                </svg>
+              </a>
+              <a href="mailto:ladimoradiicaro@gmail.com" aria-label="Email" title="Email" data-track="email_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 6.5h16v11H4z" />
+                  <path d="m4.5 7 7.5 6 7.5-6" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram" data-track="instagram_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <rect x="5" y="5" width="14" height="14" rx="4" />
+                  <circle cx="12" cy="12" r="3.2" />
+                  <path d="M16.7 7.6h.1" />
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook" data-track="facebook_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M14.6 8.1h1.8V5.2h-2.2c-2.6 0-4 1.6-4 4.1v1.8H7.9V14h2.3v5h3.1v-5h2.6l.4-2.9h-3V9.6c0-.9.4-1.5 1.3-1.5z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="transitory-note" data-i18n="booking.transitoryNote">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </div>
+      <div class="footer-links" aria-label="Link footer">
+        <a href="tel:+393470395338" data-track="footer_phone_click">Telefono: 347 039 5338</a>
+        <a href="https://wa.me/393493608146" target="_blank" rel="noreferrer" data-track="footer_whatsapp_click">WhatsApp: 349 360 8146</a>
+        <a href="mailto:ladimoradiicaro@gmail.com" data-track="footer_email_click">ladimoradiicaro@gmail.com</a>
+        <p class="footer-cin">CIN IT082021C23NRN5DBU</p>
+        <p class="footer-cin">CIR 19082021C259979</p>
+      </div>
+      <div class="footer-links" aria-label="Prenotazioni e social">
+        <a href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="footer_booking_click" data-i18n="footer.booking">Booking</a>
+        <a href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="footer_airbnb_green_click" data-i18n="footer.airbnbGreen">Airbnb Verde</a>
+        <a href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="footer_airbnb_blue_click" data-i18n="footer.airbnbBlue">Airbnb Blu</a>
+        <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer" data-track="footer_instagram_click">Instagram</a>
+        <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer" data-track="footer_facebook_click">Facebook</a>
+      </div>
+      <div class="footer-links legal-links" aria-label="Informazioni legali">
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="cookie.html" data-i18n="footer.cookie">Cookie Policy</a>
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="https://wa.me/393493608146" target="_blank" rel="noreferrer" aria-label="Contattaci su WhatsApp" data-floating-whatsapp data-track="floating_whatsapp_click">
+      <img src="assets/whatsapp-icon.svg" alt="" aria-hidden="true" />
+    </a>
+
+    <div class="cookie-banner" data-cookie-banner hidden>
+      <p data-i18n="cookie.text">
+        Cookie tecnici e preferenze locali. Leggi la Cookie Policy.
+      </p>
+      <a href="cookie.html" data-i18n="footer.cookie">Cookie Policy</a>
+      <button type="button" class="button primary small" data-cookie-accept data-i18n="cookie.accept">Accetta</button>
+    </div>
+
+    <div class="lightbox" aria-hidden="true" data-lightbox>
+      <button class="lightbox-close" type="button" aria-label="Chiudi galleria" data-lightbox-close>×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Foto precedente" data-lightbox-prev>‹</button>
+      <img src="" alt="" data-lightbox-image />
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Foto successiva" data-lightbox-next>›</button>
+    </div>
+
+    <script>
+      // Page transitions
+      document.addEventListener('click', e => {
+        const link = e.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('is-leaving');
+        setTimeout(() => { window.location.href = href; }, 300);
+      });
+    </script>
+  </body>
+</html>

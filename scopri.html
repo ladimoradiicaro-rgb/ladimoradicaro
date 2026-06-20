@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cosa vedere e fare a Carini e dintorni: spiagge, Palermo, riserve naturali e attrazioni per famiglie con bambini. Guida dei dintorni di La Dimora di Icaro." />
+    <title>Cosa vedere | La Dimora di Icaro</title>
+    <link rel="icon" href="assets/logo-originale.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css?v=20260620-menu-fix" />
+    <style>
+      /* ── page-specific styles ── */
+      .scopri-hero {
+        position: relative;
+        padding: clamp(8.5rem, 14vw, 11rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
+        background:
+          radial-gradient(circle at 10% 30%, rgba(7,124,189,0.18), transparent 26rem),
+          radial-gradient(circle at 90% 10%, rgba(255,160,28,0.12), transparent 20rem),
+          linear-gradient(160deg, #0a2a44 0%, #073b5e 60%, #0d4e7a 100%);
+        color: var(--paper);
+        overflow: hidden;
+      }
+      .scopri-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/hero-soggiorno-2400.jpeg") center/cover no-repeat;
+        opacity: 0.13;
+        pointer-events: none;
+      }
+      .scopri-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 54rem;
+      }
+      .scopri-hero .eyebrow {
+        color: var(--sun);
+        margin-bottom: 0.8rem;
+      }
+      .scopri-hero h1 {
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        line-height: 1;
+        color: var(--paper);
+        margin-bottom: 1.2rem;
+      }
+      .scopri-hero p {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: rgba(255,255,255,0.78);
+        max-width: 44rem;
+        line-height: 1.65;
+      }
+
+      /* ── section layout ── */
+      .scopri-section {
+        padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 5rem);
+      }
+      .scopri-section + .scopri-section {
+        border-top: 1px solid var(--border);
+      }
+      .scopri-section-header {
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+      }
+      .scopri-section-header .eyebrow {
+        margin-bottom: 0.4rem;
+      }
+      .scopri-section-header h2 {
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        line-height: 1.05;
+        color: var(--blue-deep);
+        max-width: none;
+        margin-bottom: 0.6rem;
+      }
+      .scopri-section-header p {
+        color: var(--muted);
+        max-width: 52rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* ── cards grid ── */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+        gap: clamp(1rem, 2.5vw, 1.6rem);
+      }
+      .cards-grid.two-col {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+      }
+
+      .place-card {
+        position: relative;
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: calc(var(--radius) + 0.25rem);
+        padding: 1.35rem 1.4rem 1.25rem;
+        box-shadow: 0 4px 18px rgba(4,91,145,0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .place-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.15rem;
+      }
+      .place-card h3 {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--blue-deep);
+        line-height: 1.25;
+        margin: 0;
+      }
+      .place-card p {
+        font-size: 0.91rem;
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.18em 0.55em;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+      .tag-culture  { background: rgba(7,124,189,0.1);  color: #0560a0; }
+      .tag-nature   { background: rgba(76,153,96,0.12); color: #2d7a45; }
+      .tag-beach    { background: rgba(255,160,28,0.14);color: #b46800; }
+      .tag-kids     { background: rgba(255,100,80,0.12);color: #c0320a; }
+      .tag-adults   { background: rgba(80,50,130,0.1);  color: #4a2a8a; }
+
+      /* ── beach list ── */
+      .beach-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 2rem;
+      }
+      @media (max-width: 560px) {
+        .beach-cols { grid-template-columns: 1fr; }
+      }
+      .beach-group h4 {
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--sun-deep);
+        margin: 0 0 0.6rem;
+      }
+      .beach-group ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .beach-group li {
+        font-size: 0.93rem;
+        color: var(--ink);
+        padding-left: 1rem;
+        position: relative;
+      }
+      .beach-group li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--sun-deep);
+        font-weight: 800;
+      }
+
+      /* ── distance badge ── */
+      .dist {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* ── Sicily overview ── */
+      .sicily-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+        gap: 1.2rem;
+      }
+      .sicily-area {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.3rem;
+      }
+      .sicily-area h4 {
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--blue-deep);
+        margin: 0 0 0.7rem;
+      }
+      .sicily-area ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .sicily-area li {
+        font-size: 0.88rem;
+        color: var(--ink);
+        padding-left: 0.9rem;
+        position: relative;
+        line-height: 1.45;
+      }
+      .sicily-area li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      /* ── back link ── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: var(--blue);
+        text-decoration: none;
+        padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 5vw, 5rem) 0;
+        display: block;
+      }
+      .back-link:hover { text-decoration: underline; }
+
+      @media (max-width: 640px) {
+        .cards-grid.two-col { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html" aria-label="La Dimora di Icaro">
+        <img class="brand-wordmark" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </a>
+      <nav class="main-nav" aria-label="Navigazione principale" data-nav>
+        <a href="index.html#casa" data-i18n="nav.homes">Le dimore</a>
+        <a href="index.html#posizione" data-i18n="nav.location">Posizione</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="scopri.html" aria-current="page" data-i18n="scopri.nav.current">Cosa vedere</a>
+        <a class="mobile-nav-action" href="index.html#prenota" data-i18n="cta.book">Prenota</a>
+      </nav>
+      <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
+        <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
+          <span class="lang-badge" aria-hidden="true">🇮🇹</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
+          <span class="lang-badge" aria-hidden="true">🇬🇧</span>
+        </button>
+      </div>
+
+      <a class="header-action" href="index.html#prenota" data-i18n="cta.book">Prenota</a>
+      <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="scopri-hero">
+        <div class="scopri-hero-inner">
+          <p class="eyebrow" data-i18n="scopri.hero.eyebrow">LA NOSTRA GUIDA DEL TERRITORIO</p>
+          <h1 data-i18n="scopri.hero.title">Cosa vedere e fare nei dintorni</h1>
+          <p data-i18n="scopri.hero.desc">Dalla Dimora di Icaro si raggiunge in pochi minuti Palermo, il mare e alcune delle più belle riserve naturali della Sicilia. Qui trovi i nostri suggerimenti per adulti e bambini.</p>
+        </div>
+      </section>
+
+      <!-- CARINI -->
+      <section class="scopri-section">
+        <a class="back-link" href="index.html" style="padding:0 0 1.5rem;" data-i18n="scopri.back">← Torna alla home</a>
+        <div class="scopri-section-header">
+          <p class="eyebrow" data-i18n="scopri.carini.eyebrow">A DUE PASSI · CARINI</p>
+          <h2 data-i18n="scopri.carini.title">Il borgo di casa</h2>
+          <p data-i18n="scopri.carini.desc">Carini prende il nome dall'antica Iccara, città fondata tremila anni fa. Passeggiando per il centro si incontra un castello, chiese e una storia che pochi si aspettano a dieci minuti dall'aeroporto.</p>
+        </div>
+        <div class="cards-grid two-col">
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· ~4 km</span>
+            </div>
+            <h3>Castello di Carini</h3>
+            <p data-i18n="scopri.carini.card1.desc">Una maestosa fortezza normanna dell'XI secolo che domina la città dall'alto. Famoso in tutto il mondo per la tragica storia vera della <em>Baronessa di Carini</em>, assassinata nel 1563. Da non perdere il portale gotico e i panorami mozzafiato dalle terrazze.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+              <span class="dist" data-i18n="scopri.carini.card2.dist">· centro storico</span>
+            </div>
+            <h3>Chiesa Madre – Maria SS. Assunta</h3>
+            <p data-i18n="scopri.carini.card2.desc">Il cuore del centro storico di Carini: una chiesa del XV secolo che si affaccia sulla piazza principale, con affreschi e opere d'arte di grande valore.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-beach" data-i18n="tag.sea">Mare</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· ~3 km</span>
+            </div>
+            <h3>Spiagge di Capaci e Isola delle Femmine</h3>
+            <p data-i18n="scopri.carini.card3.desc">Le spiagge più vicine alla dimora: sabbia chiara, fondali bassi ideali per i più piccoli e un'isoletta raggiungibile a nuoto nelle giornate di bonaccia.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-beach" data-i18n="tag.sea">Mare</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· ~5 km</span>
+            </div>
+            <h3>Baglio di Carini e Costa Verde</h3>
+            <p data-i18n="scopri.carini.card4.desc">Tratti di costa meno affollati a pochi minuti dalla dimora: Torre Pozzillo, Torre Ulisse e la Costa Verde offrono calette e spiagge libere ancora genuine.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PALERMO -->
+      <section class="scopri-section" style="background: var(--sky);">
+        <div class="scopri-section-header">
+          <p class="eyebrow" data-i18n="scopri.palermo.eyebrow">12 MINUTI IN AUTO · PALERMO</p>
+          <h2 data-i18n="scopri.palermo.title">La capitale del Mediterraneo</h2>
+          <p data-i18n="scopri.palermo.desc">Palermo è un libro di storia aperto: arabi, normanni, spagnoli e greci hanno lasciato tracce ovunque. Si esplora a piedi, al ritmo dei mercati e delle chiese dorate.</p>
+        </div>
+        <div class="cards-grid">
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+            </div>
+            <h3>Cattedrale di Palermo</h3>
+            <p data-i18n="scopri.palermo.card1.desc">Uno straordinario mix di stili architettonici che ospita tombe reali e offre una vista panoramica dai suoi tetti. Un'icona senza tempo.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+            </div>
+            <h3>Palazzo dei Normanni &amp; Cappella Palatina</h3>
+            <p data-i18n="scopri.palermo.card2.desc">Uno dei palazzi reali più antichi d'Europa. All'interno, la Cappella Palatina è un capolavoro d'arte bizantina, araba e normanna con mosaici dorati mozzafiato.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+            </div>
+            <h3>Quattro Canti</h3>
+            <p data-i18n="scopri.palermo.card3.desc">Una piazza barocca nel cuore della città, il "Teatro del Sole", con statue che rappresentano le stagioni e i re di Sicilia. Perfetta per una foto ricordo.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+            </div>
+            <h3>Teatro Massimo</h3>
+            <p data-i18n="scopri.palermo.card4.desc">Il più grande teatro lirico d'Italia. Anche solo ammirarlo dall'esterno vale la visita; all'interno l'acustica è straordinaria.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-culture" data-i18n="tag.culture">Cultura</span>
+            </div>
+            <h3>La Martorana e San Cataldo</h3>
+            <p data-i18n="scopri.palermo.card5.desc">Due chiese normanne affiancate in piazza Bellini: La Martorana con i suoi mosaici dorati e San Cataldo con le tre cupole rosse di ispirazione araba.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-adults" data-i18n="tag.adults">Solo adulti</span>
+            </div>
+            <h3>Catacombe dei Cappuccini</h3>
+            <p data-i18n="scopri.palermo.card6.desc">Un luogo unico e perturbante: centinaia di corpi mummificati conservati nelle cripte sotterranee dal 1599. Una delle attrazioni più singolari d'Italia, sconsigliata ai bambini piccoli.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+            </div>
+            <h3>Piazza Pretoria &amp; mercati storici</h3>
+            <p data-i18n="scopri.palermo.card7.desc">La fontana monumentale con statue mitologiche, e poco lontano i mercati di Ballarò e Vucciria: colori, profumi e Street food siciliano autentico, perfetto per i bambini curiosi.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-beach" data-i18n="tag.sea">Mare</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· 20 min</span>
+            </div>
+            <h3>Mondello e Sferracavallo</h3>
+            <p data-i18n="scopri.palermo.card8.desc">Le spiagge balneari di Palermo: Mondello con il suo lido belle époque è la più celebre; Sferracavallo è più autentica, con un porticciolo e ottimo pesce fresco.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SPIAGGE VICINE -->
+      <section class="scopri-section">
+        <div class="scopri-section-header">
+          <p class="eyebrow" data-i18n="scopri.beaches.eyebrow">ENTRO 30 MINUTI · SPIAGGE</p>
+          <h2 data-i18n="scopri.beaches.title">Le spiagge più belle vicino a casa</h2>
+          <p data-i18n="scopri.beaches.desc">La costa che circonda Carini offre spiagge per tutti i gusti: sabbia finissima, calette rocciose, acque turchesi e lidi attrezzati.</p>
+        </div>
+        <div class="beach-cols">
+          <div class="beach-group">
+            <h4 data-i18n="scopri.beaches.north">A nord (verso Palermo)</h4>
+            <ul>
+              <li data-i18n="scopri.beaches.n1">Spiaggia di Capaci</li>
+              <li data-i18n="scopri.beaches.n2">Isola delle Femmine</li>
+              <li data-i18n="scopri.beaches.n3">Sferracavallo</li>
+              <li data-i18n="scopri.beaches.n4">Riserva di Capogallo</li>
+              <li data-i18n="scopri.beaches.n5">Spiaggia di Mondello</li>
+              <li data-i18n="scopri.beaches.n6">Addaura</li>
+            </ul>
+          </div>
+          <div class="beach-group">
+            <h4 data-i18n="scopri.beaches.south">A sud (verso Trapani)</h4>
+            <ul>
+              <li data-i18n="scopri.beaches.s1">Costa Verde &amp; Baglio di Carini</li>
+              <li data-i18n="scopri.beaches.s2">Spiaggia Magaggiari – Cinisi</li>
+              <li data-i18n="scopri.beaches.s3">Baia di San Cataldo – Terrasini</li>
+              <li data-i18n="scopri.beaches.s4">Spiaggia di Trappeto</li>
+              <li data-i18n="scopri.beaches.s5">Spiaggia di Balestrate</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- NATURA -->
+      <section class="scopri-section" style="background: var(--sky);">
+        <div class="scopri-section-header">
+          <p class="eyebrow" data-i18n="scopri.nature.eyebrow">NATURA &amp; TREKKING</p>
+          <h2 data-i18n="scopri.nature.title">Riserve naturali e sentieri</h2>
+          <p data-i18n="scopri.nature.desc">Attorno a Palermo si aprono boschi, montagne e riserve protette: ideali per una gita fuori porta all'aria aperta, con bambini o senza.</p>
+        </div>
+        <div class="cards-grid">
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· 15 min</span>
+            </div>
+            <h3>Monte Pellegrino</h3>
+            <p data-i18n="scopri.nature.card1.desc">Un monte boscoso che domina Palermo, con sentieri da trekking e il Santuario di Santa Rosalia, patrona della città. La salita in auto è panoramica.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· 40 min</span>
+            </div>
+            <h3>Bosco della Ficuzza</h3>
+            <p data-i18n="scopri.nature.card2.desc">Una vasta area boschiva, un tempo riserva di caccia reale. Ideale per escursioni, bicicletta e avvistamento della fauna. Visita anche le suggestive Gole del Drago.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="dist">· 50 min</span>
+            </div>
+            <h3>Riserva Naturale dello Zingaro</h3>
+            <p data-i18n="scopri.nature.card3.desc">La prima riserva naturale istituita in Sicilia: 7 km di costa selvaggia, calette con acqua smeraldo e sentieri tra i fichi d'india. Niente auto all'interno, solo il silenzio.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="dist">· 45 min</span>
+            </div>
+            <h3>Serre della Pizzuta</h3>
+            <p data-i18n="scopri.nature.card4.desc">Una riserva montana con grotte, gole e una ricca biodiversità nei pressi di Piana degli Albanesi. Ottima per chi ama il trekking fuori dai percorsi più battuti.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="dist">· 50 min</span>
+            </div>
+            <h3>Monte Genuardo e Santa Maria del Bosco</h3>
+            <p data-i18n="scopri.nature.card5.desc">Area collinare e boscosa ricca di flora, fauna e antichi eremi storici: un paesaggio rurale siciliano autentico, lontano dalle rotte turistiche.</p>
+          </div>
+
+          <div class="place-card">
+            <div class="place-card-meta">
+              <span class="tag tag-nature" data-i18n="tag.nature">Natura</span>
+              <span class="tag tag-kids" data-i18n="tag.families">Famiglie</span>
+              <span class="dist">· 1 h</span>
+            </div>
+            <h3>San Vito Lo Capo</h3>
+            <p data-i18n="scopri.nature.card6.desc">Sabbia bianca e finissima, acque turchesi e cristalline, scogliere spettacolari. Una delle spiagge più belle di tutta la Sicilia, ideale per famiglie con bambini.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SICILIA LONTANA -->
+      <section class="scopri-section">
+        <div class="scopri-section-header">
+          <p class="eyebrow" data-i18n="scopri.sicily.eyebrow">GITE PIÙ LUNGHE · TUTTA LA SICILIA</p>
+          <h2 data-i18n="scopri.sicily.title">Quando vuoi spingerti un po' più lontano</h2>
+          <p data-i18n="scopri.sicily.desc">La Sicilia è grande e ogni angolo ha qualcosa di straordinario. Ecco una mappa rapida delle mete principali per organizzare gite di un giorno o weekend.</p>
+        </div>
+        <div class="sicily-grid">
+
+          <div class="sicily-area">
+            <h4 data-i18n="scopri.sicily.nw">Sicilia Nord-Ovest</h4>
+            <ul>
+              <li data-i18n="scopri.sicily.nw1">Cefalù – spiaggia e cattedrale normanna</li>
+              <li data-i18n="scopri.sicily.nw2">Castellammare del Golfo</li>
+              <li data-i18n="scopri.sicily.nw3">Tonnara di Scopello e calette</li>
+              <li data-i18n="scopri.sicily.nw4">Erice – borgo medievale in cima alla montagna</li>
+              <li data-i18n="scopri.sicily.nw5">Trapani e Marsala</li>
+              <li data-i18n="scopri.sicily.nw6">Isola di Favignana – Cala Rossa</li>
+            </ul>
+          </div>
+
+          <div class="sicily-area">
+            <h4 data-i18n="scopri.sicily.ne">Sicilia Nord-Est (Madonie &amp; Taormina)</h4>
+            <ul>
+              <li data-i18n="scopri.sicily.ne1">Parco delle Madonie – borghi e natura</li>
+              <li data-i18n="scopri.sicily.ne2">Castelbuono e Petralia Soprana</li>
+              <li data-i18n="scopri.sicily.ne3">Santuario di Tindari e Laghetti di Marinello</li>
+              <li data-i18n="scopri.sicily.ne4">Taormina e Teatro Greco</li>
+              <li data-i18n="scopri.sicily.ne5">Vulcano Etna</li>
+            </ul>
+          </div>
+
+          <div class="sicily-area">
+            <h4 data-i18n="scopri.sicily.east">Sicilia Orientale</h4>
+            <ul>
+              <li data-i18n="scopri.sicily.east1">Siracusa e Ortigia</li>
+              <li data-i18n="scopri.sicily.east2">Noto – barocco UNESCO</li>
+              <li data-i18n="scopri.sicily.east3">Ragusa Ibla</li>
+              <li data-i18n="scopri.sicily.east4">Modica (famosa per il cioccolato)</li>
+              <li data-i18n="scopri.sicily.east5">Riserva Naturale di Vendicari</li>
+            </ul>
+          </div>
+
+          <div class="sicily-area">
+            <h4 data-i18n="scopri.sicily.south">Sicilia Meridionale</h4>
+            <ul>
+              <li data-i18n="scopri.sicily.south1">Valle dei Templi – Agrigento</li>
+              <li data-i18n="scopri.sicily.south2">Scala dei Turchi – scogliera bianca sul mare</li>
+              <li data-i18n="scopri.sicily.south3">Piazza Armerina – Villa Romana del Casale</li>
+              <li data-i18n="scopri.sicily.south4">Mazara del Vallo</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CTA PRENOTA -->
+      <section style="padding: clamp(2rem,4vw,3rem) clamp(1.5rem,5vw,5rem) clamp(2.5rem,5vw,4rem);">
+        <div style="max-width:52rem; margin:0 auto; padding: clamp(2rem,5vw,3.5rem) clamp(1.5rem,5vw,3rem); text-align:center; background: var(--blue-deep); color: var(--paper); border-radius: var(--radius); box-shadow: 0 24px 64px rgba(4,91,145,0.18);">
+          <p style="font-size:0.85rem; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; color:var(--sun); margin-bottom:0.6rem;" data-i18n="scopri.cta.eyebrow">PRENOTA IL TUO SOGGIORNO</p>
+          <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--paper); max-width:none; margin-bottom:1rem; line-height:1.1;" data-i18n="scopri.cta.title">Pronto a scoprire la Sicilia?</h2>
+          <p style="color:rgba(255,255,255,0.72); max-width:34rem; margin:0 auto 2rem; font-size:1rem;" data-i18n="scopri.cta.desc">Dalla Dimora di Icaro hai tutto a portata di mano. Verifica le date disponibili e prenota il tuo soggiorno.</p>
+          <a class="button primary" href="index.html#prenota" data-i18n="scopri.cta.btn">Verifica disponibilità</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </div>
+      <div class="footer-links" aria-label="Link footer">
+        <a href="tel:+393470395338">Telefono: 347 039 5338</a>
+        <a href="https://wa.me/393493608146" target="_blank" rel="noreferrer">WhatsApp: 349 360 8146</a>
+        <a href="mailto:ladimoradiicaro@gmail.com">ladimoradiicaro@gmail.com</a>
+        <p class="footer-cin">CIN IT082021C23NRN5DBU</p>
+        <p class="footer-cin">CIR 19082021C259979</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer">Booking</a>
+        <a href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer">Airbnb Verde</a>
+        <a href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer">Airbnb Blu</a>
+        <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
+      </div>
+      <div class="footer-links legal-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookie.html">Cookie Policy</a>
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="https://wa.me/393493608146" target="_blank" rel="noreferrer" aria-label="Contattaci su WhatsApp" data-i18n-aria="scopri.whatsapp.label">
+      <img src="assets/whatsapp-icon.svg" alt="" aria-hidden="true" />
+    </a>
+
+    <script>
+      const scopriTranslations = {
+        it: {
+          "nav.homes": "Le dimore",
+          "nav.location": "Posizione",
+          "nav.services": "Servizi",
+          "nav.faq": "FAQ",
+          "scopri.nav.current": "Cosa vedere",
+          "cta.book": "Prenota",
+          "tag.culture": "Cultura",
+          "tag.families": "Famiglie",
+          "tag.sea": "Mare",
+          "tag.adults": "Solo adulti",
+          "tag.nature": "Natura",
+          "scopri.hero.eyebrow": "LA NOSTRA GUIDA DEL TERRITORIO",
+          "scopri.hero.title": "Cosa vedere e fare nei dintorni",
+          "scopri.hero.desc": "Dalla Dimora di Icaro si raggiunge in pochi minuti Palermo, il mare e alcune delle più belle riserve naturali della Sicilia. Qui trovi i nostri suggerimenti per adulti e bambini.",
+          "scopri.back": "← Torna alla home",
+          "scopri.carini.eyebrow": "A DUE PASSI · CARINI",
+          "scopri.carini.title": "Il borgo di casa",
+          "scopri.carini.desc": "Carini prende il nome dall'antica Iccara, città fondata tremila anni fa. Passeggiando per il centro si incontra un castello, chiese e una storia che pochi si aspettano a dieci minuti dall'aeroporto.",
+          "scopri.carini.card1.desc": "Una maestosa fortezza normanna dell'XI secolo che domina la città dall'alto. Famoso in tutto il mondo per la tragica storia vera della <em>Baronessa di Carini</em>, assassinata nel 1563. Da non perdere il portale gotico e i panorami mozzafiato dalle terrazze.",
+          "scopri.carini.card2.dist": "· centro storico",
+          "scopri.carini.card2.desc": "Il cuore del centro storico di Carini: una chiesa del XV secolo che si affaccia sulla piazza principale, con affreschi e opere d'arte di grande valore.",
+          "scopri.carini.card3.desc": "Le spiagge più vicine alla dimora: sabbia chiara, fondali bassi ideali per i più piccoli e un'isoletta raggiungibile a nuoto nelle giornate di bonaccia.",
+          "scopri.carini.card4.desc": "Tratti di costa meno affollati a pochi minuti dalla dimora: Torre Pozzillo, Torre Ulisse e la Costa Verde offrono calette e spiagge libere ancora genuine.",
+          "scopri.palermo.eyebrow": "12 MINUTI IN AUTO · PALERMO",
+          "scopri.palermo.title": "La capitale del Mediterraneo",
+          "scopri.palermo.desc": "Palermo è un libro di storia aperto: arabi, normanni, spagnoli e greci hanno lasciato tracce ovunque. Si esplora a piedi, al ritmo dei mercati e delle chiese dorate.",
+          "scopri.palermo.card1.desc": "Uno straordinario mix di stili architettonici che ospita tombe reali e offre una vista panoramica dai suoi tetti. Un'icona senza tempo.",
+          "scopri.palermo.card2.desc": "Uno dei palazzi reali più antichi d'Europa. All'interno, la Cappella Palatina è un capolavoro d'arte bizantina, araba e normanna con mosaici dorati mozzafiato.",
+          "scopri.palermo.card3.desc": "Una piazza barocca nel cuore della città, il \"Teatro del Sole\", con statue che rappresentano le stagioni e i re di Sicilia. Perfetta per una foto ricordo.",
+          "scopri.palermo.card4.desc": "Il più grande teatro lirico d'Italia. Anche solo ammirarlo dall'esterno vale la visita; all'interno l'acustica è straordinaria.",
+          "scopri.palermo.card5.desc": "Due chiese normanne affiancate in piazza Bellini: La Martorana con i suoi mosaici dorati e San Cataldo con le tre cupole rosse di ispirazione araba.",
+          "scopri.palermo.card6.desc": "Un luogo unico e perturbante: centinaia di corpi mummificati conservati nelle cripte sotterranee dal 1599. Una delle attrazioni più singolari d'Italia, sconsigliata ai bambini piccoli.",
+          "scopri.palermo.card7.desc": "La fontana monumentale con statue mitologiche, e poco lontano i mercati di Ballarò e Vucciria: colori, profumi e street food siciliano autentico, perfetto per i bambini curiosi.",
+          "scopri.palermo.card8.desc": "Le spiagge balneari di Palermo: Mondello con il suo lido belle époque è la più celebre; Sferracavallo è più autentica, con un porticciolo e ottimo pesce fresco.",
+          "scopri.beaches.eyebrow": "ENTRO 30 MINUTI · SPIAGGE",
+          "scopri.beaches.title": "Le spiagge più belle vicino a casa",
+          "scopri.beaches.desc": "La costa che circonda Carini offre spiagge per tutti i gusti: sabbia finissima, calette rocciose, acque turchesi e lidi attrezzati.",
+          "scopri.beaches.north": "A nord (verso Palermo)",
+          "scopri.beaches.south": "A sud (verso Trapani)",
+          "scopri.beaches.n1": "Spiaggia di Capaci",
+          "scopri.beaches.n2": "Isola delle Femmine",
+          "scopri.beaches.n3": "Sferracavallo",
+          "scopri.beaches.n4": "Riserva di Capogallo",
+          "scopri.beaches.n5": "Spiaggia di Mondello",
+          "scopri.beaches.n6": "Addaura",
+          "scopri.beaches.s1": "Costa Verde & Baglio di Carini",
+          "scopri.beaches.s2": "Spiaggia Magaggiari – Cinisi",
+          "scopri.beaches.s3": "Baia di San Cataldo – Terrasini",
+          "scopri.beaches.s4": "Spiaggia di Trappeto",
+          "scopri.beaches.s5": "Spiaggia di Balestrate",
+          "scopri.nature.eyebrow": "NATURA & TREKKING",
+          "scopri.nature.title": "Riserve naturali e sentieri",
+          "scopri.nature.desc": "Attorno a Palermo si aprono boschi, montagne e riserve protette: ideali per una gita fuori porta all'aria aperta, con bambini o senza.",
+          "scopri.nature.card1.desc": "Un monte boscoso che domina Palermo, con sentieri da trekking e il Santuario di Santa Rosalia, patrona della città. La salita in auto è panoramica.",
+          "scopri.nature.card2.desc": "Una vasta area boschiva, un tempo riserva di caccia reale. Ideale per escursioni, bicicletta e avvistamento della fauna. Visita anche le suggestive Gole del Drago.",
+          "scopri.nature.card3.desc": "La prima riserva naturale istituita in Sicilia: 7 km di costa selvaggia, calette con acqua smeraldo e sentieri tra i fichi d'india. Niente auto all'interno, solo il silenzio.",
+          "scopri.nature.card4.desc": "Una riserva montana con grotte, gole e una ricca biodiversità nei pressi di Piana degli Albanesi. Ottima per chi ama il trekking fuori dai percorsi più battuti.",
+          "scopri.nature.card5.desc": "Area collinare e boscosa ricca di flora, fauna e antichi eremi storici: un paesaggio rurale siciliano autentico, lontano dalle rotte turistiche.",
+          "scopri.nature.card6.desc": "Sabbia bianca e finissima, acque turchesi e cristalline, scogliere spettacolari. Una delle spiagge più belle di tutta la Sicilia, ideale per famiglie con bambini.",
+          "scopri.sicily.eyebrow": "GITE PIÙ LUNGHE · TUTTA LA SICILIA",
+          "scopri.sicily.title": "Quando vuoi spingerti un po' più lontano",
+          "scopri.sicily.desc": "La Sicilia è grande e ogni angolo ha qualcosa di straordinario. Ecco una mappa rapida delle mete principali per organizzare gite di un giorno o weekend.",
+          "scopri.sicily.nw": "Sicilia Nord-Ovest",
+          "scopri.sicily.nw1": "Cefalù – spiaggia e cattedrale normanna",
+          "scopri.sicily.nw2": "Castellammare del Golfo",
+          "scopri.sicily.nw3": "Tonnara di Scopello e calette",
+          "scopri.sicily.nw4": "Erice – borgo medievale in cima alla montagna",
+          "scopri.sicily.nw5": "Trapani e Marsala",
+          "scopri.sicily.nw6": "Isola di Favignana – Cala Rossa",
+          "scopri.sicily.ne": "Sicilia Nord-Est (Madonie & Taormina)",
+          "scopri.sicily.ne1": "Parco delle Madonie – borghi e natura",
+          "scopri.sicily.ne2": "Castelbuono e Petralia Soprana",
+          "scopri.sicily.ne3": "Santuario di Tindari e Laghetti di Marinello",
+          "scopri.sicily.ne4": "Taormina e Teatro Greco",
+          "scopri.sicily.ne5": "Vulcano Etna",
+          "scopri.sicily.east": "Sicilia Orientale",
+          "scopri.sicily.east1": "Siracusa e Ortigia",
+          "scopri.sicily.east2": "Noto – barocco UNESCO",
+          "scopri.sicily.east3": "Ragusa Ibla",
+          "scopri.sicily.east4": "Modica (famosa per il cioccolato)",
+          "scopri.sicily.east5": "Riserva Naturale di Vendicari",
+          "scopri.sicily.south": "Sicilia Meridionale",
+          "scopri.sicily.south1": "Valle dei Templi – Agrigento",
+          "scopri.sicily.south2": "Scala dei Turchi – scogliera bianca sul mare",
+          "scopri.sicily.south3": "Piazza Armerina – Villa Romana del Casale",
+          "scopri.sicily.south4": "Mazara del Vallo",
+          "scopri.cta.eyebrow": "PRENOTA IL TUO SOGGIORNO",
+          "scopri.cta.title": "Pronto a scoprire la Sicilia?",
+          "scopri.cta.desc": "Dalla Dimora di Icaro hai tutto a portata di mano. Verifica le date disponibili e prenota il tuo soggiorno.",
+          "scopri.cta.btn": "Verifica disponibilità",
+          "scopri.whatsapp.label": "Contattaci su WhatsApp"
+        },
+        en: {
+          "nav.homes": "Homes",
+          "nav.location": "Location",
+          "nav.services": "Amenities",
+          "nav.faq": "FAQ",
+          "scopri.nav.current": "Things to do",
+          "cta.book": "Book",
+          "tag.culture": "Culture",
+          "tag.families": "Families",
+          "tag.sea": "Sea",
+          "tag.adults": "Adults only",
+          "tag.nature": "Nature",
+          "scopri.hero.eyebrow": "OUR LOCAL GUIDE",
+          "scopri.hero.title": "Things to see and do nearby",
+          "scopri.hero.desc": "From La Dimora di Icaro you can reach Palermo, the sea and some of Sicily's most beautiful nature reserves in just a few minutes. Here are our suggestions for adults and families.",
+          "scopri.back": "← Back to home",
+          "scopri.carini.eyebrow": "NEARBY · CARINI",
+          "scopri.carini.title": "The home village",
+          "scopri.carini.desc": "Carini takes its name from the ancient Iccara, a city founded three thousand years ago. Walking through the centre you'll find a castle, churches and a history that few expect just ten minutes from the airport.",
+          "scopri.carini.card1.desc": "A majestic 11th-century Norman fortress that towers over the city. World-famous for the true tragic story of the <em>Baronessa di Carini</em>, murdered in 1563. Don't miss the Gothic portal and the breathtaking views from the terraces.",
+          "scopri.carini.card2.dist": "· old town",
+          "scopri.carini.card2.desc": "The heart of Carini's historic centre: a 15th-century church facing the main square, with frescoes and artworks of great value.",
+          "scopri.carini.card3.desc": "The beaches closest to the house: pale sand, shallow waters ideal for young children and a small island you can swim to on calm days.",
+          "scopri.carini.card4.desc": "Less crowded stretches of coastline a few minutes from the house: Torre Pozzillo, Torre Ulisse and the Costa Verde offer coves and unspoilt free beaches.",
+          "scopri.palermo.eyebrow": "12 MINUTES BY CAR · PALERMO",
+          "scopri.palermo.title": "The Mediterranean capital",
+          "scopri.palermo.desc": "Palermo is an open book of history: Arabs, Normans, Spanish and Greeks have left their mark everywhere. Best explored on foot, to the rhythm of the markets and gilded churches.",
+          "scopri.palermo.card1.desc": "An extraordinary mix of architectural styles housing royal tombs and offering a panoramic rooftop view. A timeless icon.",
+          "scopri.palermo.card2.desc": "One of the oldest royal palaces in Europe. Inside, the Cappella Palatina is a masterpiece of Byzantine, Arab and Norman art with breathtaking gold mosaics.",
+          "scopri.palermo.card3.desc": "A baroque square in the heart of the city, the \"Theatre of the Sun\", with statues representing the seasons and the kings of Sicily. Perfect for a memorable photo.",
+          "scopri.palermo.card4.desc": "The largest opera house in Italy. Even admiring it from the outside is worth the visit; inside, the acoustics are extraordinary.",
+          "scopri.palermo.card5.desc": "Two Norman churches side by side in Piazza Bellini: La Martorana with its golden mosaics and San Cataldo with three red domes inspired by Arab architecture.",
+          "scopri.palermo.card6.desc": "A unique and unsettling place: hundreds of mummified bodies preserved in underground crypts since 1599. One of Italy's most singular attractions, not recommended for young children.",
+          "scopri.palermo.card7.desc": "The monumental fountain with mythological statues, and nearby the Ballarò and Vucciria markets: colours, aromas and authentic Sicilian street food, perfect for curious families.",
+          "scopri.palermo.card8.desc": "Palermo's seaside beaches: Mondello with its belle époque lido is the most famous; Sferracavallo is more authentic, with a small harbour and excellent fresh fish.",
+          "scopri.beaches.eyebrow": "WITHIN 30 MINUTES · BEACHES",
+          "scopri.beaches.title": "The most beautiful beaches near home",
+          "scopri.beaches.desc": "The coastline around Carini offers beaches for every taste: fine sand, rocky coves, turquoise waters and equipped lidos.",
+          "scopri.beaches.north": "North (towards Palermo)",
+          "scopri.beaches.south": "South (towards Trapani)",
+          "scopri.beaches.n1": "Capaci Beach",
+          "scopri.beaches.n2": "Isola delle Femmine",
+          "scopri.beaches.n3": "Sferracavallo",
+          "scopri.beaches.n4": "Capogallo Nature Reserve",
+          "scopri.beaches.n5": "Mondello Beach",
+          "scopri.beaches.n6": "Addaura",
+          "scopri.beaches.s1": "Costa Verde & Baglio di Carini",
+          "scopri.beaches.s2": "Magaggiari Beach – Cinisi",
+          "scopri.beaches.s3": "San Cataldo Bay – Terrasini",
+          "scopri.beaches.s4": "Trappeto Beach",
+          "scopri.beaches.s5": "Balestrate Beach",
+          "scopri.nature.eyebrow": "NATURE & TREKKING",
+          "scopri.nature.title": "Nature reserves and trails",
+          "scopri.nature.desc": "Around Palermo you'll find forests, mountains and protected nature reserves: perfect for a day trip in the open air, with or without children.",
+          "scopri.nature.card1.desc": "A wooded mountain that dominates Palermo, with hiking trails and the Sanctuary of Santa Rosalia, patron saint of the city. The drive up is panoramic.",
+          "scopri.nature.card2.desc": "A vast woodland area, once a royal hunting reserve. Ideal for hiking, cycling and wildlife spotting. Also visit the striking Gole del Drago.",
+          "scopri.nature.card3.desc": "The first nature reserve established in Sicily: 7 km of wild coastline, emerald coves and trails through prickly pear. No cars inside, only silence.",
+          "scopri.nature.card4.desc": "A mountain reserve with caves, gorges and rich biodiversity near Piana degli Albanesi. Great for those who love off-the-beaten-track hiking.",
+          "scopri.nature.card5.desc": "A hilly and wooded area rich in flora, fauna and ancient hermitages: an authentic Sicilian rural landscape, far from tourist routes.",
+          "scopri.nature.card6.desc": "Fine white sand, turquoise and crystal-clear waters, spectacular cliffs. One of the most beautiful beaches in all of Sicily, ideal for families with children.",
+          "scopri.sicily.eyebrow": "LONGER TRIPS · ALL OF SICILY",
+          "scopri.sicily.title": "When you want to venture a little further",
+          "scopri.sicily.desc": "Sicily is vast and every corner has something extraordinary. Here is a quick map of the main destinations for organising day trips or weekends.",
+          "scopri.sicily.nw": "North-West Sicily",
+          "scopri.sicily.nw1": "Cefalù – beach and Norman cathedral",
+          "scopri.sicily.nw2": "Castellammare del Golfo",
+          "scopri.sicily.nw3": "Tonnara di Scopello and coves",
+          "scopri.sicily.nw4": "Erice – medieval hilltop village",
+          "scopri.sicily.nw5": "Trapani and Marsala",
+          "scopri.sicily.nw6": "Favignana island – Cala Rossa",
+          "scopri.sicily.ne": "North-East Sicily (Madonie & Taormina)",
+          "scopri.sicily.ne1": "Parco delle Madonie – villages and nature",
+          "scopri.sicily.ne2": "Castelbuono and Petralia Soprana",
+          "scopri.sicily.ne3": "Sanctuary of Tindari and Marinello Lagoons",
+          "scopri.sicily.ne4": "Taormina and the Greek Theatre",
+          "scopri.sicily.ne5": "Mount Etna",
+          "scopri.sicily.east": "Eastern Sicily",
+          "scopri.sicily.east1": "Syracuse and Ortigia",
+          "scopri.sicily.east2": "Noto – UNESCO Baroque",
+          "scopri.sicily.east3": "Ragusa Ibla",
+          "scopri.sicily.east4": "Modica (famous for chocolate)",
+          "scopri.sicily.east5": "Vendicari Nature Reserve",
+          "scopri.sicily.south": "Southern Sicily",
+          "scopri.sicily.south1": "Valley of the Temples – Agrigento",
+          "scopri.sicily.south2": "Scala dei Turchi – white cliff over the sea",
+          "scopri.sicily.south3": "Piazza Armerina – Villa Romana del Casale",
+          "scopri.sicily.south4": "Mazara del Vallo",
+          "scopri.cta.eyebrow": "BOOK YOUR STAY",
+          "scopri.cta.title": "Ready to discover Sicily?",
+          "scopri.cta.desc": "From La Dimora di Icaro everything is within reach. Check available dates and book your stay.",
+          "scopri.cta.btn": "Check availability",
+          "scopri.whatsapp.label": "Contact us on WhatsApp"
+        }
+      };
+
+      const applyScopriLanguage = (lang) => {
+        const t = scopriTranslations[lang] || scopriTranslations.it;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.dataset.i18n;
+          if (t[key] !== undefined) el.innerHTML = t[key];
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+          const key = el.dataset.i18nAria;
+          if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+        });
+        document.documentElement.lang = lang;
+      };
+
+      // Menu toggle
+      const toggle = document.querySelector('[data-menu-toggle]');
+      if (toggle) {
+        toggle.addEventListener('click', () => {
+          const open = document.body.classList.toggle('menu-open');
+          toggle.setAttribute('aria-expanded', String(open));
+          toggle.setAttribute('aria-label', open
+            ? (localStorage.getItem('siteLanguage') === 'en' ? 'Close menu' : 'Chiudi menu')
+            : (localStorage.getItem('siteLanguage') === 'en' ? 'Open menu' : 'Apri menu'));
+        });
+      }
+
+      // Language switcher
+      const savedLang = localStorage.getItem('siteLanguage') || 'it';
+      const langSwitcher = document.querySelector('[data-language-switcher]');
+
+      applyScopriLanguage(savedLang);
+
+      if (langSwitcher) {
+        langSwitcher.classList.toggle('is-en', savedLang === 'en');
+        langSwitcher.querySelectorAll('[data-lang]').forEach(btn => {
+          const active = btn.dataset.lang === savedLang;
+          btn.classList.toggle('is-active', active);
+          btn.setAttribute('aria-pressed', String(active));
+          btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            localStorage.setItem('siteLanguage', lang);
+            langSwitcher.classList.toggle('is-en', lang === 'en');
+            langSwitcher.querySelectorAll('[data-lang]').forEach(b => {
+              const a = b.dataset.lang === lang;
+              b.classList.toggle('is-active', a);
+              b.setAttribute('aria-pressed', String(a));
+            });
+            applyScopriLanguage(lang);
+          });
+        });
+      }
+
+      // Page transitions
+      document.addEventListener('click', e => {
+        const link = e.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('is-leaving');
+        setTimeout(() => { window.location.href = href; }, 300);
+      });
+    </script>
+  </body>
+</html>
