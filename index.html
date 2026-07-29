@@ -24,8 +24,8 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-  <link rel="stylesheet" href="styles.css?v=20260620-menu-opaque" />
-  <script defer src="script.js?v=20260616-availability-clean-1"></script>
+  <link rel="stylesheet" href="styles.css?v=20260729-minimal-reviews" />
+  <script defer src="script.js?v=20260729-minimal-reviews"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -92,8 +92,8 @@
         <a href="#casa" data-i18n="nav.homes">Le dimore</a>
         <a href="#posizione" data-i18n="nav.location">Posizione</a>
         <a href="#servizi" data-i18n="nav.services">Servizi</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
-        <a href="scopri.html">Cosa vedere</a>
+        <a href="#recensioni" data-i18n="nav.reviews">Recensioni</a>
+        <a href="scopri.html" data-i18n="nav.guide">Guida locale</a>
         <a class="mobile-nav-action" href="#prenota" data-i18n="cta.book">Prenota</a>
       </nav>
 
@@ -122,7 +122,7 @@
           <p class="licence-note">CIN IT082021C23NRN5DBU - CIR 19082021C259979</p>
           <div class="hero-actions">
             <a class="button primary" href="#prenota" data-i18n="cta.check">Verifica disponibilità</a>
-            <a class="button ghost" href="#posizione" data-i18n="cta.location">Scopri la posizione</a>
+            <a class="button ghost" href="scopri.html" data-i18n="cta.guide">Apri la guida locale</a>
           </div>
         </div>
         <aside class="arrival-card" aria-label="Punti forti">
@@ -136,9 +136,9 @@
       </section>
 
       <section class="quick-paths" aria-label="Percorsi rapidi">
-        <a href="#posizione">
+        <a href="scopri.html">
           <span data-i18n="quick.touristsLabel">Per turisti</span>
-          <strong data-i18n="quick.touristsText">Una base familiare per scoprire Palermo, Carini e la costa.</strong>
+          <strong data-i18n="quick.touristsText">Guida locale con mare, Palermo, ristoranti e servizi vicini.</strong>
         </a>
         <a href="#posizione">
           <span data-i18n="quick.flyLabel">Per chi vola</span>
@@ -161,6 +161,9 @@
         </div>
         <div class="homes-grid">
           <article class="home-card green-home">
+            <figure class="home-card-photo">
+              <img src="assets/verde-soggiorno-cucina-08.jpeg" alt="Zona pranzo luminosa della Dimora Verde" loading="lazy" />
+            </figure>
             <div class="home-card-top">
               <span data-i18n="homes.green.name">La Dimora Verde</span>
               <small data-i18n="homes.green.meta">105 mq · fino a 7 ospiti · max 5 adulti</small>
@@ -175,11 +178,14 @@
               <li data-i18n="homes.green.feature2">105 mq</li>
             </ul>
             <div class="card-actions">
-              <a class="button ghost small" href="#foto-verde" data-i18n="cta.photos">Vedi foto</a>
+              <a class="button ghost small" href="galleria-verde.html" data-i18n="cta.gallery">Galleria</a>
               <a class="button primary small" href="#prenota" data-home-request="La Dimora Verde" data-i18n="cta.ask">Chiedi disponibilità</a>
             </div>
           </article>
           <article class="home-card blue-home">
+            <figure class="home-card-photo">
+              <img src="assets/blu-soggiorno-cucina-03.jpeg" alt="Soggiorno e cucina della Dimora Blu" loading="lazy" />
+            </figure>
             <div class="home-card-top">
               <span data-i18n="homes.blue.name">La Dimora Blu</span>
               <small data-i18n="homes.blue.meta">40 mq · fino a 4 ospiti · max 2 adulti</small>
@@ -194,14 +200,19 @@
               <li data-i18n="homes.blue.feature2">40 mq</li>
             </ul>
             <div class="card-actions">
-              <a class="button ghost small" href="#foto-blu" data-i18n="cta.photos">Vedi foto</a>
+              <a class="button ghost small" href="galleria-blu.html" data-i18n="cta.gallery">Galleria</a>
               <a class="button primary small" href="#prenota" data-home-request="La Dimora Blu" data-i18n="cta.ask">Chiedi disponibilità</a>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="home-galleries" aria-label="Foto delle dimore" id="foto-dimore">
+      <section class="home-galleries react-card-gallery-section" aria-label="Foto delle dimore" id="foto-dimore" hidden>
+        <div id="react-card-gallery-root"></div>
+        <noscript>
+          <p>Abilita JavaScript per vedere la galleria fotografica interattiva.</p>
+        </noscript>
+        <div class="legacy-gallery-fallback" hidden>
         <article class="home-gallery gallery-verde" id="foto-verde" data-gallery data-gallery-default="living-kitchen" data-gallery-active="living-kitchen">
           <div class="gallery-copy">
             <p class="eyebrow" data-i18n="gallery.greenEyebrow">Galleria completa</p>
@@ -397,6 +408,7 @@
             </figure>
           </div>
         </article>
+        </div>
       </section>
 
       <section id="posizione" class="section location-section">
@@ -514,6 +526,224 @@
             <strong data-i18n="direct.b5.title">Sconti personalizzati</strong>
             <p data-i18n="direct.b5.text">Per soggiorni più lunghi o richieste particolari possiamo valutare soluzioni dedicate.</p>
           </article>
+        </div>
+      </section>
+
+      <section id="recensioni" class="section review-section" aria-label="Recensioni degli ospiti">
+        <div class="section-copy review-copy">
+          <p class="eyebrow" data-i18n="reviews.eyebrow">Recensioni</p>
+          <h2 data-i18n="reviews.title">Parole di chi ha soggiornato alla Dimora di Icaro.</h2>
+          <p data-i18n="reviews.copy">
+            Recensioni raccolte da Google e Booking, con esperienze raccontate dai nostri ospiti.
+          </p>
+          <div class="review-actions">
+            <a
+              class="review-google-link"
+              href="https://g.page/r/CfbDviinOJALEBM/review"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="reviews.googleCta"
+            >
+              Lascia una recensione su Google
+            </a>
+            <a
+              class="review-google-link secondary"
+              href="https://www.booking.com/Share-p6vU03"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="reviews.bookingCta"
+            >
+              Vedi su Booking
+            </a>
+          </div>
+        </div>
+        <div class="review-marquee" aria-label="Recensioni a 5 stelle in evidenza">
+          <div class="review-track">
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
