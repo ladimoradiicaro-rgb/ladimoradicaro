@@ -14,6 +14,8 @@ const lightboxPrev = document.querySelector("[data-lightbox-prev]");
 const lightboxNext = document.querySelector("[data-lightbox-next]");
 const cookieBanner = document.querySelector("[data-cookie-banner]");
 const cookieAccept = document.querySelector("[data-cookie-accept]");
+const reviewMarquee = document.querySelector(".review-marquee");
+let reviewPauseTimer;
 
 const contacts = {
   email: "ladimoradiicaro@gmail.com",
@@ -90,13 +92,57 @@ const translations = {
     "nav.homes": "Le dimore",
     "nav.location": "Posizione",
     "nav.services": "Servizi",
+    "nav.reviews": "Recensioni",
     "nav.faq": "FAQ",
+    "nav.guide": "Guida locale",
     "cta.book": "Prenota",
     "cta.check": "Verifica disponibilità",
     "cta.location": "Scopri la posizione",
+    "cta.guide": "Apri la guida locale",
     "cta.photos": "Vedi foto",
+    "cta.gallery": "Galleria",
+    "tour.skip": "Salta il tour",
+    "tourEnd.title": "Ti aspettiamo.",
+    "tourEnd.verde": "Prenota la Dimora Verde",
+    "tourEnd.blu": "Prenota la Dimora Blu",
+    "tourEnd.photosVerde": "Tutte le foto della Verde",
+    "tourEnd.photosBlu": "Tutte le foto della Blu",
+    "tour.eyebrow": "Tour delle dimore",
+    "tour.title": "Entra e guardati intorno, una stanza alla volta.",
+    "tour.copy": "Scorri per fare il giro completo: prima la Dimora Verde, poi la Dimora Blu.",
+    "tour.hint": "Scorri per entrare",
+    "tour.photos": "Tutte le foto",
+    "tour.v1.room": "Veranda",
+    "tour.v1.text": "Si arriva dalla veranda coperta: tavolo, sdraio e il verde intorno. Il posto giusto per la colazione all'aperto.",
+    "tour.v2.room": "Soggiorno",
+    "tour.v2.text": "Un open space luminoso con il grande divano angolare, che all'occorrenza diventa un letto in più.",
+    "tour.v3.room": "Cucina e pranzo",
+    "tour.v3.text": "Cucina completa e un tavolo grande per tutta la famiglia: si cucina, si mangia e si sta insieme.",
+    "tour.v4.room": "Camera matrimoniale",
+    "tour.v4.text": "Letto matrimoniale, armadio capiente e luce naturale: la stanza più tranquilla della casa.",
+    "tour.v5.room": "Seconda camera",
+    "tour.v5.text": "Letto singolo, armadio a ponte e una scrivania: comoda per i ragazzi o per chi lavora in viaggio.",
+    "tour.v6.room": "Due bagni",
+    "tour.v6.text": "Due bagni con doccia, uno con lavatrice: niente code la mattina, anche quando la casa è piena.",
+    "tour.b1.room": "Ingresso",
+    "tour.b1.text": "Si entra dal terrazzino con il tavolino in ferro battuto: un angolo all'aperto per il caffè o l'aperitivo.",
+    "tour.b2.room": "Soggiorno",
+    "tour.b2.text": "La parete blu mare, il divano letto e la porta finestra che porta luce in tutta la stanza.",
+    "tour.b3.room": "Cucina",
+    "tour.b3.text": "Cucina attrezzata con forno e piano cottura, tra maioliche siciliane e piano in legno.",
+    "tour.b4.room": "Camera",
+    "tour.b4.text": "Letto matrimoniale, armadio con specchio e asciugamani pronti al vostro arrivo.",
+    "tour.b5.room": "Bagno",
+    "tour.b5.text": "Bagno con doccia rivestita di maioliche, lavabo ampio e lavatrice.",
     "cta.ask": "Chiedi disponibilità",
     "cta.request": "Richiedi disponibilità",
+    "galleryPage.eyebrow": "Galleria completa",
+    "galleryPage.green.title": "La Dimora Verde",
+    "galleryPage.green.copy": "Tutti gli ambienti della dimora più grande: soggiorno, cucina, camere, bagni ed esterni.",
+    "galleryPage.blue.title": "La Dimora Blu",
+    "galleryPage.blue.copy": "La dimora più raccolta, con zona giorno, camera, bagno e terrazzo esterno.",
+    "galleryPage.book": "Chiedi disponibilità",
+    "galleryPage.open": "Apri foto",
     "hero.eyebrow": "Tra Palermo, mare e aeroporto",
     "hero.title": "Due dimore familiari tra Palermo, mare e aeroporto.",
     "hero.cardLabel": "Arrivo semplice",
@@ -104,7 +150,7 @@ const translations = {
     "hero.airportSmall": "dall'aeroporto",
     "hero.stationSmall": "dalla stazione",
     "quick.touristsLabel": "Per turisti",
-    "quick.touristsText": "Una base familiare per scoprire Palermo, Carini e la costa.",
+    "quick.touristsText": "Guida locale con mare, Palermo, ristoranti e servizi vicini.",
     "quick.flyLabel": "Per chi vola",
     "quick.flyText": "A 12 minuti dall'aeroporto, comoda prima o dopo il volo.",
     "quick.groupLabel": "Per ogni gruppo",
@@ -221,6 +267,31 @@ const translations = {
     "direct.b4.text": "Informazioni precise su posizione, servizi e organizzazione.",
     "direct.b5.title": "Sconti personalizzati",
     "direct.b5.text": "Per soggiorni più lunghi o richieste particolari possiamo valutare soluzioni dedicate.",
+    "reviews.eyebrow": "Recensioni",
+    "reviews.title": "Parole di chi ha soggiornato alla Dimora di Icaro.",
+    "reviews.copy": "Recensioni raccolte da Google e Booking, con esperienze raccontate dai nostri ospiti.",
+    "reviews.googleCta": "Lascia una recensione su Google",
+    "reviews.bookingCta": "Vedi su Booking",
+    "reviews.sourceGoogle": "Google",
+    "reviews.sourceBooking": "Booking",
+    "reviews.r1.text": "Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.",
+    "reviews.r1.name": "🇸🇰 Erik",
+    "reviews.r2.text": "Rita e suo marito, i padroni di casa, sono stati molto gentili e simpatici. Li consiglio vivamente a tutti. All’arrivo ho trovato tutto pulito, c’era un ottimo parcheggio e un bellissimo spazio esterno.",
+    "reviews.r2.name": "🇮🇹 Lara",
+    "reviews.r3.text": "Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.",
+    "reviews.r3.name": "🇮🇹 Marcello",
+    "reviews.r4.text": "Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.",
+    "reviews.r4.name": "🇷🇴 Marius",
+    "reviews.r5.text": "La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.",
+    "reviews.r5.name": "🇨🇭 Criss",
+    "reviews.r6.text": "Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.",
+    "reviews.r6.name": "🇮🇹 Giuseppe",
+    "reviews.r7.text": "La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.",
+    "reviews.r7.name": "🇮🇹 Stefania",
+    "reviews.r8.text": "Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.",
+    "reviews.r8.name": "🇮🇹 Erica",
+    "reviews.r9.text": "Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.",
+    "reviews.r9.name": "🇩🇪 Heinol",
     "faq.eyebrow": "Domande rapide",
     "faq.title": "Le risposte che aiutano a prenotare con serenità.",
     "faq.q1": "Quale dimora devo scegliere?",
@@ -284,13 +355,57 @@ const translations = {
     "nav.homes": "Homes",
     "nav.location": "Location",
     "nav.services": "Amenities",
+    "nav.reviews": "Reviews",
     "nav.faq": "FAQ",
+    "nav.guide": "Local guide",
     "cta.book": "Book",
     "cta.check": "Check availability",
     "cta.location": "See location",
+    "cta.guide": "Open the local guide",
     "cta.photos": "View photos",
+    "cta.gallery": "Gallery",
+    "tour.skip": "Skip the tour",
+    "tourEnd.title": "See you soon.",
+    "tourEnd.verde": "Book Dimora Verde",
+    "tourEnd.blu": "Book Dimora Blu",
+    "tourEnd.photosVerde": "All Dimora Verde photos",
+    "tourEnd.photosBlu": "All Dimora Blu photos",
+    "tour.eyebrow": "House tour",
+    "tour.title": "Step inside and look around, one room at a time.",
+    "tour.copy": "Scroll to take the full tour: first Dimora Verde, then Dimora Blu.",
+    "tour.hint": "Scroll to step inside",
+    "tour.photos": "All photos",
+    "tour.v1.room": "Veranda",
+    "tour.v1.text": "You arrive through the covered veranda: a table, deckchairs and greenery all around. The perfect spot for breakfast outdoors.",
+    "tour.v2.room": "Living room",
+    "tour.v2.text": "A bright open space with a large corner sofa that turns into an extra bed when needed.",
+    "tour.v3.room": "Kitchen & dining",
+    "tour.v3.text": "A fully equipped kitchen and a big table for the whole family: cook, eat and spend time together.",
+    "tour.v4.room": "Double bedroom",
+    "tour.v4.text": "A double bed, plenty of wardrobe space and natural light: the quietest room in the house.",
+    "tour.v5.room": "Second bedroom",
+    "tour.v5.text": "A single bed, an overhead wardrobe and a desk: handy for kids or for working on the road.",
+    "tour.v6.room": "Two bathrooms",
+    "tour.v6.text": "Two bathrooms with showers, one with a washing machine: no morning queues, even with a full house.",
+    "tour.b1.room": "Entrance",
+    "tour.b1.text": "You come in from the small terrace with its wrought-iron table: an outdoor corner for coffee or an aperitif.",
+    "tour.b2.room": "Living room",
+    "tour.b2.text": "A sea-blue wall, the sofa bed and a French window that fills the room with light.",
+    "tour.b3.room": "Kitchen",
+    "tour.b3.text": "An equipped kitchen with oven and hob, Sicilian tiles and a wooden worktop.",
+    "tour.b4.room": "Bedroom",
+    "tour.b4.text": "A double bed, a mirrored wardrobe and fresh towels ready for your arrival.",
+    "tour.b5.room": "Bathroom",
+    "tour.b5.text": "A bathroom with a tiled shower, a wide washbasin and a washing machine.",
     "cta.ask": "Ask availability",
     "cta.request": "Request availability",
+    "galleryPage.eyebrow": "Full gallery",
+    "galleryPage.green.title": "La Dimora Verde",
+    "galleryPage.green.copy": "All the spaces of the larger home: living area, kitchen, bedrooms, bathrooms and outdoor areas.",
+    "galleryPage.blue.title": "La Dimora Blu",
+    "galleryPage.blue.copy": "The more compact home, with living area, bedroom, bathroom and outdoor terrace.",
+    "galleryPage.book": "Ask availability",
+    "galleryPage.open": "Open photo",
     "hero.eyebrow": "Between Palermo, the sea and the airport",
     "hero.title": "Two family homes between Palermo, the sea and the airport.",
     "hero.cardLabel": "Easy arrival",
@@ -298,7 +413,7 @@ const translations = {
     "hero.airportSmall": "from the airport",
     "hero.stationSmall": "from the station",
     "quick.touristsLabel": "For travelers",
-    "quick.touristsText": "A family base to discover Palermo, Carini and the coast.",
+    "quick.touristsText": "Local guide with beaches, Palermo, restaurants and nearby services.",
     "quick.flyLabel": "For flights",
     "quick.flyText": "12 minutes from the airport, convenient before or after your flight.",
     "quick.groupLabel": "For every group",
@@ -415,6 +530,31 @@ const translations = {
     "direct.b4.text": "Precise information about location, amenities and organization.",
     "direct.b5.title": "Personalized discounts",
     "direct.b5.text": "For longer stays or specific requests, we can evaluate dedicated solutions.",
+    "reviews.eyebrow": "Reviews",
+    "reviews.title": "Words from guests who stayed at La Dimora di Icaro.",
+    "reviews.copy": "Reviews collected from Google and Booking, sharing experiences from our guests.",
+    "reviews.googleCta": "Leave a review on Google",
+    "reviews.bookingCta": "See on Booking",
+    "reviews.sourceGoogle": "Google",
+    "reviews.sourceBooking": "Booking",
+    "reviews.r1.text": "I highly recommend this accommodation. The owners were very kind. The apartment was clean and spacious. For me, 10/10.",
+    "reviews.r1.name": "🇸🇰 Erik",
+    "reviews.r2.text": "Rita and her husband, the hosts, were very kind and friendly. I highly recommend them to everyone. Upon arrival I found everything clean, great parking and a beautiful outdoor space.",
+    "reviews.r2.name": "🇮🇹 Lara",
+    "reviews.r3.text": "We stayed for three weeks in this wonderful property. A quiet place, strategic location and very kind owners.",
+    "reviews.r3.name": "🇮🇹 Marcello",
+    "reviews.r4.text": "The accommodation conditions are very, very good and the owners' availability deserves even more than 5 stars.",
+    "reviews.r4.name": "🇷🇴 Marius",
+    "reviews.r5.text": "Cleanliness, air conditioning, space and Rita's attention: completely satisfied.",
+    "reviews.r5.name": "🇨🇭 Criss",
+    "reviews.r6.text": "Welcoming, helpful hosts, new and comfortable property, large parking: a recommended experience.",
+    "reviews.r6.name": "🇮🇹 Giuseppe",
+    "reviews.r7.text": "The house was perfect. Attention to detail was everywhere. Mrs. Rita was very kind and helpful.",
+    "reviews.r7.name": "🇮🇹 Stefania",
+    "reviews.r8.text": "Everything perfect, clean and comfortable. A week of relaxation with everything nearby.",
+    "reviews.r8.name": "🇮🇹 Erica",
+    "reviews.r9.text": "Good location, good size and amenities. Very kind owner.",
+    "reviews.r9.name": "🇩🇪 Heinol",
     "faq.eyebrow": "Quick questions",
     "faq.title": "Answers that help you book with peace of mind.",
     "faq.q1": "Which home should I choose?",
@@ -982,6 +1122,31 @@ const closeLightbox = () => {
   lightboxImage.src = "";
 };
 
+window.addEventListener("icaro:open-gallery-image", (event) => {
+  const images = Array.isArray(event.detail?.images) ? event.detail.images : [];
+  const src = event.detail?.src;
+  const normalizedImages = images
+    .map((image) => ({
+      src: image.src,
+      currentSrc: image.src,
+      alt: image.alt || "Foto La Dimora di Icaro"
+    }))
+    .filter((image) => image.src);
+  const index = Math.max(0, normalizedImages.findIndex((image) => image.src === src));
+
+  if (normalizedImages.length) {
+    activeLightboxImages = normalizedImages;
+    activeLightboxIndex = index;
+    if (lightboxImage && lightbox) {
+      lightboxImage.src = normalizedImages[index].src;
+      lightboxImage.alt = normalizedImages[index].alt;
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+    }
+  }
+});
+
 updateHeader();
 applyLanguage(currentLanguage);
 setupAvailabilityCalendar();
@@ -1168,9 +1333,16 @@ galleries.forEach((gallery) => {
       figure.classList.toggle("is-hidden", !shouldShow);
       figure.hidden = !shouldShow;
       figure.setAttribute("aria-hidden", String(!shouldShow));
+      figure.classList.remove("is-deck-card", "is-deck-extra");
 
       if (shouldShow) {
         figure.style.setProperty("--gallery-delay", `${Math.min(visibleIndex, 12) * 26}ms`);
+        figure.style.setProperty("--deck-index", String(visibleIndex));
+        figure.style.setProperty("--deck-x", `${Math.min(visibleIndex, 5) * 4.8}rem`);
+        figure.style.setProperty("--deck-y", `${Math.min(visibleIndex, 5) * 1.15}rem`);
+        figure.style.setProperty("--deck-rotate", `${(visibleIndex - 2) * 1.8}deg`);
+        figure.style.setProperty("--deck-z", String(30 - visibleIndex));
+        figure.classList.add(visibleIndex < 6 ? "is-deck-card" : "is-deck-extra");
         figure.classList.remove("is-filtering");
         visibleIndex += 1;
       } else {
@@ -1211,6 +1383,24 @@ lightbox?.addEventListener("click", (event) => {
     closeLightbox();
   }
 });
+
+const pauseReviewMarquee = () => {
+  if (!reviewMarquee) return;
+  window.clearTimeout(reviewPauseTimer);
+  reviewMarquee.classList.add("is-paused");
+};
+
+const resumeReviewMarqueeSoon = () => {
+  if (!reviewMarquee) return;
+  window.clearTimeout(reviewPauseTimer);
+  reviewPauseTimer = window.setTimeout(() => {
+    reviewMarquee.classList.remove("is-paused");
+  }, 2600);
+};
+
+reviewMarquee?.addEventListener("touchstart", pauseReviewMarquee, { passive: true });
+reviewMarquee?.addEventListener("touchend", resumeReviewMarqueeSoon);
+reviewMarquee?.addEventListener("touchcancel", resumeReviewMarqueeSoon);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {

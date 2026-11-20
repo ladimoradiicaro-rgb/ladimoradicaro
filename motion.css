@@ -1,0 +1,908 @@
+/* ==========================================================================
+   Motion layer: Lenis, React Bits–style effects, scroll-driven house tour
+   ========================================================================== */
+
+/* ---------- Lenis ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* Sticky stages need a non-scrolling ancestor chain: clip instead of hidden */
+html,
+body {
+  overflow-x: clip !important;
+}
+
+/* ---------- Titles in the logo's voice ----------
+   Each title is an image made in Canva with the logo's Avallon font (assets/titoli/).
+   The real text stays in the HTML (font-size 0) for search engines, screen readers
+   and the IT/EN switch; the picture shown follows <html lang>. */
+main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]),
+.tour-caption h3[data-i18n] {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+  white-space: normal !important;
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: contain;
+}
+
+/* Section titles: blue lines with the last word in orange, like "di Icaro" */
+main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]) {
+  --title-k: 0.3;
+  width: calc(var(--w) * var(--title-k) * 1px);
+  max-width: 100% !important; /* old rules cap titles in ch, which is 0 at font-size 0 */
+  aspect-ratio: var(--w) / var(--h);
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+@media (max-width: 760px) {
+  main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]) {
+    --title-k: 0.25;
+  }
+}
+
+/* Room names on the tour photos: one line, all the same letter size */
+.tour-caption h3[data-i18n] {
+  --room-h: clamp(4.2rem, 9vw, 8rem);
+  height: var(--room-h);
+  width: calc(var(--room-h) * var(--w) / var(--h));
+  max-width: 100%;
+  margin: 0 0 0.2rem -0.4rem !important;
+  text-shadow: none !important;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
+}
+
+@media (max-width: 760px) {
+  .tour-caption h3[data-i18n] {
+    --room-h: clamp(3.4rem, 15vw, 4.6rem);
+  }
+}
+
+/* Titles arrive like the logo leaves: out of a soft blur */
+main h2.bt {
+  opacity: 0;
+  filter: blur(14px);
+  transform: translateY(0.75rem);
+  transition: opacity 900ms ease, filter 1100ms cubic-bezier(0.2, 0.7, 0.2, 1), transform 1100ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+main h2.bt.is-in {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+main h2[data-i18n="homes.title"] { --w: 1345; --h: 520; background-image: url("assets/titoli/dimore-it.png"); }
+html[lang="en"] main h2[data-i18n="homes.title"] { --w: 970; --h: 529; background-image: url("assets/titoli/dimore-en.png"); }
+main h2[data-i18n="services.title"] { --w: 928; --h: 552; background-image: url("assets/titoli/servizi-it.png"); }
+html[lang="en"] main h2[data-i18n="services.title"] { --w: 976; --h: 532; background-image: url("assets/titoli/servizi-en.png"); }
+main h2[data-i18n="direct.title"] { --w: 725; --h: 525; background-image: url("assets/titoli/diretto-it.png"); }
+html[lang="en"] main h2[data-i18n="direct.title"] { --w: 797; --h: 525; background-image: url("assets/titoli/diretto-en.png"); }
+main h2[data-i18n="reviews.title"] { --w: 727; --h: 705; background-image: url("assets/titoli/recensioni-it.png"); }
+html[lang="en"] main h2[data-i18n="reviews.title"] { --w: 1074; --h: 529; background-image: url("assets/titoli/recensioni-en.png"); }
+main h2[data-i18n="faq.title"] { --w: 974; --h: 522; background-image: url("assets/titoli/faq-it.png"); }
+html[lang="en"] main h2[data-i18n="faq.title"] { --w: 1006; --h: 512; background-image: url("assets/titoli/faq-en.png"); }
+main h2[data-i18n="booking.title"] { --w: 767; --h: 497; background-image: url("assets/titoli/prenota-it.png"); }
+html[lang="en"] main h2[data-i18n="booking.title"] { --w: 774; --h: 508; background-image: url("assets/titoli/prenota-en.png"); }
+
+.tour-caption h3[data-i18n="tour.v1.room"] { --w: 381; --h: 237; background-image: url("assets/titoli/veranda.png"); }
+.tour-caption h3[data-i18n="tour.v2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.v2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
+.tour-caption h3[data-i18n="tour.v3.room"] { --w: 751; --h: 237; background-image: url("assets/titoli/cucina-pranzo-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.v3.room"] { --w: 823; --h: 237; background-image: url("assets/titoli/cucina-pranzo-en.png"); }
+.tour-caption h3[data-i18n="tour.v4.room"] { --w: 951; --h: 237; background-image: url("assets/titoli/matrimoniale-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.v4.room"] { --w: 732; --h: 237; background-image: url("assets/titoli/matrimoniale-en.png"); }
+.tour-caption h3[data-i18n="tour.v5.room"] { --w: 731; --h: 237; background-image: url("assets/titoli/seconda-camera-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.v5.room"] { --w: 736; --h: 237; background-image: url("assets/titoli/seconda-camera-en.png"); }
+.tour-caption h3[data-i18n="tour.v6.room"] { --w: 505; --h: 237; background-image: url("assets/titoli/due-bagni-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.v6.room"] { --w: 692; --h: 237; background-image: url("assets/titoli/due-bagni-en.png"); }
+.tour-caption h3[data-i18n="tour.b1.room"] { --w: 449; --h: 237; background-image: url("assets/titoli/ingresso-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.b1.room"] { --w: 419; --h: 237; background-image: url("assets/titoli/ingresso-en.png"); }
+.tour-caption h3[data-i18n="tour.b2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.b2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
+.tour-caption h3[data-i18n="tour.b3.room"] { --w: 318; --h: 237; background-image: url("assets/titoli/cucina-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.b3.room"] { --w: 368; --h: 237; background-image: url("assets/titoli/cucina-en.png"); }
+.tour-caption h3[data-i18n="tour.b4.room"] { --w: 346; --h: 237; background-image: url("assets/titoli/camera-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.b4.room"] { --w: 414; --h: 237; background-image: url("assets/titoli/camera-en.png"); }
+.tour-caption h3[data-i18n="tour.b5.room"] { --w: 312; --h: 237; background-image: url("assets/titoli/bagno-it.png"); }
+html[lang="en"] .tour-caption h3[data-i18n="tour.b5.room"] { --w: 457; --h: 237; background-image: url("assets/titoli/bagno-en.png"); }
+
+/* ---------- BlurText ---------- */
+.bt .bt-word {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(10px);
+  transform: translateY(0.35em);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i) * 55ms);
+}
+
+.bt.is-in .bt-word {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* ---------- AnimatedContent ---------- */
+.motion-ready .ac {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 800ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--ac-delay, 0ms),
+    translate 800ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--ac-delay, 0ms);
+}
+
+.motion-ready .ac.is-in {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* ---------- SpotlightCard ---------- */
+.has-spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.has-spotlight > .spotlight {
+  position: absolute !important;
+  inset: 0;
+  z-index: 0 !important;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    22rem circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 209, 87, 0.22),
+    rgba(7, 124, 189, 0.08) 40%,
+    transparent 70%
+  );
+  transition: opacity 260ms ease;
+}
+
+.has-spotlight:hover > .spotlight {
+  opacity: 1;
+}
+
+/* ---------- Magnet ---------- */
+.magnet {
+  transition: translate 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ==========================================================================
+   House tour
+   ========================================================================== */
+.tour-section {
+  --tour-accent: var(--blue);
+  position: relative;
+  overflow: visible !important;
+  overflow-x: clip !important;
+  padding: 0;
+  background: #0d1a22;
+}
+
+/* Hero is temporarily switched off with the `hidden` attribute (the tour opens the page) */
+.hero[hidden] {
+  display: none !important;
+}
+
+/* The tour is full-bleed: no section fades on top of the photos */
+.tour-section::before,
+.tour-section::after {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Opening: only the logo, which blurs away as you scroll ---------- */
+.tour-logo {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.tour-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 249, 238, 0.42);
+  -webkit-backdrop-filter: blur(calc(22px * (1 - var(--intro, 0)))) saturate(1.15);
+  backdrop-filter: blur(calc(22px * (1 - var(--intro, 0)))) saturate(1.15);
+  opacity: calc(1 - var(--intro, 0) * 1.1);
+}
+
+.tour-logo img {
+  position: relative;
+  width: min(90vw, 50rem);
+  height: auto;
+  opacity: calc(1 - var(--intro, 0) * 1.15);
+  filter: blur(calc(var(--intro, 0) * 30px));
+  transform: scale(calc(1 + var(--intro, 0) * 0.14));
+  will-change: filter, transform, opacity;
+}
+
+/* Header and floating button stay out of the way while the logo owns the screen */
+.site-header,
+.floating-whatsapp {
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+body.tour-intro .site-header,
+body.tour-intro .floating-whatsapp,
+body.in-tour .floating-whatsapp {
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+}
+
+/* Until the walk begins, HUD and room names are hidden (blurred out) */
+.tour-head,
+.tour-progress,
+.tour-rooms {
+  transition: opacity 600ms ease, filter 600ms ease;
+}
+
+.tour:not(.is-started) .tour-head,
+.tour:not(.is-started) .tour-progress,
+.tour:not(.is-started) .tour-rooms,
+.tour:not(.is-started) .tour-captions {
+  opacity: 0;
+  filter: blur(10px);
+}
+
+.tour-captions {
+  transition: opacity 600ms ease, filter 600ms ease;
+}
+
+/* Track: one viewport per stop plus the sticky viewport itself */
+.tour {
+  --tour-accent: var(--blue);
+  --tour-accent-soft: rgba(7, 124, 189, 0.18);
+  position: relative;
+  height: calc(var(--frames) * 42svh + 100svh);
+}
+
+.tour--verde {
+  --tour-accent: #48765b;
+  --tour-accent-soft: rgba(72, 118, 91, 0.22);
+}
+
+.tour-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+}
+
+.tour-frame {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #0d1a22;
+  color: #fff;
+}
+
+/* Photos stack like cards; tour.js drives transform, --dim and --r from scroll */
+.tour-shots,
+.tour-shot {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.tour-shots {
+  z-index: 0;
+  isolation: isolate;
+}
+
+.tour-shot {
+  --dim: 0;
+  --r: 0px;
+  overflow: hidden;
+  border-radius: var(--r) var(--r) 0 0;
+  background: #0d1a22;
+  cursor: zoom-in;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.tour-shot + .tour-shot {
+  visibility: hidden;
+  transform: translate3d(0, 100%, 0);
+}
+
+.tour-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The card being covered darkens underneath */
+.tour-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #06121b;
+  opacity: var(--dim);
+  pointer-events: none;
+}
+
+/* The card coming up casts a soft shadow on the one below */
+.tour-shot.is-incoming {
+  box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.38);
+}
+
+.tour-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(0deg, rgba(6, 18, 27, 0.85) 0%, rgba(6, 18, 27, 0.35) 30%, transparent 55%),
+    linear-gradient(180deg, rgba(6, 18, 27, 0.55) 0%, transparent 26%),
+    radial-gradient(120% 90% at 50% 50%, transparent 60%, rgba(6, 18, 27, 0.35) 100%);
+}
+
+/* Header: home name + counter */
+.tour-head {
+  justify-content: flex-end !important;
+  position: absolute;
+  top: 6.6rem;
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.tour-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.95rem 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(10, 30, 44, 0.38);
+  backdrop-filter: blur(14px);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tour-home::before {
+  content: "";
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  background: var(--tour-accent);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+.tour-count {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  font-variant-numeric: tabular-nums;
+}
+
+.tour-count b {
+  font-size: 0.8rem;
+  opacity: 1;
+}
+
+/* Segmented progress */
+.tour-progress {
+  position: absolute;
+  top: 9.4rem;
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  z-index: 4;
+  display: flex;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.tour-progress i {
+  --seg: 0;
+  position: relative;
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tour-progress b {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.tour-progress i.is-done b {
+  transform: scaleX(1);
+}
+
+.tour[data-step] .tour-progress i:not(.is-done) b {
+  transform: scaleX(var(--seg));
+}
+
+/* Room navigation */
+.tour-rooms {
+  position: absolute;
+  top: 50%;
+  right: clamp(1.25rem, 4vw, 3.5rem);
+  z-index: 4;
+  transform: translateY(-50%);
+}
+
+.tour-rooms ol {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.4rem;
+  background: rgba(10, 30, 44, 0.42);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.tour-rooms button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.38rem 0.5rem 0.38rem 0.85rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.tour-rooms button span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.tour-rooms button em {
+  font-style: normal;
+}
+
+.tour-rooms button:hover,
+.tour-rooms button:focus-visible {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.tour-rooms button[aria-current="step"] {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.94);
+  color: var(--ink);
+}
+
+.tour-rooms button[aria-current="step"] span {
+  color: var(--tour-accent);
+  opacity: 1;
+}
+
+/* Captions */
+.tour-captions {
+  position: absolute;
+  left: clamp(1.25rem, 4vw, 3.5rem);
+  bottom: clamp(2rem, 6vh, 4rem);
+  z-index: 4;
+  width: min(44rem, calc(100% - 2.5rem));
+  min-height: 12rem;
+  pointer-events: none;
+}
+
+.tour-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(16px);
+  transform: translateY(10px) scale(0.985);
+  transition:
+    opacity 600ms ease,
+    filter 800ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 800ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    visibility 0s linear 600ms;
+}
+
+.tour-caption.is-active {
+  opacity: 1;
+  visibility: visible;
+  filter: blur(0);
+  transform: none;
+  transition-delay: 150ms, 150ms, 150ms, 0s;
+  pointer-events: auto;
+}
+
+.tour-caption h3 {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-shadow: 0 6px 30px rgba(0, 0, 0, 0.25);
+}
+
+.tour-kicker {
+  margin: 0 0 0.6rem !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  font-size: 0.78rem !important;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Each home's name in its own colour (brightened so it reads on the darkened photo) */
+.tour--verde .tour-kicker {
+  color: #8fd3a0 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.tour--blu .tour-kicker {
+  color: #5bbcf0 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.tour-caption p {
+  max-width: 30rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.98rem, 1.3vw, 1.1rem);
+  line-height: 1.55;
+}
+
+.tour-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.1rem;
+}
+
+.tour-actions .button.ghost {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+/* Scroll hint on first stop */
+.tour-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.6rem;
+  z-index: 4;
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  pointer-events: none;
+  transition: opacity 400ms ease;
+}
+
+.tour-hint::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 2rem;
+  margin: 0.5rem auto 0;
+  background: linear-gradient(#fff, transparent);
+  animation: tour-hint 1.6s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@keyframes tour-hint {
+  0% { transform: scaleY(0); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(1); opacity: 0; }
+}
+
+.tour.is-started .tour-hint {
+  opacity: 0;
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 980px) {
+  .tour-rooms button {
+    font-size: 0.78rem;
+  }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .tour {
+    height: calc(var(--frames) * 36svh + 100svh);
+  }
+
+  .tour-rooms {
+    display: none;
+  }
+
+  .tour-captions {
+    width: calc(100% - 2.2rem);
+    bottom: 5.4rem; /* sit above the floating WhatsApp button */
+  }
+
+  .tour-caption h3 {
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
+  }
+
+  .tour-caption p {
+    font-size: 0.95rem;
+  }
+
+  .tour-head {
+    top: 6rem;
+  }
+
+  .tour-progress {
+    top: 8.6rem;
+  }
+
+  .tour-home {
+    font-size: 0.7rem;
+  }
+
+  .tour-veil {
+    background:
+      linear-gradient(0deg, rgba(8, 24, 36, 0.88) 0%, rgba(8, 24, 36, 0.45) 42%, transparent 66%),
+      linear-gradient(180deg, rgba(8, 24, 36, 0.5) 0%, transparent 22%);
+  }
+
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tour-caption {
+    transition-duration: 1ms;
+  }
+
+
+
+  .tour-hint::after {
+    animation: none;
+  }
+}
+
+/* ==========================================================================
+   Tour v2: chapter between the homes, skip link, final screen
+   ========================================================================== */
+
+/* "La Dimora Blu" chapter: same frosted veil and blur-away as the opening logo */
+.tour-chapter img {
+  width: min(82vw, 40rem);
+}
+
+/* Skip link: only while walking through the rooms (not on the logo) */
+.tour-skip {
+  position: fixed !important; /* old "main > section > *" rule would put it back in the flow */
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40 !important;
+  padding: 0.6rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  background: rgba(10, 30, 44, 0.45);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 400ms ease, transform 400ms ease, background-color 200ms ease;
+}
+
+.tour-skip::after {
+  content: " ↓";
+}
+
+.tour-skip:hover,
+.tour-skip:focus-visible {
+  background: rgba(10, 30, 44, 0.7);
+}
+
+body.in-tour:not(.tour-intro) .tour-skip {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+/* Final screen: "Ti aspettiamo." over the veranda, softly blurred */
+.tour-end {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 6rem 1.25rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.tour-end::before,
+.tour-end::after {
+  display: none !important;
+}
+
+.tour-end-media {
+  position: absolute !important; /* beats the old "main > section > *" rule */
+  inset: 0;
+  z-index: 0 !important;
+}
+
+.tour-end-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(14px) saturate(1.1);
+  transform: scale(1.08);
+}
+
+.tour-end-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 249, 238, 0.55);
+}
+
+.tour-end-inner {
+  position: relative;
+  z-index: 1 !important;
+  display: grid;
+  justify-items: center;
+  gap: 2rem;
+}
+
+main h2[data-i18n="tourEnd.title"] {
+  --title-k: 0.62 !important;
+  margin: 0 auto !important;
+  background-position: center;
+}
+
+main h2[data-i18n="tourEnd.title"] { --w: 920; --h: 256; background-image: url("assets/titoli/fine-it.png"); }
+html[lang="en"] main h2[data-i18n="tourEnd.title"] { --w: 853; --h: 220; background-image: url("assets/titoli/fine-en.png"); }
+
+@media (max-width: 760px) {
+  main h2[data-i18n="tourEnd.title"] {
+    --title-k: 0.36 !important;
+  }
+}
+
+.tour-end-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.tour-end-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0 1.6rem;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 14px 34px rgba(4, 49, 80, 0.2);
+  transition: transform 200ms ease, filter 200ms ease;
+}
+
+.tour-end-btn:hover,
+.tour-end-btn:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+}
+
+.tour-end-btn--verde {
+  background: #4f8a5f;
+}
+
+.tour-end-btn--blu {
+  background: #077cbd;
+}
+
+.tour-end-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 0.75rem;
+  margin: 0;
+  color: rgba(6, 63, 104, 0.55);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.tour-end-links a {
+  color: #045b91;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(4, 91, 145, 0.35);
+}
+
+@media (max-width: 760px) {
+  .tour-end-actions {
+    flex-direction: column;
+    width: min(100%, 22rem);
+  }
+
+  .tour-end-btn {
+    width: 100%;
+  }
+
+  .tour-end-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tour-end-links span {
+    display: none;
+  }
+
+  .tour-skip {
+    right: 0.85rem;
+    bottom: 0.85rem;
+  }
+}

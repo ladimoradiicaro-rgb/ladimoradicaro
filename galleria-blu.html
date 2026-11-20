@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Galleria fotografica completa de La Dimora Blu: soggiorno, cucina, camera, bagno e terrazzo esterno."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Galleria La Dimora Blu | La Dimora di Icaro" />
+    <meta property="og:description" content="Scopri gli ambienti della Dimora Blu con la galleria fotografica completa." />
+    <meta property="og:image" content="assets/blu-soggiorno-cucina-03.jpeg" />
+    <title>Galleria La Dimora Blu | La Dimora di Icaro</title>
+    <link rel="icon" href="assets/logo-originale.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css?v=20260729-minimal-reviews" />
+    <link rel="stylesheet" href="motion.css?v=20261120-tour" />
+    <script defer src="vendor/lenis/lenis.min.js"></script>
+    <script defer src="motion.js?v=20261120-tour"></script>
+    <script defer src="script.js?v=20260729-minimal-reviews"></script>
+    <script defer src="vendor/react/react.production.min.js"></script>
+    <script defer src="vendor/react/react-dom.production.min.js"></script>
+    <script defer src="react-masonry-gallery.js?v=20260729-minimal-reviews"></script>
+  </head>
+  <body class="gallery-body">
+    <header class="site-header" data-header>
+      <a class="brand" href="index.html#home" aria-label="La Dimora di Icaro">
+        <img class="brand-wordmark" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </a>
+
+      <nav class="main-nav" aria-label="Navigazione principale" data-nav>
+        <a href="index.html#casa" data-i18n="nav.homes">Le dimore</a>
+        <a href="index.html#posizione" data-i18n="nav.location">Posizione</a>
+        <a href="index.html#servizi" data-i18n="nav.services">Servizi</a>
+        <a href="index.html#recensioni" data-i18n="nav.reviews">Recensioni</a>
+        <a href="scopri.html" data-i18n="nav.guide">Guida locale</a>
+        <a class="mobile-nav-action" href="index.html#prenota" data-i18n="cta.book">Prenota</a>
+      </nav>
+
+      <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
+        <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
+          <span class="lang-badge" aria-hidden="true">🇮🇹</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
+          <span class="lang-badge" aria-hidden="true">🇬🇧</span>
+        </button>
+      </div>
+
+      <a class="header-action" href="index.html#prenota" data-i18n="cta.book">Prenota</a>
+      <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main class="gallery-page gallery-page-blue">
+      <section class="gallery-page-hero">
+        <div class="gallery-page-hero-grid">
+          <div class="gallery-page-copy">
+            <p class="eyebrow" data-i18n="galleryPage.eyebrow">Galleria completa</p>
+            <h1 data-i18n="galleryPage.blue.title">La Dimora Blu</h1>
+            <p data-i18n="galleryPage.blue.copy">
+              La dimora più raccolta, con zona giorno, camera, bagno e terrazzo esterno.
+            </p>
+            <div class="gallery-page-actions">
+              <a class="button primary" href="index.html#prenota" data-i18n="galleryPage.book">Chiedi disponibilità</a>
+            </div>
+          </div>
+          <figure class="gallery-page-cover">
+            <img class="cover-card cover-card-main" src="assets/blu-soggiorno-cucina-03.jpeg" alt="Soggiorno e cucina della Dimora Blu" />
+            <img class="cover-card cover-card-side cover-card-side-a" src="assets/blu-camere-04.jpeg" alt="Camera della Dimora Blu" />
+            <img class="cover-card cover-card-side cover-card-side-b" src="assets/blu-esterni-01.jpeg" alt="Terrazzo della Dimora Blu" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="gallery-page-section" aria-label="Galleria fotografica La Dimora Blu">
+        <div id="masonry-gallery-root" data-gallery-home="blue"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-brand">
+        <img class="footer-logo" src="assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      </div>
+      <div class="footer-links" aria-label="Link footer">
+        <a href="tel:+393470395338" data-track="footer_phone_click">Telefono: 347 039 5338</a>
+        <a href="https://wa.me/393493608146" target="_blank" rel="noreferrer" data-track="footer_whatsapp_click">WhatsApp: 349 360 8146</a>
+        <a href="mailto:ladimoradiicaro@gmail.com" data-track="footer_email_click">ladimoradiicaro@gmail.com</a>
+        <p class="footer-cin">CIN IT082021C23NRN5DBU</p>
+        <p class="footer-cin">CIR 19082021C259979</p>
+      </div>
+      <div class="footer-links" aria-label="Prenotazioni e social">
+        <a href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="footer_booking_click" data-i18n="footer.booking">Booking</a>
+        <a href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="footer_airbnb_green_click" data-i18n="footer.airbnbGreen">Airbnb Verde</a>
+        <a href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="footer_airbnb_blue_click" data-i18n="footer.airbnbBlue">Airbnb Blu</a>
+        <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer" data-track="footer_instagram_click">Instagram</a>
+        <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer" data-track="footer_facebook_click">Facebook</a>
+      </div>
+      <div class="footer-links legal-links" aria-label="Informazioni legali">
+        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="cookie.html" data-i18n="footer.cookie">Cookie Policy</a>
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="https://wa.me/393493608146" target="_blank" rel="noreferrer" aria-label="Contattaci su WhatsApp" data-floating-whatsapp data-track="floating_whatsapp_click">
+      <img src="assets/whatsapp-icon.svg" alt="" aria-hidden="true" />
+    </a>
+
+    <div class="cookie-banner" data-cookie-banner hidden>
+      <p data-i18n="cookie.text">
+        Cookie tecnici e preferenze locali. Leggi la Cookie Policy.
+      </p>
+      <a href="cookie.html" data-i18n="footer.cookie">Cookie Policy</a>
+      <button type="button" class="button primary small" data-cookie-accept data-i18n="cookie.accept">Accetta</button>
+    </div>
+
+    <div class="lightbox" aria-hidden="true" data-lightbox>
+      <button class="lightbox-close" type="button" aria-label="Chiudi galleria" data-lightbox-close>×</button>
+      <button class="lightbox-nav lightbox-prev" type="button" aria-label="Foto precedente" data-lightbox-prev>‹</button>
+      <img src="" alt="" data-lightbox-image />
+      <button class="lightbox-nav lightbox-next" type="button" aria-label="Foto successiva" data-lightbox-next>›</button>
+    </div>
+
+    <script>
+      document.addEventListener('click', e => {
+        const link = e.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('http') || href.startsWith('//')) return;
+        e.preventDefault();
+        document.body.classList.add('is-leaving');
+        setTimeout(() => { window.location.href = href; }, 300);
+      });
+    </script>
+  </body>
+</html>
