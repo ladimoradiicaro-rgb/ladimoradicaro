@@ -1,0 +1,24 @@
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.ladimoradicaro.com/scopri",
+  "url": "https://www.ladimoradicaro.com/scopri",
+  "name": "Guida locale | La Dimora di Icaro",
+  "inLanguage": "it",
+  "isPartOf": {
+    "@id": "https://www.ladimoradicaro.com/#website"
+  },
+  "about": {
+    "@type": "Place",
+    "name": "Carini",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Carini",
+      "addressRegion": "PA",
+      "addressCountry": "IT"
+    }
+  },
+  "publisher": {
+    "@id": "https://www.ladimoradicaro.com/#dimora"
+  }
+}

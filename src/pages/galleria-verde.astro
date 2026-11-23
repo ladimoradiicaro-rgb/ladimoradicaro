@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import MasonryGallery from "../components/react/MasonryGallery";
+import jsonLd from "../data/jsonld/galleria-verde.json";
+---
+<Base
+  title="Galleria La Dimora Verde | La Dimora di Icaro"
+  description="Galleria fotografica completa de La Dimora Verde: soggiorno, cucina, camere, bagni ed esterni."
+  path="/galleria-verde"
+  header="page"
+  ogDescription="Scopri gli ambienti della Dimora Verde con la galleria fotografica completa."
+  ogImage="/assets/verde-soggiorno-cucina-08.jpeg"
+  bodyClass="gallery-body"
+  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
+  jsonLd={jsonLd}
+>
+  <main class="gallery-page gallery-page-green">
+      <section class="gallery-page-hero">
+        <div class="gallery-page-hero-grid">
+          <div class="gallery-page-copy">
+            <p class="eyebrow" data-i18n="galleryPage.eyebrow">Galleria completa</p>
+            <h1 data-i18n="galleryPage.green.title">La Dimora Verde</h1>
+            <p data-i18n="galleryPage.green.copy">
+              Tutti gli ambienti della dimora più grande: soggiorno, cucina, camere, bagni ed esterni.
+            </p>
+            <div class="gallery-page-actions">
+              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">Chiedi disponibilità</a>
+            </div>
+          </div>
+          <figure class="gallery-page-cover">
+            <img class="cover-card cover-card-main" src="/assets/gallery/verde-soggiorno-cucina-08-1600.webp" alt="Zona pranzo luminosa della Dimora Verde" />
+            <img class="cover-card cover-card-side cover-card-side-a" src="/assets/gallery/verde-camere-06-1600.webp" alt="Camera matrimoniale della Dimora Verde" />
+            <img class="cover-card cover-card-side cover-card-side-b" src="/assets/gallery/verde-esterni-04-1600.webp" alt="Esterni della Dimora Verde" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="gallery-page-section" aria-label="Galleria fotografica La Dimora Verde">
+        <MasonryGallery client:visible home="green" />
+      </section>
+    </main>
+</Base>

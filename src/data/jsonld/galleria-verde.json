@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": "https://www.ladimoradicaro.com/galleria-verde",
+  "url": "https://www.ladimoradicaro.com/galleria-verde",
+  "name": "Galleria La Dimora Verde | La Dimora di Icaro",
+  "inLanguage": "it",
+  "isPartOf": {
+    "@id": "https://www.ladimoradicaro.com/#website"
+  },
+  "about": {
+    "@id": "https://www.ladimoradicaro.com/#dimora-verde"
+  }
+}

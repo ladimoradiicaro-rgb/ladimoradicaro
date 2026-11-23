@@ -1,0 +1,42 @@
+---
+import Base from "../layouts/Base.astro";
+import MasonryGallery from "../components/react/MasonryGallery";
+import jsonLd from "../data/jsonld/galleria-blu.json";
+---
+<Base
+  title="Galleria La Dimora Blu | La Dimora di Icaro"
+  description="Galleria fotografica completa de La Dimora Blu: soggiorno, cucina, camera, bagno e terrazzo esterno."
+  path="/galleria-blu"
+  header="page"
+  ogDescription="Scopri gli ambienti della Dimora Blu con la galleria fotografica completa."
+  ogImage="/assets/blu-soggiorno-cucina-03.jpeg"
+  bodyClass="gallery-body"
+  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
+  jsonLd={jsonLd}
+>
+  <main class="gallery-page gallery-page-blue">
+      <section class="gallery-page-hero">
+        <div class="gallery-page-hero-grid">
+          <div class="gallery-page-copy">
+            <p class="eyebrow" data-i18n="galleryPage.eyebrow">Galleria completa</p>
+            <h1 data-i18n="galleryPage.blue.title">La Dimora Blu</h1>
+            <p data-i18n="galleryPage.blue.copy">
+              La dimora più raccolta, con zona giorno, camera, bagno e terrazzo esterno.
+            </p>
+            <div class="gallery-page-actions">
+              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">Chiedi disponibilità</a>
+            </div>
+          </div>
+          <figure class="gallery-page-cover">
+            <img class="cover-card cover-card-main" src="/assets/gallery/blu-soggiorno-cucina-03-1600.webp" alt="Soggiorno e cucina della Dimora Blu" />
+            <img class="cover-card cover-card-side cover-card-side-a" src="/assets/gallery/blu-camere-04-1600.webp" alt="Camera della Dimora Blu" />
+            <img class="cover-card cover-card-side cover-card-side-b" src="/assets/gallery/blu-esterni-01-1600.webp" alt="Terrazzo della Dimora Blu" />
+          </figure>
+        </div>
+      </section>
+
+      <section class="gallery-page-section" aria-label="Galleria fotografica La Dimora Blu">
+        <MasonryGallery client:visible home="blue" />
+      </section>
+    </main>
+</Base>

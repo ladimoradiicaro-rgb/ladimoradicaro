@@ -1,0 +1,52 @@
+---
+// variant: "home" (anchors on the same page), "page" (links back to the home),
+// "guide" (local guide is the current page), "policy" (minimal, no switcher).
+interface Props { variant?: "home" | "page" | "guide" | "policy" }
+const { variant = "page" } = Astro.props;
+const base = variant === "home" ? "" : "/";
+---
+{variant === "policy" ? (
+  <header class="site-header is-scrolled">
+    <a class="brand" href="/" aria-label="La Dimora di Icaro">
+      <img class="brand-wordmark" src="/assets/logo-site-web.png" alt="La Dimora di Icaro" />
+    </a>
+    <nav class="main-nav" aria-label="Navigazione principale">
+      <a href="/#casa">Le dimore</a>
+      <a href="/#posizione">Posizione</a>
+      <a href="/#servizi">Servizi</a>
+      <a href="/#prenota">Prenota</a>
+    </nav>
+  </header>
+) : (
+  <header class="site-header" data-header>
+    <a class="brand" href={variant === "home" ? "#home" : "/"} aria-label="La Dimora di Icaro">
+      <img class="brand-wordmark" src="/assets/logo-site-web.png" alt="La Dimora di Icaro" />
+    </a>
+
+    <nav class="main-nav" aria-label="Navigazione principale" data-nav>
+      <a href={`${base}#casa`} data-i18n="nav.homes">Le dimore</a>
+      <a href={`${base}#posizione`} data-i18n="nav.location">Posizione</a>
+      <a href={`${base}#servizi`} data-i18n="nav.services">Servizi</a>
+      {variant !== "guide" && <a href={`${base}#recensioni`} data-i18n="nav.reviews">Recensioni</a>}
+      {variant === "guide"
+        ? <a href="/scopri" aria-current="page" data-i18n="scopri.nav.current">Guida locale</a>
+        : <a href="/scopri" data-i18n="nav.guide">Guida locale</a>}
+      <a class="mobile-nav-action" href={`${base}#prenota`} data-i18n="cta.book">Prenota</a>
+    </nav>
+
+    <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
+      <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
+        <span class="lang-badge" aria-hidden="true">IT</span>
+      </button>
+      <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
+        <span class="lang-badge" aria-hidden="true">EN</span>
+      </button>
+    </div>
+
+    <a class="header-action" href={`${base}#prenota`} data-i18n="cta.book">Prenota</a>
+    <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-toggle>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+)}

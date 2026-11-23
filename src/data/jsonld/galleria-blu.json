@@ -1,0 +1,14 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": "https://www.ladimoradicaro.com/galleria-blu",
+  "url": "https://www.ladimoradicaro.com/galleria-blu",
+  "name": "Galleria La Dimora Blu | La Dimora di Icaro",
+  "inLanguage": "it",
+  "isPartOf": {
+    "@id": "https://www.ladimoradicaro.com/#website"
+  },
+  "about": {
+    "@id": "https://www.ladimoradicaro.com/#dimora-blu"
+  }
+}

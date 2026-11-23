@@ -1,0 +1,175 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.ladimoradicaro.com/#website",
+      "name": "La Dimora di Icaro",
+      "url": "https://www.ladimoradicaro.com/",
+      "inLanguage": [
+        "it",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://www.ladimoradicaro.com/#dimora"
+      }
+    },
+    {
+      "@type": "LodgingBusiness",
+      "name": "La Dimora di Icaro",
+      "url": "https://www.ladimoradicaro.com/",
+      "image": "https://www.ladimoradicaro.com/assets/hero-soggiorno-2400.jpeg",
+      "description": "Due case vacanza familiari a Carini, tra Palermo, l'aeroporto Falcone Borsellino e la spiaggia di Capaci.",
+      "email": "ladimoradiicaro@gmail.com",
+      "telephone": [
+        "+393470395338",
+        "+393493608146"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Strada Statale Est, 157",
+        "addressLocality": "Carini",
+        "addressRegion": "PA",
+        "postalCode": "90044",
+        "addressCountry": "IT"
+      },
+      "areaServed": "Palermo, Aeroporto Falcone Borsellino, Sicilia",
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Wi-Fi",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Cucina attrezzata",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Aria condizionata",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Lavatrice",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Smart TV",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Doccia e bidet",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Parcheggio",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Veranda esterna",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Culla",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Barbecue",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Biancheria e asciugamani",
+          "value": true
+        }
+      ],
+      "@id": "https://www.ladimoradicaro.com/#dimora",
+      "logo": "https://www.ladimoradicaro.com/assets/logo-originale.png",
+      "checkinTime": "15:00",
+      "sameAs": [
+        "https://www.instagram.com/ladimoradicaro",
+        "https://www.facebook.com/share/1GQsheMFof/",
+        "https://www.booking.com/Share-p6vU03",
+        "https://airbnb.it/h/dimoraverde",
+        "https://airbnb.it/h/ladimorablu"
+      ],
+      "containsPlace": [
+        {
+          "@id": "https://www.ladimoradicaro.com/#dimora-verde"
+        },
+        {
+          "@id": "https://www.ladimoradicaro.com/#dimora-blu"
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "La Dimora Verde",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 105,
+        "unitCode": "MTK"
+      },
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 7
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Ospiti adulti",
+          "value": "Massimo 5 adulti"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Posti letto",
+          "value": "2 camere principali e divano letto in zona giorno"
+        }
+      ],
+      "@id": "https://www.ladimoradicaro.com/#dimora-verde",
+      "url": "https://www.ladimoradicaro.com/galleria-verde",
+      "image": "https://www.ladimoradicaro.com/assets/tour/verde-esterni-05-1920.webp",
+      "numberOfRooms": 2,
+      "numberOfBathroomsTotal": 2,
+      "containedInPlace": {
+        "@id": "https://www.ladimoradicaro.com/#dimora"
+      }
+    },
+    {
+      "@type": "Accommodation",
+      "name": "La Dimora Blu",
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 40,
+        "unitCode": "MTK"
+      },
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 4
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Ospiti adulti",
+          "value": "Massimo 2 adulti"
+        }
+      ],
+      "@id": "https://www.ladimoradicaro.com/#dimora-blu",
+      "url": "https://www.ladimoradicaro.com/galleria-blu",
+      "image": "https://www.ladimoradicaro.com/assets/tour/blu-soggiorno-cucina-04-1920.webp",
+      "numberOfRooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "containedInPlace": {
+        "@id": "https://www.ladimoradicaro.com/#dimora"
+      }
+    }
+  ]
+}

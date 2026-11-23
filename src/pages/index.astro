@@ -1,0 +1,704 @@
+---
+import Base from "../layouts/Base.astro";
+import jsonLd from "../data/jsonld/index.json";
+---
+<Base
+  title="La Dimora di Icaro | Case vacanza tra Palermo, mare e aeroporto"
+  description="La Dimora di Icaro: due case vacanza familiari a Carini, tra Palermo, mare e aeroporto Falcone Borsellino. Verifica disponibilità per Dimora Verde e Dimora Blu."
+  path="/"
+  header="home"
+  ogDescription="Due dimore familiari a Carini, comode per Palermo, la spiaggia di Capaci e l'aeroporto Falcone Borsellino."
+  ogImage="/assets/hero-soggiorno-2400.jpeg"
+  scripts={["vendor/lenis/lenis.min.js", "script.js", "motion.js", "tour.js"]}
+  jsonLd={jsonLd}
+>
+  <main id="home">
+      <!-- Hero temporaneamente nascosto: il tour a tutto schermo apre la pagina. Rimuovere "hidden" per ripristinarlo. -->
+      <section class="hero" aria-label="Benvenuto" hidden>
+        <div class="hero-media" role="img" aria-label="Casa siciliana luminosa e accogliente"></div>
+        <div class="hero-content">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Tra Palermo, mare e aeroporto</p>
+          <p class="hero-title" data-i18n="hero.title">Due dimore familiari tra Palermo, mare e aeroporto.</p>
+          <p class="licence-note">CIN IT082021C23NRN5DBU - CIR 19082021C259979</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#prenota" data-i18n="cta.check">Verifica disponibilità</a>
+            <a class="button ghost" href="/scopri" data-i18n="cta.guide">Apri la guida locale</a>
+          </div>
+        </div>
+        <aside class="arrival-card" aria-label="Punti forti">
+          <span data-i18n="hero.cardLabel">Arrivo semplice</span>
+          <strong data-i18n="hero.cardText">Check-in dalle 15:00, casa pronta e collegamenti rapidi.</strong>
+          <div class="arrival-grid">
+            <p><b>12 min</b><small data-i18n="hero.airportSmall">dall'aeroporto</small></p>
+            <p><b>600 m</b><small data-i18n="hero.stationSmall">dalla stazione</small></p>
+          </div>
+        </aside>
+      </section>
+
+      <section id="tour" class="tour-section" aria-labelledby="tour-title">
+        <div class="tour-intro visually-hidden">
+          <h1 data-i18n="hero.title">Due dimore familiari tra Palermo, mare e aeroporto.</h1>
+          <p class="eyebrow" data-i18n="tour.eyebrow">Tour delle dimore</p>
+          <h2 id="tour-title" data-i18n="tour.title">Entra e guardati intorno, una stanza alla volta.</h2>
+          <p data-i18n="tour.copy">Scorri per fare il giro completo: prima la Dimora Verde, poi la Dimora Blu.</p>
+        </div>
+        <div class="tour tour--verde" id="foto-verde" data-tour data-tour-lead="2" style="--frames: 20">
+          <div class="tour-stage">
+            <div class="tour-frame">
+              <div class="tour-shots">
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-05-1920.webp" srcset="/assets/tour/verde-esterni-05-1280.webp 1280w, /assets/tour/verde-esterni-05-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 1 di 3" decoding="async" fetchpriority="high" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-04-1920.webp" srcset="/assets/tour/verde-esterni-04-1280.webp 1280w, /assets/tour/verde-esterni-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-06-1920.webp" srcset="/assets/tour/verde-esterni-06-1280.webp 1280w, /assets/tour/verde-esterni-06-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-soggiorno-cucina-01-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-01-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-soggiorno-cucina-02-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-02-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-camere-11-1920.webp" srcset="/assets/tour/verde-camere-11-1280.webp 1280w, /assets/tour/verde-camere-11-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-08-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-08-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-08-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-07-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-07-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-05-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-05-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-05-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-soggiorno-cucina-13-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-13-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-13-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-camere-07-1920.webp" srcset="/assets/tour/verde-camere-07-1280.webp 1280w, /assets/tour/verde-camere-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-camere-09-1920.webp" srcset="/assets/tour/verde-camere-09-1280.webp 1280w, /assets/tour/verde-camere-09-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-04-1920.webp" srcset="/assets/tour/verde-camere-04-1280.webp 1280w, /assets/tour/verde-camere-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-01-1920.webp" srcset="/assets/tour/verde-camere-01-1280.webp 1280w, /assets/tour/verde-camere-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-02-1920.webp" srcset="/assets/tour/verde-camere-02-1280.webp 1280w, /assets/tour/verde-camere-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-01-1920.webp" srcset="/assets/tour/verde-bagni-01-1280.webp 1280w, /assets/tour/verde-bagni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-03-1920.webp" srcset="/assets/tour/verde-bagni-03-1280.webp 1280w, /assets/tour/verde-bagni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-04-1920.webp" srcset="/assets/tour/verde-bagni-04-1280.webp 1280w, /assets/tour/verde-bagni-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+              </div>
+              <div class="tour-veil" aria-hidden="true"></div>
+              <div class="tour-logo" aria-hidden="true">
+                <img src="/assets/logo-site-web.png" alt="" fetchpriority="high" />
+              </div>
+              <header class="tour-head">
+                <span class="tour-count"><b data-tour-current>01</b> / 06</span>
+              </header>
+              <div class="tour-progress" aria-hidden="true"><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i></div>
+              <div class="tour-captions">
+                <article class="tour-caption is-active" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v1.room">Veranda</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v2.room">Soggiorno</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v3.room">Cucina e pranzo</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v4.room">Camera matrimoniale</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v5.room">Seconda camera</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
+                  <h3 data-i18n="tour.v6.room">Due bagni</h3>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tour tour--blu" id="foto-blu" data-tour data-tour-lead="1" style="--frames: 16">
+          <div class="tour-stage">
+            <div class="tour-frame">
+              <div class="tour-shots">
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-01-1920.webp" srcset="/assets/tour/blu-esterni-01-1280.webp 1280w, /assets/tour/blu-esterni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-03-1920.webp" srcset="/assets/tour/blu-esterni-03-1280.webp 1280w, /assets/tour/blu-esterni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-02-1920.webp" srcset="/assets/tour/blu-esterni-02-1280.webp 1280w, /assets/tour/blu-esterni-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-04-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-04-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-02-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-02-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-11-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-11-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-11-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-01-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-01-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-08-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-08-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-08-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-09-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-09-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-09-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-04-1920.webp" srcset="/assets/tour/blu-camere-04-1280.webp 1280w, /assets/tour/blu-camere-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-01-1920.webp" srcset="/assets/tour/blu-camere-01-1280.webp 1280w, /assets/tour/blu-camere-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-07-1920.webp" srcset="/assets/tour/blu-camere-07-1280.webp 1280w, /assets/tour/blu-camere-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-01-1920.webp" srcset="/assets/tour/blu-bagni-01-1280.webp 1280w, /assets/tour/blu-bagni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-02-1920.webp" srcset="/assets/tour/blu-bagni-02-1280.webp 1280w, /assets/tour/blu-bagni-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
+                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-03-1920.webp" srcset="/assets/tour/blu-bagni-03-1280.webp 1280w, /assets/tour/blu-bagni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
+              </div>
+              <div class="tour-veil" aria-hidden="true"></div>
+              <div class="tour-logo tour-chapter" aria-hidden="true">
+                <img src="/assets/titoli/dimora-blu.png" alt="" loading="lazy" />
+              </div>
+              <header class="tour-head">
+                <span class="tour-count"><b data-tour-current>01</b> / 05</span>
+              </header>
+              <div class="tour-progress" aria-hidden="true"><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i></div>
+              <div class="tour-captions">
+                <article class="tour-caption is-active" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
+                  <h3 data-i18n="tour.b1.room">Ingresso</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
+                  <h3 data-i18n="tour.b2.room">Soggiorno</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
+                  <h3 data-i18n="tour.b3.room">Cucina</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
+                  <h3 data-i18n="tour.b4.room">Camera</h3>
+                </article>
+                <article class="tour-caption" data-tour-caption>
+                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
+                  <h3 data-i18n="tour.b5.room">Bagno</h3>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tour-fine" class="tour-end" aria-labelledby="tour-end-title">
+        <div class="tour-end-media" aria-hidden="true">
+          <img src="/assets/tour/verde-esterni-05-1280.webp" alt="" loading="lazy" decoding="async" />
+        </div>
+        <div class="tour-end-inner">
+          <h2 id="tour-end-title" data-i18n="tourEnd.title">Ti aspettiamo.</h2>
+          <div class="tour-end-actions">
+            <a class="tour-end-btn tour-end-btn--verde" href="#prenota" data-home-request="La Dimora Verde" data-i18n="tourEnd.verde">Prenota la Dimora Verde</a>
+            <a class="tour-end-btn tour-end-btn--blu" href="#prenota" data-home-request="La Dimora Blu" data-i18n="tourEnd.blu">Prenota la Dimora Blu</a>
+          </div>
+          <p class="tour-end-links">
+            <a href="/galleria-verde" data-i18n="tourEnd.photosVerde">Tutte le foto della Verde</a>
+            <span aria-hidden="true">·</span>
+            <a href="/galleria-blu" data-i18n="tourEnd.photosBlu">Tutte le foto della Blu</a>
+          </p>
+        </div>
+      </section>
+
+      <section class="quick-paths" aria-label="Percorsi rapidi">
+        <a href="/scopri">
+          <span data-i18n="quick.touristsLabel">Per turisti</span>
+          <strong data-i18n="quick.touristsText">Guida locale con mare, Palermo, ristoranti e servizi vicini.</strong>
+        </a>
+        <a href="#posizione">
+          <span data-i18n="quick.flyLabel">Per chi vola</span>
+          <strong data-i18n="quick.flyText">A 12 minuti dall'aeroporto, comoda prima o dopo il volo.</strong>
+        </a>
+        <a href="#casa">
+          <span data-i18n="quick.groupLabel">Per ogni gruppo</span>
+          <strong data-i18n="quick.groupText">Dimora Verde fino a 7 ospiti, Dimora Blu fino a 4, con limiti adulti dedicati.</strong>
+        </a>
+      </section>
+
+      <section id="casa" class="section house-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="homes.eyebrow">Le due case</p>
+          <h2 data-i18n="homes.title">Scegli la dimora più adatta al tuo modo di viaggiare.</h2>
+          <p data-i18n="homes.copy">
+            La Dimora di Icaro nasce per accogliere famiglie, coppie e piccoli gruppi con una sensazione semplice:
+            arrivare, posare le valigie e trovare una casa vera, curata e pronta.
+          </p>
+        </div>
+        <div class="homes-grid">
+          <article class="home-card green-home">
+            <figure class="home-card-photo">
+              <img src="/assets/verde-soggiorno-cucina-08.jpeg" alt="Zona pranzo luminosa della Dimora Verde" loading="lazy" />
+            </figure>
+            <div class="home-card-top">
+              <span data-i18n="homes.green.name">La Dimora Verde</span>
+              <small data-i18n="homes.green.meta">105 mq · fino a 7 ospiti · max 5 adulti</small>
+            </div>
+            <div class="home-card-main">
+              <h3 data-i18n="homes.green.title">La soluzione più grande, ideale per famiglie e gruppi.</h3>
+              <p data-i18n="homes.green.copy">Due camere principali, due bagni e un divano letto nella zona giorno: 3 posti letto distinti senza contare il divano come camera.</p>
+            </div>
+            <ul class="home-facts">
+              <li data-i18n="homes.green.feature1">Max 7 ospiti</li>
+              <li data-i18n="homes.green.feature3">2 camere</li>
+              <li data-i18n="homes.green.feature2">105 mq</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button ghost small" href="/galleria-verde" data-i18n="cta.gallery">Galleria</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Verde" data-i18n="cta.ask">Chiedi disponibilità</a>
+            </div>
+          </article>
+          <article class="home-card blue-home">
+            <figure class="home-card-photo">
+              <img src="/assets/blu-soggiorno-cucina-03.jpeg" alt="Soggiorno e cucina della Dimora Blu" loading="lazy" />
+            </figure>
+            <div class="home-card-top">
+              <span data-i18n="homes.blue.name">La Dimora Blu</span>
+              <small data-i18n="homes.blue.meta">40 mq · fino a 4 ospiti · max 2 adulti</small>
+            </div>
+            <div class="home-card-main">
+              <h3 data-i18n="homes.blue.title">Più raccolta e pratica, perfetta per coppie o piccoli nuclei.</h3>
+              <p data-i18n="homes.blue.copy">Un letto matrimoniale, un divano letto e un bagno: una dimora semplice, luminosa e facile da vivere.</p>
+            </div>
+            <ul class="home-facts">
+              <li data-i18n="homes.blue.feature1">Max 4 ospiti</li>
+              <li data-i18n="homes.blue.feature3">1 camera</li>
+              <li data-i18n="homes.blue.feature2">40 mq</li>
+            </ul>
+            <div class="card-actions">
+              <a class="button ghost small" href="/galleria-blu" data-i18n="cta.gallery">Galleria</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Blu" data-i18n="cta.ask">Chiedi disponibilità</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="posizione" class="section location-section">
+        <div class="map-panel">
+          <img src="/assets/location-map-1800.jpeg" alt="Vista dall'alto della posizione in Via Strada Statale Est 157" loading="lazy" />
+        </div>
+        <div class="timeline" aria-label="Distanze utili">
+          <div class="route-card" aria-label="Indicazioni dall'aeroporto alla dimora">
+            <div class="route-card-header">
+              <span data-i18n="location.routeLabel">Dal terminal a casa</span>
+              <strong data-i18n="location.routeTitle">Aeroporto Falcone Borsellino → La Dimora di Icaro</strong>
+              <small data-i18n="location.routeTime">Circa 12 minuti in auto</small>
+            </div>
+            <ol class="route-steps">
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step1Title">Aeroporto</b><small data-i18n="location.step1Text">Partenza dal Falcone Borsellino.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step2Title">A29 verso Palermo</b><small data-i18n="location.step2Text">Percorso diretto e rapido.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step3Title">Uscita Carini</b><small data-i18n="location.step3Text">Esci a Carini e prosegui verso la dimora.</small></p>
+              </li>
+              <li>
+                <span class="route-icon" aria-hidden="true"></span>
+                <p><b data-i18n="location.step4Title">La Dimora</b><small data-i18n="location.step4Text">Arrivo in Via Strada Statale Est, 157.</small></p>
+              </li>
+            </ol>
+          </div>
+          <div>
+            <span data-i18n="location.airportLabel">Aeroporto</span>
+            <strong data-i18n="location.airportTitle">12 minuti</strong>
+            <p data-i18n="location.airportText">Dall'aeroporto Falcone Borsellino alla dimora in auto.</p>
+          </div>
+          <div>
+            <span data-i18n="location.cityLabel">Città</span>
+            <strong data-i18n="location.cityTitle">Palermo in 20-30 minuti</strong>
+            <p data-i18n="location.cityText">In auto, in base al traffico. In treno il centro di Palermo si raggiunge in circa 30 minuti.</p>
+          </div>
+          <div>
+            <span data-i18n="location.seaLabel">Mare</span>
+            <strong data-i18n="location.seaTitle">Spiaggia di Capaci a 8 minuti</strong>
+            <p data-i18n="location.seaText">Il mare di Capaci si raggiunge in circa 8 minuti in auto, ideale per giornate semplici tra spiaggia e rientro comodo.</p>
+          </div>
+          <div>
+            <span data-i18n="location.stationLabel">Stazione</span>
+            <strong data-i18n="location.stationTitle">A 600 metri</strong>
+            <p data-i18n="location.stationText">La stazione più vicina è raggiungibile anche a piedi.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="servizi" class="section experience-section">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="services.eyebrow">Servizi inclusi</p>
+          <h2 data-i18n="services.title">Le comodità essenziali per un soggiorno semplice.</h2>
+        </div>
+        <div class="services-grid">
+          <article data-service-icon="wifi">
+            <h3 data-i18n="services.wifi.title">Wi-Fi</h3>
+            <p data-i18n="services.wifi.text">Connessione presente per lavorare, organizzare il viaggio o rilassarsi.</p>
+          </article>
+          <article data-service-icon="air">
+            <h3 data-i18n="services.air.title">Aria condizionata</h3>
+            <p data-i18n="services.air.text">Ambienti freschi e piacevoli anche nelle giornate più calde.</p>
+          </article>
+          <article data-service-icon="kitchen">
+            <h3 data-i18n="services.kitchen.title">Cucina attrezzata</h3>
+            <p data-i18n="services.kitchen.text">Tutto il necessario per colazioni, pranzi semplici e cene in casa.</p>
+          </article>
+          <article data-service-icon="wash">
+            <h3 data-i18n="services.wash.title">Lavatrice</h3>
+            <p data-i18n="services.wash.text">Comoda per soggiorni lunghi, famiglie e viaggi leggeri.</p>
+          </article>
+          <article data-service-icon="outdoor">
+            <h3 data-i18n="services.outdoor.title">Spazio esterno</h3>
+            <p data-i18n="services.outdoor.text">Veranda e aree esterne per vivere la casa anche fuori.</p>
+          </article>
+          <article data-service-icon="parking">
+            <h3 data-i18n="services.parking.title">Posto auto</h3>
+            <p data-i18n="services.parking.text">Parcheggio comodo per chi arriva in macchina o noleggia un'auto.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section direct-booking-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="direct.eyebrow">Prenotazione diretta</p>
+          <h2 data-i18n="direct.title">Perché prenotare direttamente dal sito.</h2>
+          <p data-i18n="direct.copy">
+            Parli con chi gestisce davvero la casa, chiarisci i dettagli prima dell'arrivo e scegli la dimora più adatta al tuo soggiorno.
+          </p>
+        </div>
+        <div class="direct-benefits">
+          <article>
+            <strong data-i18n="direct.b1.title">Contatto diretto</strong>
+            <p data-i18n="direct.b1.text">Risposte dirette da chi gestisce la casa, senza passaggi inutili.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b2.title">Disponibilità più chiare</strong>
+            <p data-i18n="direct.b2.text">Ti aiutiamo a verificare date, ospiti e durata del soggiorno.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b3.title">Scelta della dimora</strong>
+            <p data-i18n="direct.b3.text">Supporto per capire se è meglio Dimora Verde o Dimora Blu.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b4.title">Dettagli prima dell'arrivo</strong>
+            <p data-i18n="direct.b4.text">Informazioni precise su posizione, servizi e organizzazione.</p>
+          </article>
+          <article>
+            <strong data-i18n="direct.b5.title">Sconti personalizzati</strong>
+            <p data-i18n="direct.b5.text">Per soggiorni più lunghi o richieste particolari possiamo valutare soluzioni dedicate.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="recensioni" class="section review-section" aria-label="Recensioni degli ospiti">
+        <div class="section-copy review-copy">
+          <p class="eyebrow" data-i18n="reviews.eyebrow">Recensioni</p>
+          <h2 data-i18n="reviews.title">Parole di chi ha soggiornato alla Dimora di Icaro.</h2>
+          <p data-i18n="reviews.copy">
+            Recensioni raccolte da Google e Booking, con esperienze raccontate dai nostri ospiti.
+          </p>
+          <div class="review-actions">
+            <a
+              class="review-google-link"
+              href="https://g.page/r/CfbDviinOJALEBM/review"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="reviews.googleCta"
+            >
+              Lascia una recensione su Google
+            </a>
+            <a
+              class="review-google-link secondary"
+              href="https://www.booking.com/Share-p6vU03"
+              target="_blank"
+              rel="noreferrer"
+              data-i18n="reviews.bookingCta"
+            >
+              Vedi su Booking
+            </a>
+          </div>
+        </div>
+        <div class="review-marquee" aria-label="Recensioni a 5 stelle in evidenza">
+          <div class="review-track">
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+            <article class="review-card" aria-hidden="true">
+              <div class="stars" aria-label="5 stelle">★★★★★</div>
+              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <div class="review-meta">
+                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <div class="review-sources">
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section faq-section">
+        <div class="section-copy">
+          <p class="eyebrow" data-i18n="faq.eyebrow">Domande rapide</p>
+          <h2 data-i18n="faq.title">Le risposte che aiutano a prenotare con serenità.</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary data-i18n="faq.q1">Quale dimora devo scegliere?</summary>
+            <p data-i18n="faq.a1">La Dimora Verde è più grande, 105 mq e fino a 7 ospiti, con massimo 5 adulti. La Dimora Blu è più raccolta, 40 mq e fino a 4 ospiti, con massimo 2 adulti.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q4">Come verifico la disponibilità?</summary>
+            <p data-i18n="faq.a4">Consulta il calendario nella sezione Prenota: le date con eventi risultano occupate. Per confermare, puoi scriverci dal form o da WhatsApp.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q5">La casa è adatta a famiglie con bambini?</summary>
+            <p data-i18n="faq.a5">Sì, le dimore sono pensate per soggiorni familiari. È disponibile una culla su richiesta e consigliamo di indicare eventuali esigenze prima dell'arrivo.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q7">Come funziona il check-in?</summary>
+            <p data-i18n="faq.a7">Il check-in è disponibile dalle 15:00. Prima dell'arrivo riceverai le indicazioni necessarie per organizzare ingresso, orari e dettagli pratici.</p>
+          </details>
+          <details>
+            <summary data-i18n="faq.q8">Sono possibili affitti transitori?</summary>
+            <p data-i18n="faq.a8">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="prenota" class="booking-section">
+        <div class="prenota-header">
+          <p class="eyebrow" data-i18n="booking.eyebrow">Prenota o chiedi informazioni</p>
+          <h2 data-i18n="booking.title">Raccontaci quando vorresti arrivare.</h2>
+        </div>
+        <div class="prenota-left">
+          <form class="booking-form" data-booking-form>
+            <label>
+              <span data-i18n="booking.home">Dimora</span>
+              <select name="home" required>
+                <option value="La Dimora Verde">La Dimora Verde</option>
+                <option value="La Dimora Blu">La Dimora Blu</option>
+                <option value="Da valutare insieme" data-i18n="booking.homeAny">Da valutare insieme</option>
+              </select>
+            </label>
+            <label>
+              <span data-i18n="booking.checkin">Check-in</span>
+              <input type="date" name="checkin" required />
+            </label>
+            <label>
+              <span data-i18n="booking.checkout">Check-out</span>
+              <input type="date" name="checkout" required />
+            </label>
+            <label>
+              <span data-i18n="booking.guests">Ospiti</span>
+              <input type="number" name="guests" min="1" max="8" value="2" required />
+            </label>
+            <button class="button primary" type="submit" data-i18n="cta.request">Richiedi disponibilità</button>
+          </form>
+        </div>
+        <div class="prenota-right">
+          <div class="direct-links link-board" aria-label="Contatti e link utili">
+            <div class="link-board-header">
+              <span data-i18n="booking.channels">Canali ufficiali</span>
+              <p data-i18n="booking.channelsCopy">Scegli dove prenotare o contattaci via social.</p>
+            </div>
+            <div class="primary-links">
+              <a class="link-tile booking-tile" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="booking_click">
+                <small>Booking</small>
+                <strong data-i18n="links.booking">Prenota su Booking</strong>
+              </a>
+              <a class="link-tile" href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="airbnb_green_click">
+                <small>Airbnb</small>
+                <strong data-i18n="links.airbnbGreen">Prenota Dimora Verde</strong>
+              </a>
+              <a class="link-tile" href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="airbnb_blue_click">
+                <small>Airbnb</small>
+                <strong data-i18n="links.airbnbBlue">Prenota Dimora Blu</strong>
+              </a>
+            </div>
+            <div class="quick-links">
+              <a href="https://wa.me/393493608146" target="_blank" rel="noreferrer" aria-label="WhatsApp" title="WhatsApp" data-track="whatsapp_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5.1 18.9 6 15.5a7 7 0 1 1 2.6 2.5z" />
+                  <path d="M9.2 8.8c.2-.4.4-.4.7-.4h.5c.2 0 .4 0 .5.4l.7 1.6c.1.2.1.4 0 .6l-.4.5c-.1.2-.2.3-.1.5.4.8 1.1 1.5 2 2 .2.1.4.1.5-.1l.7-.8c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.4.5 0 .5-.3 1.2-.7 1.5-.5.4-1.4.5-2.5.1-2.1-.7-4.6-2.8-5.5-5.1-.3-.8-.2-1.5.5-2.6z" />
+                </svg>
+              </a>
+              <a href="tel:+393470395338" aria-label="Telefono" title="Telefono" data-track="phone_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M7.2 4.8 9.4 9l-2 1.3c1 2.1 2.7 3.8 4.9 4.9l1.3-2 4.2 2.2-.7 3.2c-.2.8-.9 1.3-1.7 1.2C9.2 19.1 4.9 14.8 4.2 8.6c-.1-.8.4-1.5 1.2-1.7z" />
+                </svg>
+              </a>
+              <a href="mailto:ladimoradiicaro@gmail.com" aria-label="Email" title="Email" data-track="email_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M4 6.5h16v11H4z" />
+                  <path d="m4.5 7 7.5 6 7.5-6" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer" aria-label="Instagram" title="Instagram" data-track="instagram_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <rect x="5" y="5" width="14" height="14" rx="4" />
+                  <circle cx="12" cy="12" r="3.2" />
+                  <path d="M16.7 7.6h.1" />
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook" title="Facebook" data-track="facebook_click">
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M14.6 8.1h1.8V5.2h-2.2c-2.6 0-4 1.6-4 4.1v1.8H7.9V14h2.3v5h3.1v-5h2.6l.4-2.9h-3V9.6c0-.9.4-1.5 1.3-1.5z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p class="transitory-note" data-i18n="booking.transitoryNote">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+        </div>
+      </section>
+    </main>
+  <Fragment slot="after">
+    <a class="tour-skip" href="#tour-fine" data-i18n="tour.skip">Salta il tour</a>
+  </Fragment>
+</Base>

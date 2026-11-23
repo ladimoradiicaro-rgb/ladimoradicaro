@@ -1,0 +1,876 @@
+---
+import Base from "../layouts/Base.astro";
+import jsonLd from "../data/jsonld/scopri.json";
+---
+<Base
+  title="Guida locale | La Dimora di Icaro"
+  description="Guida locale di La Dimora di Icaro: cosa vedere, dove mangiare, servizi nel vicinato, spiagge, Palermo e gite nei dintorni."
+  path="/scopri"
+  header="guide"
+  ogDescription="Cosa vedere, dove mangiare, spiagge e gite intorno a Carini, Palermo e Capaci: i consigli de La Dimora di Icaro."
+  ogImage="/assets/castello-di-carini-1600.webp"
+  scripts={["vendor/lenis/lenis.min.js", "motion.js", "scopri.js"]}
+  jsonLd={jsonLd}
+>
+  <style is:inline slot="head">
+      /* ── page-specific styles ── */
+      body {
+        background: #fbfaf7;
+      }
+      main {
+        background:
+          linear-gradient(180deg, #0d4e7a 0, #e8f6fb 25rem, #fffaf1 58rem, #eaf7fb 96rem, #fffaf3 145rem, #eef8fb 100%);
+      }
+      .site-header {
+        background: rgba(255, 255, 255, 0.9);
+        border-color: rgba(255, 255, 255, 0.72);
+        box-shadow: 0 18px 52px rgba(5, 50, 78, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.82);
+      }
+      .site-header.is-scrolled {
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 14px 42px rgba(5, 50, 78, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.86);
+      }
+      .scopri-hero {
+        position: relative;
+        padding: clamp(8.5rem, 14vw, 11rem) clamp(1.5rem, 5vw, 5rem) clamp(3rem, 6vw, 5rem);
+        background:
+          radial-gradient(circle at 10% 30%, rgba(7,124,189,0.18), transparent 26rem),
+          radial-gradient(circle at 90% 10%, rgba(255,160,28,0.12), transparent 20rem),
+          linear-gradient(160deg, #0a2a44 0%, #073b5e 60%, #0d4e7a 100%);
+        color: var(--paper);
+        overflow: hidden;
+      }
+      .scopri-hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/hero-soggiorno-2400.jpeg") center/cover no-repeat;
+        opacity: 0.13;
+        pointer-events: none;
+      }
+      .scopri-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 54rem;
+      }
+      .scopri-hero .eyebrow {
+        color: var(--sun);
+        margin-bottom: 0.8rem;
+      }
+      .scopri-hero h1 {
+        font-size: clamp(2.4rem, 5vw, 4.2rem);
+        line-height: 1;
+        color: var(--paper);
+        margin-bottom: 1.2rem;
+      }
+      .scopri-hero p {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        color: rgba(255,255,255,0.78);
+        max-width: 44rem;
+        line-height: 1.65;
+      }
+
+      /* ── section layout ── */
+      .scopri-section {
+        position: relative;
+        padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 5vw, 5rem);
+        background: transparent !important;
+      }
+      .scopri-section + .scopri-section {
+        border-top: 0;
+      }
+      .scopri-section::before {
+        content: "";
+        position: absolute;
+        inset: -4rem 0 auto;
+        height: 8rem;
+        background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,250,241,0.45), rgba(255,255,255,0));
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .scopri-section::after {
+        display: none !important;
+      }
+      .scopri-section > * {
+        position: relative;
+        z-index: 1;
+      }
+      .scopri-section-header {
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+      }
+      .scopri-section-header .eyebrow {
+        margin-bottom: 0.4rem;
+      }
+      .scopri-section-header h2 {
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        line-height: 1.05;
+        color: var(--blue-deep);
+        max-width: none;
+        margin-bottom: 0.6rem;
+      }
+      .scopri-section-header p {
+        color: var(--muted);
+        max-width: 52rem;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* ── cards grid ── */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+        gap: clamp(1rem, 2.5vw, 1.6rem);
+      }
+      .cards-grid.two-col {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+      }
+
+      .place-card {
+        position: relative;
+        background: linear-gradient(145deg, #ffffff 0%, #fffaf1 100%);
+        border: 1.5px solid rgba(5, 96, 160, 0.18);
+        border-radius: calc(var(--radius) + 0.25rem);
+        padding: 1.35rem 1.4rem 1.25rem;
+        box-shadow: 0 18px 46px rgba(4,91,145,0.12), 0 2px 0 rgba(255,255,255,0.88) inset;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .place-card-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.15rem;
+      }
+      .place-card h3 {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: var(--blue-deep);
+        line-height: 1.25;
+        margin: 0;
+      }
+      .place-card p {
+        font-size: 0.91rem;
+        color: var(--muted);
+        line-height: 1.6;
+        margin: 0;
+      }
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        padding: 0.18em 0.55em;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        white-space: nowrap;
+        border: 1px solid rgba(255,255,255,0.72);
+        box-shadow: 0 3px 10px rgba(5, 50, 78, 0.08);
+      }
+      .tag-culture  { background: #dceeff; color: #04568f; }
+      .tag-nature   { background: #dff2e5; color: #1f7540; }
+      .tag-beach    { background: #fff0ce; color: #9d5c00; }
+      .tag-kids     { background: #ffe1dc; color: #b73516; }
+      .tag-adults   { background: #eadffc; color: #4a2a8a; }
+
+      /* ── beach list ── */
+      .beach-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem 2rem;
+      }
+      @media (max-width: 560px) {
+        .beach-cols { grid-template-columns: 1fr; }
+      }
+      .beach-group h4 {
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--sun-deep);
+        margin: 0 0 0.6rem;
+      }
+      .beach-group ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+      }
+      .beach-group li {
+        font-size: 0.93rem;
+        color: var(--ink);
+        padding-left: 1rem;
+        position: relative;
+      }
+      .beach-group li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--sun-deep);
+        font-weight: 800;
+      }
+
+      /* ── distance badge ── */
+      .dist {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+
+      /* ── Sicily overview ── */
+      .sicily-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+        gap: 1.2rem;
+      }
+      .sicily-area {
+        background: linear-gradient(145deg, #ffffff 0%, #fffaf1 100%);
+        border: 1.5px solid rgba(5, 96, 160, 0.18);
+        border-radius: var(--radius);
+        padding: 1.2rem 1.3rem;
+        box-shadow: 0 16px 40px rgba(4,91,145,0.1);
+      }
+      .sicily-area h4 {
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--blue-deep);
+        margin: 0 0 0.7rem;
+      }
+      .sicily-area ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .sicily-area li {
+        font-size: 0.88rem;
+        color: var(--ink);
+        padding-left: 0.9rem;
+        position: relative;
+        line-height: 1.45;
+      }
+      .sicily-area li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .guide-jump {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.6rem;
+      }
+      .guide-jump a {
+        color: var(--paper);
+        text-decoration: none;
+        font-size: 0.84rem;
+        font-weight: 800;
+        padding: 0.55rem 0.85rem;
+        border: 1px solid rgba(255,255,255,0.26);
+        border-radius: 999px;
+        background: rgba(255,255,255,0.1);
+      }
+      .guide-panel {
+        background: linear-gradient(145deg, #ffffff 0%, #fffaf1 100%);
+        border: 1.5px solid rgba(5, 96, 160, 0.18);
+        border-radius: var(--radius);
+        padding: clamp(1.2rem, 2.5vw, 1.65rem);
+        box-shadow: 0 18px 46px rgba(4,91,145,0.12), 0 2px 0 rgba(255,255,255,0.88) inset;
+      }
+      .guide-panel h3 {
+        color: var(--blue-deep);
+        font-size: 1.05rem;
+        margin: 0 0 0.8rem;
+      }
+      .guide-list {
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+        padding: 0;
+        margin: 0;
+      }
+      .guide-list li {
+        position: relative;
+        padding-left: 1rem;
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 0.94rem;
+      }
+      .guide-list li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--sun-deep);
+        font-weight: 900;
+      }
+      .guide-strip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .guide-strip .guide-panel {
+        min-height: 100%;
+      }
+      @media (max-width: 980px) {
+        .guide-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 560px) {
+        .guide-strip { grid-template-columns: 1fr; }
+      }
+
+      /* ── back link ── */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        color: var(--blue);
+        text-decoration: none;
+        padding: 0.38rem 0.85rem 0.38rem 0.65rem;
+        border: 1.5px solid rgba(7,124,189,0.35);
+        border-radius: 999px;
+        background: rgba(7,124,189,0.05);
+        margin-bottom: 2rem;
+        transition: background 140ms ease, border-color 140ms ease;
+      }
+      .back-link:hover {
+        background: rgba(7,124,189,0.12);
+        border-color: var(--blue);
+      }
+
+      @media (max-width: 640px) {
+        .cards-grid.two-col { grid-template-columns: 1fr; }
+      }
+
+      /* Editorial concierge redesign */
+      main.guide-page {
+        background:
+          linear-gradient(180deg, #fffaf1 0%, #f2fbfd 32%, #fff7e8 68%, #eef9fb 100%);
+      }
+      .guide-page .scopri-hero {
+        min-height: min(42rem, 88vh);
+        display: grid;
+        align-items: end;
+        padding: clamp(8rem, 12vw, 10rem) clamp(1.25rem, 5vw, 5rem) clamp(2rem, 5vw, 4rem);
+        background:
+          linear-gradient(90deg, rgba(255,250,241,0.96) 0 42%, rgba(255,250,241,0.7) 62%, rgba(255,250,241,0.18) 100%),
+          url("assets/location-map-1800.jpeg") center/cover no-repeat;
+        color: var(--ink);
+      }
+      .guide-page .scopri-hero::after {
+        display: none;
+      }
+      .guide-hero-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.72fr);
+        gap: clamp(2rem, 5vw, 4rem);
+        align-items: end;
+        max-width: 76rem;
+        margin: 0 auto;
+      }
+      .guide-page .scopri-hero-inner {
+        max-width: 42rem;
+      }
+      .guide-page .scopri-hero .eyebrow {
+        color: var(--sun-deep);
+      }
+      .guide-page .scopri-hero h1 {
+        color: var(--blue-deep);
+        font-size: clamp(2.8rem, 6.5vw, 5.8rem);
+        max-width: 11ch;
+      }
+      .guide-page .scopri-hero p {
+        color: var(--muted);
+        font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+        max-width: 38rem;
+      }
+      .guide-summary {
+        display: grid;
+        gap: 0.8rem;
+      }
+      .guide-summary-card {
+        padding: 1rem 1.1rem;
+        border: 1.5px solid rgba(5, 96, 160, 0.16);
+        border-radius: 1rem;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 18px 44px rgba(4,91,145,0.12);
+      }
+      .guide-summary-card span {
+        display: block;
+        color: var(--sun-deep);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .guide-summary-card strong {
+        display: block;
+        color: var(--blue-deep);
+        font-size: 1.08rem;
+        margin-top: 0.18rem;
+      }
+      .guide-tabs {
+        position: sticky;
+        top: clamp(5.2rem, 7vw, 6.6rem);
+        z-index: 7;
+        display: flex;
+        gap: 0.55rem;
+        overflow-x: auto;
+        padding: 0.8rem clamp(1.25rem, 5vw, 5rem);
+        background: rgba(255,250,241,0.78);
+        border-block: 1px solid rgba(5,96,160,0.1);
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+      }
+      .guide-tabs a {
+        flex: 0 0 auto;
+        color: var(--blue-deep);
+        text-decoration: none;
+        font-weight: 900;
+        font-size: 0.86rem;
+        padding: 0.56rem 0.88rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.72);
+        border: 1px solid rgba(5,96,160,0.13);
+      }
+      .guide-section {
+        max-width: 76rem;
+        margin: 0 auto;
+        padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 5rem);
+        scroll-margin-top: 9rem;
+      }
+      .guide-section-header {
+        max-width: 48rem;
+        margin-bottom: clamp(1.5rem, 3vw, 2.4rem);
+      }
+      .guide-section-header h2 {
+        color: var(--blue-deep);
+        font-size: clamp(2rem, 4.5vw, 4.2rem);
+        line-height: 0.96;
+        max-width: 12ch;
+      }
+      .guide-section-header p {
+        color: var(--muted);
+        font-size: clamp(1rem, 1.5vw, 1.12rem);
+        line-height: 1.65;
+      }
+      .concierge-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .concierge-card,
+      .feature-destination,
+      .guide-list-panel,
+      .guide-route-panel,
+      .guide-final-card {
+        border: 1.5px solid rgba(5, 96, 160, 0.16);
+        border-radius: 1rem;
+        background: rgba(255,255,255,0.82);
+        box-shadow: 0 18px 46px rgba(4,91,145,0.11);
+      }
+      .concierge-card {
+        padding: 1.2rem;
+      }
+      .concierge-card h3,
+      .guide-list-panel h3,
+      .guide-route-panel h3 {
+        color: var(--blue-deep);
+        font-size: 1.05rem;
+        margin: 0 0 0.8rem;
+      }
+      .concierge-card ul,
+      .guide-list-panel ul,
+      .guide-route-panel ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 0.5rem;
+      }
+      .concierge-card li,
+      .guide-list-panel li,
+      .guide-route-panel li {
+        color: var(--muted);
+        line-height: 1.48;
+        font-size: 0.94rem;
+      }
+      .guide-list-panel p,
+      .guide-route-panel p {
+        color: var(--muted);
+        line-height: 1.58;
+        margin: 0;
+      }
+      .food-board {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 1rem;
+        align-items: stretch;
+      }
+      .food-lead,
+      .feature-destination.is-large {
+        grid-row: span 2;
+      }
+      .food-lead {
+        display: grid;
+        align-content: end;
+        min-height: 24rem;
+        padding: 1.4rem;
+        border-radius: 1rem;
+        color: #fff;
+        background:
+          linear-gradient(180deg, rgba(5,38,58,0.05), rgba(5,38,58,0.78)),
+          url("assets/verde-soggiorno-cucina-08.jpeg") center/cover no-repeat;
+        box-shadow: 0 26px 64px rgba(4,91,145,0.18);
+      }
+      .food-lead h3 {
+        color: #fff;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        margin: 0 0 0.6rem;
+      }
+      .food-lead p {
+        color: rgba(255,255,255,0.78);
+        max-width: 30rem;
+      }
+      .food-stack {
+        display: grid;
+        gap: 1rem;
+      }
+      .destination-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 1rem;
+      }
+      .feature-destination {
+        overflow: hidden;
+        min-height: 15rem;
+      }
+      .feature-destination img {
+        width: 100%;
+        height: 13rem;
+        object-fit: cover;
+        display: block;
+      }
+      .feature-destination.is-large img {
+        object-position: center 58%;
+      }
+      .feature-destination.is-large img {
+        height: 20rem;
+      }
+      .feature-destination div {
+        padding: 1.15rem;
+      }
+      .feature-destination h3 {
+        color: var(--blue-deep);
+        margin: 0 0 0.45rem;
+      }
+      .feature-destination p {
+        color: var(--muted);
+        line-height: 1.55;
+        margin: 0;
+      }
+      .guide-list-panel,
+      .guide-route-panel,
+      .guide-final-card {
+        padding: 1.2rem;
+      }
+      .guide-list-columns {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .guide-route {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .guide-final-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(12rem, auto);
+        gap: clamp(1.25rem, 4vw, 3rem);
+        align-items: end;
+        background: var(--blue-deep);
+        color: #fff;
+        padding: clamp(1.6rem, 4vw, 2.6rem);
+        min-height: auto;
+      }
+      .guide-final-card > div {
+        max-width: 48rem;
+      }
+      .guide-final-card h2 {
+        color: #fff;
+        margin-bottom: 0.65rem;
+        font-size: clamp(1.9rem, 3vw, 3rem);
+        line-height: 1.02;
+        max-width: none;
+        white-space: nowrap;
+      }
+      .guide-final-card p {
+        color: rgba(255,255,255,0.74);
+        max-width: 44rem;
+        line-height: 1.5;
+      }
+      .guide-final-card .eyebrow {
+        color: rgba(255,255,255,0.72);
+        margin-bottom: 0.6rem;
+      }
+      .guide-final-card .button {
+        align-self: center;
+        justify-self: end;
+        white-space: nowrap;
+      }
+      @media (max-width: 900px) {
+        .guide-hero-layout,
+        .food-board,
+        .destination-grid,
+        .guide-final-card {
+          grid-template-columns: 1fr;
+        }
+        .guide-final-card .button {
+          justify-self: start;
+        }
+        .guide-final-card h2 {
+          white-space: normal;
+        }
+        .concierge-grid,
+        .guide-route {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 560px) {
+        .concierge-grid,
+        .guide-list-columns,
+        .guide-route {
+          grid-template-columns: 1fr;
+        }
+        .guide-tabs {
+          top: 5rem;
+        }
+      }
+  </style>
+  <main class="guide-page">
+      <section class="scopri-hero">
+        <div class="guide-hero-layout">
+          <div class="scopri-hero-inner">
+            <p class="eyebrow" data-i18n="scopri.hero.eyebrow">LA NOSTRA GUIDA DEL TERRITORIO</p>
+            <h1 data-i18n="scopri.hero.title">Guida locale: cosa vedere, dove mangiare e dintorni</h1>
+            <p data-i18n="scopri.hero.desc">Dalla Dimora di Icaro hai il mare, Palermo, la spesa quotidiana e tanti posti per mangiare a pochi minuti. Qui abbiamo raccolto le informazioni utili dei nostri consigli in italiano e inglese.</p>
+            <a class="back-link" href="/" data-i18n="scopri.back">← Torna alla home</a>
+          </div>
+          <aside class="guide-summary" aria-label="Sintesi guida">
+            <div class="guide-summary-card">
+              <span data-i18n="scopri.jump.neighborhood">Vicinato</span>
+              <strong>200 m · 2 km</strong>
+            </div>
+            <div class="guide-summary-card">
+              <span data-i18n="scopri.jump.food">Dove mangiare</span>
+              <strong data-i18n="scopri.food.eyebrow">Colazione, pranzo e cena</strong>
+            </div>
+            <div class="guide-summary-card">
+              <span data-i18n="scopri.jump.see">Cosa vedere</span>
+              <strong data-i18n="scopri.palermo.title">La capitale del Mediterraneo</strong>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="guide-tabs" aria-label="Sezioni della guida">
+        <a href="#vicinato" data-i18n="scopri.jump.neighborhood">Vicinato</a>
+        <a href="#mangiare" data-i18n="scopri.jump.food">Dove mangiare</a>
+        <a href="#vedere" data-i18n="scopri.jump.see">Cosa vedere</a>
+        <a href="#mare" data-i18n="tag.sea">Mare</a>
+        <a href="#serate" data-i18n="scopri.jump.evenings">Serate e tour</a>
+      </nav>
+
+      <section id="vicinato" class="guide-section">
+        <div class="guide-section-header">
+          <p class="eyebrow" data-i18n="scopri.neighborhood.eyebrow">A PORTATA DI CASA</p>
+          <h2 data-i18n="scopri.neighborhood.title">Vicinato e servizi quotidiani</h2>
+          <p data-i18n="scopri.neighborhood.desc">Per vivere la casa con semplicità: spesa, pane fresco, pesce, farmacia e centri commerciali sono tutti vicini, molti anche raggiungibili in pochi minuti.</p>
+        </div>
+        <div class="concierge-grid">
+          <article class="concierge-card">
+            <h3 data-i18n="scopri.neighborhood.local.title">Spesa locale</h3>
+            <ul>
+              <li data-i18n="scopri.neighborhood.local.1">Frutta, verdura e specialità locali a circa 200 metri.</li>
+              <li data-i18n="scopri.neighborhood.local.2">Macelleria Di Maggio, panificio, bar, tabacchi, gelateria e ferramenta in zona.</li>
+              <li data-i18n="scopri.neighborhood.local.3">Pescheria del Bivio a circa 750 metri, con pescato fresco.</li>
+            </ul>
+          </article>
+          <article class="concierge-card">
+            <h3 data-i18n="scopri.neighborhood.markets.title">Supermercati</h3>
+            <ul>
+              <li>Conad SuperStore · 400 m</li>
+              <li>Lidl · 650 m</li>
+              <li>Eurospin · 850 m</li>
+              <li>ArcipelaGo · 800 m</li>
+              <li>Poseidon · 2 km</li>
+            </ul>
+          </article>
+          <article class="concierge-card">
+            <h3 data-i18n="scopri.neighborhood.health.title">Assistenza</h3>
+            <ul>
+              <li data-i18n="scopri.neighborhood.health.1">Farmacia a circa 750 metri.</li>
+              <li data-i18n="scopri.neighborhood.health.2">Guardia Medica a Capaci e Carini.</li>
+              <li data-i18n="scopri.neighborhood.health.3">Pronto soccorso a Palermo: Cervello, Villa Sofia e Di Cristina.</li>
+            </ul>
+          </article>
+          <article class="concierge-card">
+            <h3 data-i18n="scopri.neighborhood.extra.title">Comodità extra</h3>
+            <ul>
+              <li data-i18n="scopri.neighborhood.extra.1">McDonald's, negozi di abbigliamento e pet store nelle vicinanze.</li>
+              <li data-i18n="scopri.neighborhood.extra.2">Il Centro Poseidon è il più grande della zona, con Decò e oltre 70 negozi.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="mangiare" class="guide-section">
+        <div class="guide-section-header">
+          <p class="eyebrow" data-i18n="scopri.food.eyebrow">COLAZIONE, PRANZO E CENA</p>
+          <h2 data-i18n="scopri.food.title">Dove mangiare nei dintorni</h2>
+          <p data-i18n="scopri.food.desc">Una selezione pratica di bar, gelaterie, botteghe, pizzerie e ristoranti consigliati, dalla colazione siciliana alla cena sul mare.</p>
+        </div>
+        <div class="food-board">
+          <article class="food-lead">
+            <h3 data-i18n="scopri.food.restaurants.title">Ristoranti sul mare</h3>
+            <p data-i18n="scopri.food.restaurants.text">Sferracavallo, Mondello, Terrasini e Castellammare del Golfo offrono tante opzioni, soprattutto di pesce, spesso con vista mare.</p>
+          </article>
+          <div class="food-stack">
+            <article class="guide-list-panel">
+              <h3 data-i18n="scopri.food.breakfast.title">Colazione e bar</h3>
+              <p data-i18n="scopri.food.breakfast.text">Bar Al Ritrovo, Duci Cafè Bar & Bistrot, Bar Prano, La Nuova Foresta e Al Baglio Gelateria sono opzioni comode tra Villagrazia, Carini e il lungomare.</p>
+            </article>
+            <article class="guide-list-panel">
+              <h3 data-i18n="scopri.food.pizza.title">Pizzerie preferite</h3>
+              <p data-i18n="scopri.food.pizza.text">La Torre, Madre Terra, Le Terrazze, Vitale, I Cumpari, La Baronia, Vitina e Oblivion sono tra le preferite indicate nella guida.</p>
+            </article>
+          </div>
+          <div class="food-stack">
+            <article class="guide-list-panel">
+              <h3 data-i18n="scopri.food.gelato.title">Gelaterie</h3>
+              <p data-i18n="scopri.food.gelato.text">Al Baglio Gelateria sul lungomare, Gelateria Mannino a Carini e diverse gelaterie a Terrasini, soprattutto in piazza Duomo.</p>
+            </article>
+            <article class="guide-list-panel">
+              <h3 data-i18n="scopri.food.palermo.title">Palermo a pranzo</h3>
+              <p data-i18n="scopri.food.palermo.text">Per street food e cucina locale: Via Maqueda, Mercato del Capo, Ballarò, Mondello e Sferracavallo.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="vedere" class="guide-section">
+        <div class="guide-section-header">
+          <p class="eyebrow" data-i18n="scopri.carini.eyebrow">A DUE PASSI · CARINI</p>
+          <h2 data-i18n="scopri.carini.title">Il borgo di casa</h2>
+          <p data-i18n="scopri.carini.desc">Carini prende il nome dall'antica Iccara, città fondata tremila anni fa. Passeggiando per il centro si incontra un castello, chiese e una storia che pochi si aspettano a dieci minuti dall'aeroporto.</p>
+        </div>
+        <div class="destination-grid">
+          <article class="feature-destination is-large">
+              <img src="/assets/castello-di-carini-1600.webp" alt="Castello di Carini" loading="lazy" decoding="async" />
+            <div>
+              <h3>Castello di Carini</h3>
+              <p data-i18n="scopri.carini.card1.desc">Una maestosa fortezza normanna dell'XI secolo che domina la città dall'alto. Famoso in tutto il mondo per la tragica storia vera della <em>Baronessa di Carini</em>, assassinata nel 1563. Da non perdere il portale gotico e i panorami mozzafiato dalle terrazze.</p>
+            </div>
+          </article>
+          <article class="guide-list-panel">
+            <h3>Chiesa Madre · Baglio · Costa Verde</h3>
+            <ul>
+              <li data-i18n="scopri.carini.card2.desc">Il cuore del centro storico di Carini: una chiesa del XV secolo che si affaccia sulla piazza principale, con affreschi e opere d'arte di grande valore.</li>
+              <li data-i18n="scopri.carini.card4.desc">Tratti di costa meno affollati a pochi minuti dalla dimora: Torre Pozzillo, Torre Ulisse e la Costa Verde offrono calette e spiagge libere ancora genuine.</li>
+            </ul>
+          </article>
+          <article class="guide-list-panel">
+            <h3 data-i18n="scopri.palermo.title">La capitale del Mediterraneo</h3>
+            <ul>
+              <li>Cattedrale di Palermo</li>
+              <li>Palazzo dei Normanni &amp; Cappella Palatina</li>
+              <li>Quattro Canti · Teatro Massimo</li>
+              <li>Ballarò · Vucciria · Piazza Pretoria</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="mare" class="guide-section">
+        <div class="guide-section-header">
+          <p class="eyebrow" data-i18n="scopri.beaches.eyebrow">ENTRO 30 MINUTI · SPIAGGE</p>
+          <h2 data-i18n="scopri.beaches.title">Le spiagge più belle vicino a casa</h2>
+          <p data-i18n="scopri.beaches.desc">La costa che circonda Carini offre spiagge per tutti i gusti: sabbia finissima, calette rocciose, acque turchesi e lidi attrezzati.</p>
+        </div>
+        <div class="guide-list-columns">
+          <article class="guide-list-panel">
+            <h3 data-i18n="scopri.beaches.north">A nord (verso Palermo)</h3>
+            <ul>
+              <li data-i18n="scopri.beaches.n1">Spiaggia di Capaci</li>
+              <li data-i18n="scopri.beaches.n2">Isola delle Femmine</li>
+              <li data-i18n="scopri.beaches.n3">Sferracavallo</li>
+              <li data-i18n="scopri.beaches.n5">Spiaggia di Mondello</li>
+            </ul>
+          </article>
+          <article class="guide-list-panel">
+            <h3 data-i18n="scopri.beaches.south">A sud (verso Trapani)</h3>
+            <ul>
+              <li data-i18n="scopri.beaches.s1">Costa Verde &amp; Baglio di Carini</li>
+              <li data-i18n="scopri.beaches.s2">Spiaggia Magaggiari – Cinisi</li>
+              <li data-i18n="scopri.beaches.s3">Baia di San Cataldo – Terrasini</li>
+              <li data-i18n="scopri.beaches.s5">Spiaggia di Balestrate</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="serate" class="guide-section">
+        <div class="guide-section-header">
+          <p class="eyebrow" data-i18n="scopri.evenings.eyebrow">SERATE E TOUR IN BARCA</p>
+          <h2 data-i18n="scopri.evenings.title">Idee semplici per la sera</h2>
+          <p data-i18n="scopri.evenings.desc">Per una passeggiata dopo il mare o una cena fuori, queste sono le zone più piacevoli indicate nella guida. Per i tour in barca conviene scegliere il porto in base alla costa che vuoi esplorare.</p>
+        </div>
+        <div class="guide-route">
+          <article class="guide-route-panel">
+            <h3 data-i18n="scopri.evenings.walks.title">Passeggiate serali</h3>
+            <p data-i18n="scopri.evenings.walks.text">Lungomare Peppino Impastato a Terrasini, Castellammare del Golfo, Mondello, Molo Trapezoidale e porto di Palermo, Isola delle Femmine, Borgo Parrini e centro storico di Palermo.</p>
+          </article>
+          <article class="guide-route-panel">
+            <h3 data-i18n="scopri.evenings.boats.title">Tour in barca</h3>
+            <p data-i18n="scopri.evenings.boats.text">Porto di Terrasini e Castellammare per la costa verso San Vito Lo Capo; Isola delle Femmine o Mondello per la costa palermitana; Trapani per Egadi e aliscafi.</p>
+          </article>
+          <article class="guide-route-panel">
+            <h3 data-i18n="scopri.sicily.title">Quando vuoi spingerti un po' più lontano</h3>
+            <ul>
+              <li data-i18n="scopri.sicily.nw1">Cefalù – spiaggia e cattedrale normanna</li>
+              <li data-i18n="scopri.sicily.nw4">Erice – borgo medievale in cima alla montagna</li>
+              <li data-i18n="scopri.sicily.south1">Valle dei Templi – Agrigento</li>
+              <li data-i18n="scopri.sicily.east1">Siracusa e Ortigia</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="guide-section">
+        <div class="guide-final-card">
+          <div>
+            <p class="eyebrow" data-i18n="scopri.cta.eyebrow">PRENOTA IL TUO SOGGIORNO</p>
+            <h2 data-i18n="scopri.cta.title">Pronto a scoprire la Sicilia?</h2>
+            <p data-i18n="scopri.cta.desc">Dalla Dimora di Icaro hai tutto a portata di mano. Verifica le date disponibili e prenota il tuo soggiorno.</p>
+          </div>
+          <a class="button primary" href="/#prenota" data-i18n="scopri.cta.btn">Verifica disponibilità</a>
+        </div>
+      </section>
+    </main>
+</Base>
