@@ -11,7 +11,7 @@
 // A date in `busy` means the NIGHT starting that day is taken.
 
 const HOMES = { verde: "ICAL_VERDE", blu: "ICAL_BLU" };
-const CACHE_SECONDS = 120; // 2 minutes: near-live, while reading each feed at most ~30 times an hour per edge location
+const CACHE_SECONDS = 600; // 10 minutes: plenty for a request-to-book flow, light on Airbnb/Booking
 const HORIZON_DAYS = 550;
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -75,7 +75,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
   } else {
     const results = await Promise.allSettled(
       feeds.map((feed) =>
-        fetch(feed, { headers: { "User-Agent": "LaDimoraDiIcaro-Calendar/1.0" }, cf: { cacheTtl: 60 } }).then((r) => {
+        fetch(feed, { headers: { "User-Agent": "LaDimoraDiIcaro-Calendar/1.0" }, cf: { cacheTtl: 300 } }).then((r) => {
           if (!r.ok) throw new Error(`feed ${r.status}`);
           return r.text();
         }),
