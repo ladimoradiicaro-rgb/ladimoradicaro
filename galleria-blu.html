@@ -10,7 +10,8 @@
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Galleria La Dimora Blu | La Dimora di Icaro" />
     <meta property="og:description" content="Scopri gli ambienti della Dimora Blu con la galleria fotografica completa." />
-    <meta property="og:image" content="assets/blu-soggiorno-cucina-03.jpeg" />
+    <meta property="og:image" content="https://www.ladimoradicaro.com/assets/blu-soggiorno-cucina-03.jpeg" />
+    <link rel="canonical" href="https://www.ladimoradicaro.com/galleria-blu" />
     <title>Galleria La Dimora Blu | La Dimora di Icaro</title>
     <link rel="icon" href="assets/logo-originale.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,13 +21,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css?v=20260729-minimal-reviews" />
-    <link rel="stylesheet" href="motion.css?v=20261120-tour" />
+    <link rel="stylesheet" href="motion.css?v=20261123" />
+    <link rel="stylesheet" href="polish.css?v=20261123" />
     <script defer src="vendor/lenis/lenis.min.js"></script>
-    <script defer src="motion.js?v=20261120-tour"></script>
+    <script defer src="motion.js?v=20261123"></script>
     <script defer src="script.js?v=20260729-minimal-reviews"></script>
     <script defer src="vendor/react/react.production.min.js"></script>
     <script defer src="vendor/react/react-dom.production.min.js"></script>
     <script defer src="react-masonry-gallery.js?v=20260729-minimal-reviews"></script>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": "https://www.ladimoradicaro.com/galleria-blu",
+  "url": "https://www.ladimoradicaro.com/galleria-blu",
+  "name": "Galleria La Dimora Blu | La Dimora di Icaro",
+  "inLanguage": "it",
+  "isPartOf": {
+    "@id": "https://www.ladimoradicaro.com/#website"
+  },
+  "about": {
+    "@id": "https://www.ladimoradicaro.com/#dimora-blu"
+  }
+}
+    </script>
   </head>
   <body class="gallery-body">
     <header class="site-header" data-header>
@@ -45,10 +63,10 @@
 
       <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
         <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
-          <span class="lang-badge" aria-hidden="true">🇮🇹</span>
+          <span class="lang-badge" aria-hidden="true">IT</span>
         </button>
         <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
-          <span class="lang-badge" aria-hidden="true">🇬🇧</span>
+          <span class="lang-badge" aria-hidden="true">EN</span>
         </button>
       </div>
 

@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Polish (unslop pass) — loaded after styles.css and motion.css.
+   Direction: two holiday homes in Carini, sunny, welcoming, tidy.
+   World: a Sicilian house in summer — white walls, tiles, wooden shutters, morning light.
+   Rich moments stay where they are: the photo tour and the Avallon titles.
+   Everything else goes quiet: one cream surface, hairlines, sentence-case labels,
+   weights 500–600, no glass, no coloured shadows, no decorative motion.
+   The logo's blue is the one accent; its orange marks the small section labels.
+   unslop by Damir Sokolovsky (@heydamir), CC BY 4.0.
+   ========================================================================== */
+
+:root {
+  --pl-paper: #fffaf1;          /* page, sun-warmed white */
+  --pl-surface: #ffffff;        /* cards */
+  --pl-text: #1f2a33;           /* primary text */
+  --pl-text-2: #4f5d68;         /* secondary text */
+  --pl-muted: #7a8590;          /* muted text */
+  --pl-line: rgba(31, 42, 51, 0.1);
+  --pl-accent: #077cbd;         /* logo blue */
+  --pl-accent-ink: #05659b;     /* blue as text on light surfaces */
+  --pl-label: #b5690a;          /* logo orange, deep enough to read on cream */
+  --pl-shadow: 0 1px 2px rgba(31, 42, 51, 0.05), 0 8px 24px rgba(31, 42, 51, 0.05);
+  --pl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Labels: sentence case, no wide tracking ---------- */
+.eyebrow,
+.quick-paths span,
+.home-card-top span,
+.home-card span:not(.spotlight),
+.link-board-header span,
+.link-tile small {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+}
+
+.eyebrow,
+.quick-paths span,
+.link-board-header span {
+  color: var(--pl-label) !important;
+  font-size: 0.95rem !important;
+}
+
+.home-card-top span {
+  font-size: 1rem !important;
+}
+
+.link-tile small {
+  color: var(--pl-muted) !important;
+  font-size: 0.85rem !important;
+}
+
+/* ---------- Weights: hierarchy from size and colour, not 800–900 ---------- */
+.main-nav a {
+  font-weight: 500 !important;
+}
+
+.button,
+.header-action,
+.lang-option,
+.faq-list summary,
+.home-card h3,
+.quick-paths strong,
+.direct-benefits strong,
+.services-grid h3,
+.review-card strong,
+.link-tile strong,
+.review-google-link {
+  font-weight: 600 !important;
+}
+
+.home-facts li {
+  font-weight: 500 !important;
+}
+
+/* ---------- Header and floating button: solid, no glass ---------- */
+.site-header,
+.site-header.is-scrolled {
+  background: rgba(255, 250, 241, 0.96) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--pl-line) !important;
+  box-shadow: var(--pl-shadow) !important;
+}
+
+.language-switcher {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 1px solid var(--pl-line) !important;
+}
+
+.lang-badge {
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.floating-whatsapp {
+  background: var(--pl-surface) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--pl-line) !important;
+  box-shadow: var(--pl-shadow) !important;
+}
+
+/* ---------- Buttons: flat, no coloured shadows, no arrow on every button ---------- */
+.button,
+.header-action {
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  transition: background-color 180ms var(--pl-ease), color 180ms var(--pl-ease), border-color 180ms var(--pl-ease), transform 120ms var(--pl-ease) !important;
+}
+
+.button::after,
+.header-action::after {
+  content: none !important;
+}
+
+.button.primary,
+.header-action {
+  background: var(--pl-accent) !important;
+}
+
+.button.primary:hover,
+.header-action:hover {
+  background: var(--pl-accent-ink) !important;
+}
+
+.button:active,
+.header-action:active {
+  transform: scale(0.98);
+}
+
+.button.ghost {
+  background: var(--pl-surface) !important;
+  border: 1px solid var(--pl-line) !important;
+  color: var(--pl-text) !important;
+}
+
+.button.ghost:hover {
+  border-color: rgba(31, 42, 51, 0.22) !important;
+}
+
+/* ---------- Quick paths: one surface, hairlines between ---------- */
+.quick-paths a,
+.quick-paths a:nth-child(n) {
+  background: var(--pl-paper) !important;
+  background-image: none !important;
+}
+
+/* ---------- Cards: one plain surface with a hairline ---------- */
+.home-card,
+.services-grid article,
+.direct-benefits article,
+.review-card,
+.faq-list details,
+.booking-form,
+.transitory-note,
+.link-tile,
+.booking-tile {
+  background: var(--pl-surface) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--pl-line) !important;
+  box-shadow: var(--pl-shadow) !important;
+}
+
+.booking-section {
+  background: var(--pl-paper) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--pl-line) !important;
+}
+
+.quick-links a {
+  background: var(--pl-surface) !important;
+  background-image: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  border: 1px solid var(--pl-line) !important;
+}
+
+/* Decorative washes and the gradient bar on top of every card */
+.home-card::before,
+.services-grid article::before {
+  display: none !important;
+}
+
+/* ---------- Home cards: no duplicated facts ---------- */
+.home-card-top small {
+  display: none !important;
+}
+
+.home-facts li {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 1px solid var(--pl-line) !important;
+  color: var(--pl-text-2) !important;
+}
+
+/* ---------- Text roles ---------- */
+.home-card p,
+.services-grid p,
+.direct-benefits p,
+.faq-list p {
+  color: var(--pl-text-2) !important;
+}
+
+/* ---------- Motion: quick colour/surface feedback only ---------- */
+.home-card,
+.services-grid article,
+.faq-list details,
+.link-tile {
+  transition: border-color 180ms var(--pl-ease), box-shadow 180ms var(--pl-ease) !important;
+}
+
+.home-card:hover,
+.link-tile:hover {
+  transform: none !important;
+  border-color: rgba(31, 42, 51, 0.2) !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--pl-accent) !important;
+  outline-offset: 3px;
+}

@@ -1,0 +1,21 @@
+# Cloudflare Pages headers
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-Frame-Options: SAMEORIGIN
+
+# Photos, title images and fonts rarely change: cache for 30 days
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+# Vendored libraries are pinned versions
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS/JS are linked with ?v=… so a week is safe; bump the ?v= when they change
+/*.css
+  Cache-Control: public, max-age=604800
+/*.js
+  Cache-Control: public, max-age=604800

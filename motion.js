@@ -1,11 +1,10 @@
 /* Site motion layer.
    - Lenis smooth scrolling (with header-aware anchor links and scroll lock for menu/lightbox)
-   - Vanilla ports of React Bits patterns: BlurText, CountUp, SpotlightCard, AnimatedContent, Magnet
+   - Vanilla ports of React Bits patterns: BlurText, CountUp, AnimatedContent
    Everything degrades to the static page when JS is off or reduced motion is requested. */
 (() => {
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
   root.classList.add("motion-ready");
 
@@ -172,34 +171,6 @@
     });
   });
 
-  if (!finePointer) return;
-
-  /* ---------------- SpotlightCard (React Bits) ---------------- */
-  document.querySelectorAll(".home-card, .services-grid > article, .faq-list > details, .concierge-card, .guide-summary-card").forEach((card) => {
-    if (card.querySelector(":scope > .spotlight")) return;
-    const glow = document.createElement("span");
-    glow.className = "spotlight";
-    glow.setAttribute("aria-hidden", "true");
-    card.appendChild(glow);
-    card.classList.add("has-spotlight");
-    card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
-      card.style.setProperty("--my", `${event.clientY - rect.top}px`);
-    });
-  });
-
-  /* ---------------- Magnet (React Bits) ---------------- */
-  document.querySelectorAll(".hero-actions .button, .header-action, .tour-actions .button.primary").forEach((button) => {
-    const strength = 0.22;
-    const reset = () => button.style.setProperty("translate", "0 0");
-    button.classList.add("magnet");
-    button.addEventListener("pointermove", (event) => {
-      const rect = button.getBoundingClientRect();
-      const x = (event.clientX - rect.left - rect.width / 2) * strength;
-      const y = (event.clientY - rect.top - rect.height / 2) * strength;
-      button.style.setProperty("translate", `${x.toFixed(1)}px ${y.toFixed(1)}px`);
-    });
-    button.addEventListener("pointerleave", reset);
-  });
+  // SpotlightCard and Magnet were removed in the polish pass: decorative motion that
+  // competed with the photos. Hover feedback is now a quiet colour/border change (polish.css).
 })();

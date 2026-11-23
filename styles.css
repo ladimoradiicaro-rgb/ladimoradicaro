@@ -2182,7 +2182,8 @@ body.language-transition::after {
   width: min(48rem, 100%);
 }
 
-.hero h1 {
+.hero h1,
+.hero .hero-title {
   max-width: 13ch;
 }
 
@@ -2807,7 +2808,8 @@ body.language-transition::after {
     align-self: center;
   }
 
-  .hero h1 {
+  .hero h1,
+  .hero .hero-title {
     max-width: 10.8ch;
     font-size: clamp(2.8rem, 13vw, 4rem);
   }
@@ -5622,7 +5624,8 @@ body.is-leaving main {
     padding-inline: clamp(1.5rem, 4vw, 3rem);
   }
 
-  .hero h1 {
+  .hero h1,
+  .hero .hero-title {
     max-width: 15ch;
     font-size: clamp(3.3rem, 7vw, 5rem);
   }
@@ -5694,7 +5697,8 @@ body.is-leaving main {
       url("assets/hero-soggiorno-2400.jpeg") center 58% / cover;
   }
 
-  .hero h1 {
+  .hero h1,
+  .hero .hero-title {
     max-width: 11.5ch;
     font-size: clamp(2.65rem, 12vw, 3.85rem);
   }
