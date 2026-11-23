@@ -433,5 +433,9 @@
   "booking.cal.dayBusy": "{date}, occupato",
   "booking.cal.dayFree": "{date}, libero",
   "booking.form.priceLabel": "Prezzo indicativo",
-  "booking.form.sendRequest": "Invia la richiesta su WhatsApp"
+  "booking.form.sendRequest": "Invia la richiesta su WhatsApp",
+  "booking.cal.pricesSoon": "I prezzi per la prenotazione diretta saranno pubblicati qui a breve: intanto scrivici per un preventivo.",
+  "booking.cal.closed": "Al momento le dimore sono occupate e le prenotazioni sono chiuse. Scrivici: ti diciamo noi quando si liberano.",
+  "booking.form.askNext": "Chiedi le prossime disponibilità",
+  "booking.form.nextGreeting": "Ciao, vorrei sapere quando saranno di nuovo disponibili le dimore de La Dimora di Icaro."
 }

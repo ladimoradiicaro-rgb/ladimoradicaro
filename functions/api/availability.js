@@ -54,15 +54,20 @@ export async function onRequestGet({ request, env, waitUntil }) {
   const home = url.searchParams.get("home");
   if (!HOMES[home]) return Response.json({ error: "home must be verde or blu" }, { status: 400 });
 
+  const feedsValue = env[HOMES[home]] || "";
+  // The cache key carries a fingerprint of the configured feeds, so changing the links
+  // takes effect immediately instead of after the 15-minute cache.
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(feedsValue));
+  const fingerprint = [...new Uint8Array(digest)].slice(0, 6).map((b) => b.toString(16).padStart(2, "0")).join("");
   const cache = caches.default;
-  const cacheKey = new Request(`${url.origin}/api/availability?home=${home}`);
+  const cacheKey = new Request(`${url.origin}/api/availability?home=${home}&v=${fingerprint}`);
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
   const now = new Date();
   const from = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
   const to = new Date(from.getTime() + HORIZON_DAYS * 86400000);
-  const feeds = (env[HOMES[home]] || "").split(/\s+/).filter((u) => u.startsWith("https://"));
+  const feeds = feedsValue.split(/\s+/).filter((u) => u.startsWith("https://"));
 
   let body;
   if (!feeds.length) {

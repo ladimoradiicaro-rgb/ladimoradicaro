@@ -412,3 +412,11 @@
     display: none;
   }
 }
+
+.booking-cal-note.is-closed {
+  padding: 0.65rem 0.8rem;
+  border-radius: 0.7rem;
+  background: rgba(181, 105, 10, 0.08);
+  color: #7a4706;
+  font-weight: 600;
+}

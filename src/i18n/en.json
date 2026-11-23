@@ -433,5 +433,9 @@
   "booking.cal.dayBusy": "{date}, booked",
   "booking.cal.dayFree": "{date}, available",
   "booking.form.priceLabel": "Indicative price",
-  "booking.form.sendRequest": "Send the request on WhatsApp"
+  "booking.form.sendRequest": "Send the request on WhatsApp",
+  "booking.cal.pricesSoon": "Direct-booking prices will be published here soon: meanwhile write to us for a quote.",
+  "booking.cal.closed": "The homes are currently occupied and bookings are closed. Write to us and we'll tell you when they're free again.",
+  "booking.form.askNext": "Ask about next availability",
+  "booking.form.nextGreeting": "Hello, I'd like to know when La Dimora di Icaro will be available again."
 }

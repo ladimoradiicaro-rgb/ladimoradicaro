@@ -3,7 +3,7 @@ import { useLanguage } from "./useLanguage";
 import { registerDict, t, type Dict, type Key, type Lang } from "../../i18n/island";
 import AvailabilityCalendar from "./AvailabilityCalendar";
 import { pricing, pricingIsDemo } from "../../data/pricing";
-import { overlapsBusy, quote } from "../../lib/quote";
+import { addDays, overlapsBusy, quote } from "../../lib/quote";
 import "./BookingForm.css";
 
 /* Booking request: pick the home, choose the dates on a calendar that shows the nights
@@ -59,6 +59,10 @@ const strings = (lang: Lang) => {
     total: tr("booking.cal.total"),
     priceNote: tr("booking.cal.note"),
     anyNote: tr("booking.cal.anyNote"),
+    pricesSoon: tr("booking.cal.pricesSoon"),
+    closed: tr("booking.cal.closed"),
+    askNext: tr("booking.form.askNext"),
+    nextGreeting: tr("booking.form.nextGreeting"),
   };
 };
 
@@ -138,14 +142,24 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
 
   const nights = checkin && checkout ? nightsBetween(checkin, checkout) : 0;
   const ready = Boolean(checkin && checkout && nights > 0);
-  const offer = ready && home !== "any" ? quote(pricing[home], checkin, checkout) : null;
+  // Prices stay hidden until the real ones replace the demo values in src/data/pricing.ts.
+  const offer = ready && home !== "any" && !pricingIsDemo ? quote(pricing[home], checkin, checkout) : null;
+  // No free night in the next year (homes let on longer contracts): offer a plain enquiry instead.
+  const closed = useMemo(() => {
+    if (!today || feed.status !== "ok") return false;
+    for (let d = today, i = 0; i < 365; d = addDays(d, 1), i += 1) if (!feed.busy.has(d)) return false;
+    return true;
+  }, [today, feed.status, feed.busy]);
   const tooShort = Boolean(offer && offer.nights < offer.minNights);
   const overlap = ready && overlapsBusy(feed.busy, checkin, checkout);
-  const valid = ready && !tooShort && !overlap;
+  const valid = (ready && !tooShort && !overlap) || (closed && !checkin);
   const homeName = home === "any" ? tx.any : homes[home].name;
   const datesError = tried && !valid;
 
   const message = useMemo(() => {
+    if (closed && !ready) {
+      return [tx.nextGreeting, `${tx.label.home}: ${homeName}`, `${tx.label.guests}: ${guests}`, "", tx.thanks].join("\n");
+    }
     const lines = [
       tx.greeting,
       `${tx.label.home}: ${homeName}`,
@@ -158,7 +172,7 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
       tx.thanks,
     ];
     return lines.join("\n");
-  }, [tx, homeName, checkin, checkout, nights, guests, ready, lang, offer?.total]);
+  }, [tx, homeName, checkin, checkout, nights, guests, ready, lang, offer?.total, closed]);
 
   const submit = (event: Event) => {
     event.preventDefault();
@@ -184,7 +198,7 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
       </fieldset>
 
       <div className="booking-dates">
-        <p className="booking-dates-step" aria-live="polite">
+        <p className="booking-dates-step" aria-live="polite" hidden={closed && !checkin}>
           {feed.status === "loading" ? tx.loading : !checkin ? tx.pickCheckin : !checkout ? tx.pickCheckout : `${formatDate(checkin, lang)} → ${formatDate(checkout, lang)} · ${tx.nights(nights)}`}
         </p>
         {today && (
@@ -199,7 +213,7 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
         )}
         {feed.status === "error" && <p className="booking-cal-note">{tx.calError}</p>}
         {feed.demo && <p className="booking-cal-note is-demo">{tx.demo}</p>}
-        {pricingIsDemo && !feed.demo && <p className="booking-cal-note is-demo">{tx.demo}</p>}
+        {closed && <p className="booking-cal-note is-closed">{tx.closed}</p>}
       </div>
 
       <div className="guests-field">
@@ -215,7 +229,7 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
       <div className="booking-quote" aria-live="polite">
         {overlap && <p className="is-error">{tx.overlap}</p>}
         {tooShort && offer && <p className="is-error">{tx.minNights(offer.minNights)}</p>}
-        {tried && !ready && <p className="is-error">{tx.pickDates}</p>}
+        {tried && !ready && !closed && <p className="is-error">{tx.pickDates}</p>}
         {offer && !overlap && (
           <dl>
             {offer.lines.map((l) => (
@@ -228,9 +242,10 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
         )}
         {offer && !overlap && <p className="booking-quote-note">{tx.priceNote}</p>}
         {ready && home === "any" && <p className="booking-quote-note">{tx.anyNote}</p>}
+        {ready && home !== "any" && pricingIsDemo && !overlap && <p className="booking-quote-note">{tx.pricesSoon}</p>}
       </div>
 
-      <button className="button primary" type="submit" aria-invalid={datesError}>{tx.sendRequest}</button>
+      <button className="button primary" type="submit" aria-invalid={datesError}>{closed && !ready ? tx.askNext : tx.sendRequest}</button>
       <a className="booking-email" href={mailto} onClick={() => track("availability_request_email", { home: homes[home].name })}>{tx.email}</a>
     </form>
   );
