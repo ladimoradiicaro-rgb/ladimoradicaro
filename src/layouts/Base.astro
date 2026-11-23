@@ -3,13 +3,15 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import PageChrome from "../components/PageChrome.astro";
 import { SITE_URL, ASSET_VERSION } from "../data/site";
+import { translatedPaths, url, type Lang } from "../i18n";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description: string;
-  /** Clean path used for canonical and og:url, e.g. "/" or "/scopri". */
+  /** Italian path of the page, e.g. "/" or "/scopri"; the English one is derived (/en/…). */
   path: string;
+  lang?: Lang;
   ogTitle?: string;
   ogDescription?: string;
   /** Path under /public, e.g. "/assets/hero-soggiorno-2400.jpeg". */
@@ -31,6 +33,7 @@ const {
   title,
   description,
   path,
+  lang = "it",
   ogTitle = title,
   ogDescription = description,
   ogImage,
@@ -43,28 +46,60 @@ const {
   chrome = true,
 } = Astro.props;
 
-const canonical = new URL(path, SITE_URL).toString().replace(/\/$/, path === "/" ? "/" : "");
+const absolute = (p: string) => new URL(p, SITE_URL).toString();
+const canonical = absolute(url(path, lang));
+// IT and EN versions point at each other so search engines show the right one.
+const alternates = translatedPaths.includes(path)
+  ? [
+      { hreflang: "it", href: absolute(path) },
+      { hreflang: "en", href: absolute(url(path, "en")) },
+      { hreflang: "x-default", href: absolute(path) },
+    ]
+  : [];
 const v = (file: string) => `/${file}?v=${ASSET_VERSION}`;
 // Classic scripts that switch IT/EN need the shared dictionaries first.
 const needsI18n = scripts.some((file) => file === "script.js" || file === "scopri.js");
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!doctype html>
-<html lang="it">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    {alternates.length > 0 && (
+      <script is:inline>
+        // Returning visitor who chose the other language: open that version when they
+        // arrive from outside the site (search engines never store a preference).
+        try {
+          var pref = localStorage.getItem("siteLanguage");
+          var here = document.documentElement.lang;
+          var fromSite = document.referrer && new URL(document.referrer).host === location.host;
+          if (pref && pref !== here && !fromSite) {
+            var alt = document.querySelector('link[rel="alternate"][hreflang="' + pref + '"]');
+            if (alt) location.replace(new URL(alt.href).pathname + location.hash);
+          }
+        } catch (e) {}
+      </script>
+    )}
     {noindex && <meta name="robots" content="noindex, follow" />}
     {!noindex && (
       <>
         <meta property="og:type" content="website" />
+        <meta property="og:locale" content={lang === "en" ? "en_GB" : "it_IT"} />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDescription} />
         <meta property="og:url" content={canonical} />
         {ogImage && <meta property="og:image" content={new URL(ogImage, SITE_URL).toString()} />}
+        {ogImage?.startsWith("/assets/og/") && (
+          <>
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+          </>
+        )}
         <meta name="twitter:card" content="summary_large_image" />
       </>
     )}
@@ -82,11 +117,11 @@ const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <slot name="head" />
   </head>
   <body class={bodyClass}>
-    <Header variant={header} />
+    <Header variant={header} lang={lang} />
     <slot />
-    {chrome && <Footer />}
+    {chrome && <Footer lang={lang} />}
     <slot name="after" />
-    {chrome && <PageChrome />}
+    {chrome && <PageChrome lang={lang} />}
 
   </body>
 </html>

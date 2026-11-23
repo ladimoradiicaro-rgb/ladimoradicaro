@@ -1,25 +1,4 @@
 ---
-import { pick, t } from "../i18n";
-import Base from "../layouts/Base.astro";
-import GalleryHero from "../components/GalleryHero.astro";
-import GalleryGrid from "../components/react/GalleryGrid";
-import jsonLd from "../data/jsonld/galleria-blu.json";
+import GalleryBlue from "../views/GalleryBlue.astro";
 ---
-<Base
-  title="Galleria La Dimora Blu | La Dimora di Icaro"
-  description="Galleria fotografica completa de La Dimora Blu: soggiorno, cucina, camera, bagno e terrazzo esterno."
-  path="/galleria-blu"
-  header="page"
-  ogDescription="Scopri gli ambienti della Dimora Blu con la galleria fotografica completa."
-  ogImage="/assets/blu-soggiorno-cucina-03.jpeg"
-  bodyClass="gallery-body"
-  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
-  jsonLd={jsonLd}
->
-  <main class="gallery-v2 gallery-v2--blue">
-    <GalleryHero home="blue" cover="blu-soggiorno-cucina-03" coverAlt="Soggiorno e cucina della Dimora Blu" />
-    <section aria-label="Galleria fotografica La Dimora Blu">
-      <GalleryGrid client:load home="blue" dict={pick(["gallery."])} />
-    </section>
-  </main>
-</Base>
+<GalleryBlue lang="it" />

@@ -62,9 +62,9 @@ const formatDate = (iso: string, lang: Lang, withYear = false) =>
 const track = (action: string, params: Record<string, unknown>) =>
   (window as unknown as { trackEvent?: (a: string, p: Record<string, unknown>) => void }).trackEvent?.(action, params);
 
-export default function BookingForm({ dict }: { dict: Dict }) {
+export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict; lang?: Lang }) {
   registerDict(dict);
-  const lang = useLanguage();
+  const lang = useLanguage(initial);
   const tx = useMemo(() => strings(lang), [lang]);
   const [home, setHome] = useState<HomeKey>("verde");
   const [checkin, setCheckin] = useState("");

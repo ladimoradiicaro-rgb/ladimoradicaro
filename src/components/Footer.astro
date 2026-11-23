@@ -1,10 +1,12 @@
 ---
-import { t } from "../i18n";
+import { t, type Lang } from "../i18n";
 import { contacts } from "../data/site";
+interface Props { lang?: Lang }
+const { lang = "it" } = Astro.props;
 ---
 <footer class="site-footer">
   <div class="footer-brand">
-    <img class="footer-logo" src="/assets/logo-site-web.png" alt="La Dimora di Icaro" />
+    <img class="footer-logo" src="/assets/logo-site-web.webp" alt="La Dimora di Icaro" />
   </div>
   <div class="footer-links" aria-label="Link footer">
     <a href={contacts.phone.href} data-track="footer_phone_click">Telefono: {contacts.phone.label}</a>
@@ -14,14 +16,14 @@ import { contacts } from "../data/site";
     <p class="footer-cin">CIR {contacts.cir}</p>
   </div>
   <div class="footer-links" aria-label="Prenotazioni e social">
-    <a href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="footer_booking_click" data-i18n="footer.booking">{t("footer.booking")}</a>
-    <a href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="footer_airbnb_green_click" data-i18n="footer.airbnbGreen">{t("footer.airbnbGreen")}</a>
-    <a href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="footer_airbnb_blue_click" data-i18n="footer.airbnbBlue">{t("footer.airbnbBlue")}</a>
+    <a href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="footer_booking_click" data-i18n="footer.booking">{t("footer.booking", lang)}</a>
+    <a href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="footer_airbnb_green_click" data-i18n="footer.airbnbGreen">{t("footer.airbnbGreen", lang)}</a>
+    <a href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="footer_airbnb_blue_click" data-i18n="footer.airbnbBlue">{t("footer.airbnbBlue", lang)}</a>
     <a href="https://www.instagram.com/ladimoradicaro?igsh=bzc4d2JxaXAyZjVj" target="_blank" rel="noreferrer" data-track="footer_instagram_click">Instagram</a>
     <a href="https://www.facebook.com/share/1GQsheMFof/?mibextid=wwXIfr" target="_blank" rel="noreferrer" data-track="footer_facebook_click">Facebook</a>
   </div>
   <div class="footer-links legal-links" aria-label="Informazioni legali">
-    <a href="/privacy" data-i18n="footer.privacy">{t("footer.privacy")}</a>
-    <a href="/cookie" data-i18n="footer.cookie">{t("footer.cookie")}</a>
+    <a href="/privacy" data-i18n="footer.privacy">{t("footer.privacy", lang)}</a>
+    <a href="/cookie" data-i18n="footer.cookie">{t("footer.cookie", lang)}</a>
   </div>
 </footer>

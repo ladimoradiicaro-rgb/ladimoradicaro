@@ -31,7 +31,7 @@ const scopriTranslations = window.ICARO_I18N || { it: {}, en: {} };
       }
 
       // Language switcher
-      const savedLang = localStorage.getItem('siteLanguage') || 'it';
+      const savedLang = document.documentElement.lang === 'en' ? 'en' : 'it';
       const langSwitcher = document.querySelector('[data-language-switcher]');
 
       applyScopriLanguage(savedLang);
@@ -44,6 +44,12 @@ const scopriTranslations = window.ICARO_I18N || { it: {}, en: {} };
           btn.setAttribute('aria-pressed', String(active));
           btn.addEventListener('click', () => {
             const lang = btn.dataset.lang;
+            const alternate = document.querySelector(`link[rel="alternate"][hreflang="${lang}"]`);
+            if (lang !== savedLang && alternate) {
+              localStorage.setItem('siteLanguage', lang);
+              window.location.href = new URL(alternate.href).pathname + window.location.hash;
+              return;
+            }
             localStorage.setItem('siteLanguage', lang);
             langSwitcher.classList.toggle('is-en', lang === 'en');
             langSwitcher.querySelectorAll('[data-lang]').forEach(b => {

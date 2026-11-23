@@ -23,3 +23,15 @@ export function pick(prefixes: string[]): Dict {
     Object.fromEntries(Object.entries(d).filter(([key]) => prefixes.some((p) => key.startsWith(p))));
   return { it: filter(it), en: filter(en) };
 }
+
+/** Pages that exist in both languages (IT at the root, EN under /en). */
+export const translatedPaths = ["/", "/scopri", "/galleria-verde", "/galleria-blu"];
+
+/** Localised internal link: url("/scopri", "en") → "/en/scopri", url("/#casa", "en") → "/en#casa". */
+export function url(path: string, lang: Lang = "it"): string {
+  if (lang === "it") return path;
+  const [base, hash] = path.split("#");
+  if (!translatedPaths.includes(base || "/")) return path;
+  const en = base === "/" || base === "" ? "/en" : `/en${base}`;
+  return hash !== undefined ? `${en}#${hash}` : en;
+}

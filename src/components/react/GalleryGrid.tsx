@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { filters, galleries, labelKeys, type Category, type HomeId, type Photo } from "../../data/galleries";
-import { registerDict, t, type Dict } from "../../i18n/island";
+import { registerDict, t, type Dict, type Lang } from "../../i18n/island";
 import { useLanguage } from "./useLanguage";
 import "./GalleryGrid.css";
 
@@ -10,9 +10,9 @@ import "./GalleryGrid.css";
 const small = (p: Photo) => `/assets/gallery/${p.file}-800.webp`;
 const large = (p: Photo) => `/assets/gallery/${p.file}-1600.webp`;
 
-export default function GalleryGrid({ home, dict }: { home: HomeId; dict: Dict }) {
+export default function GalleryGrid({ home, dict, lang: initial = "it" }: { home: HomeId; dict: Dict; lang?: Lang }) {
   registerDict(dict);
-  const lang = useLanguage();
+  const lang = useLanguage(initial);
   const [category, setCategory] = useState<Category | "all">("all");
   const chips = filters[home];
   const photos = useMemo(

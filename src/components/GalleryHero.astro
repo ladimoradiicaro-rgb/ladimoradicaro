@@ -1,20 +1,21 @@
 ---
 // Gallery page opening: one wide cover photo, then the home's name in its colour
 // with a short line and the booking button. Quiet, no stacked cards.
-import { t, type Key } from "../i18n";
+import { t, url, type Key, type Lang } from "../i18n";
 import "./GalleryHero.css";
 
 interface Props {
   home: "green" | "blue";
   cover: string; // file name under /assets/gallery without size suffix
   coverAlt: string;
+  lang?: Lang;
 }
-const { home, cover, coverAlt } = Astro.props;
+const { home, cover, coverAlt, lang = "it" } = Astro.props;
 const titleKey = `galleryPage.${home}.title` as Key;
 // Avallon title image (same name in IT and EN, so no data-i18n: the switcher would replace the image).
 const titleImage = home === "green"
-  ? { src: "/assets/titoli/dimora-verde.png", width: 1097, height: 236 }
-  : { src: "/assets/titoli/dimora-blu.png", width: 972, height: 236 };
+  ? { src: "/assets/titoli/dimora-verde.webp", width: 1097, height: 236 }
+  : { src: "/assets/titoli/dimora-blu.webp", width: 972, height: 236 };
 const copyKey = `galleryPage.${home}.copy` as Key;
 ---
 <section class={`gallery-hero gallery-hero--${home}`}>
@@ -29,12 +30,12 @@ const copyKey = `galleryPage.${home}.copy` as Key;
   </figure>
   <div class="gallery-hero-copy">
     <div>
-      <p class="gallery-hero-eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow")}</p>
+      <p class="gallery-hero-eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow", lang)}</p>
       <h1 class="gallery-hero-title">
-        <img src={titleImage.src} width={titleImage.width} height={titleImage.height} alt={t(titleKey)} />
+        <img src={titleImage.src} width={titleImage.width} height={titleImage.height} alt={t(titleKey, lang)} />
       </h1>
-      <p class="gallery-hero-text" data-i18n={copyKey}>{t(copyKey)}</p>
+      <p class="gallery-hero-text" data-i18n={copyKey}>{t(copyKey, lang)}</p>
     </div>
-    <a class="gallery-hero-cta" href="/#prenota" data-i18n="galleryPage.book">{t("galleryPage.book")}</a>
+    <a class="gallery-hero-cta" href={url("/#prenota", lang)} data-i18n="galleryPage.book">{t("galleryPage.book", lang)}</a>
   </div>
 </section>

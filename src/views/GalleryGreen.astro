@@ -1,0 +1,30 @@
+---
+import { pick, t, url, type Lang } from "../i18n";
+
+import Base from "../layouts/Base.astro";
+import GalleryHero from "../components/GalleryHero.astro";
+import GalleryGrid from "../components/react/GalleryGrid";
+import jsonLd from "../data/jsonld/galleria-verde.json";
+
+interface Props { lang?: Lang }
+const { lang = "it" } = Astro.props;
+---
+<Base
+  lang={lang}
+  title={t("meta.green.title", lang)}
+  description={t("meta.green.description", lang)}
+  path="/galleria-verde"
+  header="page"
+  ogDescription={t("meta.green.ogDescription", lang)}
+  ogImage="/assets/og/verde.jpg"
+  bodyClass="gallery-body"
+  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
+  jsonLd={jsonLd}
+>
+  <main class="gallery-v2 gallery-v2--green">
+    <GalleryHero home="green" cover="verde-soggiorno-cucina-08" coverAlt={t("gallery.coverGreen", lang)} lang={lang} />
+    <section aria-label="Galleria fotografica La Dimora Verde">
+      <GalleryGrid client:load home="green" lang={lang} dict={pick(["gallery."])} />
+    </section>
+  </main>
+</Base>

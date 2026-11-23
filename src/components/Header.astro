@@ -1,15 +1,15 @@
 ---
-import { t } from "../i18n";
 // variant: "home" (anchors on the same page), "page" (links back to the home),
 // "guide" (local guide is the current page), "policy" (minimal, no switcher).
-interface Props { variant?: "home" | "page" | "guide" | "policy" }
-const { variant = "page" } = Astro.props;
-const base = variant === "home" ? "" : "/";
+import { t, url, type Lang } from "../i18n";
+interface Props { variant?: "home" | "page" | "guide" | "policy"; lang?: Lang }
+const { variant = "page", lang = "it" } = Astro.props;
+const base = variant === "home" ? "" : url("/", lang);
 ---
 {variant === "policy" ? (
   <header class="site-header is-scrolled">
     <a class="brand" href="/" aria-label="La Dimora di Icaro">
-      <img class="brand-wordmark" src="/assets/logo-site-web.png" alt="La Dimora di Icaro" />
+      <img class="brand-wordmark" src="/assets/logo-site-web.webp" alt="La Dimora di Icaro" />
     </a>
     <nav class="main-nav" aria-label="Navigazione principale">
       <a href="/#casa">Le dimore</a>
@@ -20,32 +20,32 @@ const base = variant === "home" ? "" : "/";
   </header>
 ) : (
   <header class="site-header" data-header>
-    <a class="brand" href={variant === "home" ? "#home" : "/"} aria-label="La Dimora di Icaro">
-      <img class="brand-wordmark" src="/assets/logo-site-web.png" alt="La Dimora di Icaro" />
+    <a class="brand" href={variant === "home" ? "#home" : url("/", lang)} aria-label="La Dimora di Icaro">
+      <img class="brand-wordmark" src="/assets/logo-site-web.webp" alt="La Dimora di Icaro" />
     </a>
 
-    <nav class="main-nav" aria-label="Navigazione principale" data-nav>
-      <a href={`${base}#casa`} data-i18n="nav.homes">{t("nav.homes")}</a>
-      <a href={`${base}#posizione`} data-i18n="nav.location">{t("nav.location")}</a>
-      <a href={`${base}#servizi`} data-i18n="nav.services">{t("nav.services")}</a>
-      {variant !== "guide" && <a href={`${base}#recensioni`} data-i18n="nav.reviews">{t("nav.reviews")}</a>}
+    <nav class="main-nav" aria-label={lang === "en" ? "Main navigation" : "Navigazione principale"} data-nav>
+      <a href={`${base}#casa`} data-i18n="nav.homes">{t("nav.homes", lang)}</a>
+      <a href={`${base}#posizione`} data-i18n="nav.location">{t("nav.location", lang)}</a>
+      <a href={`${base}#servizi`} data-i18n="nav.services">{t("nav.services", lang)}</a>
+      {variant !== "guide" && <a href={`${base}#recensioni`} data-i18n="nav.reviews">{t("nav.reviews", lang)}</a>}
       {variant === "guide"
-        ? <a href="/scopri" aria-current="page" data-i18n="scopri.nav.current">{t("scopri.nav.current")}</a>
-        : <a href="/scopri" data-i18n="nav.guide">{t("nav.guide")}</a>}
-      <a class="mobile-nav-action" href={`${base}#prenota`} data-i18n="cta.book">{t("cta.book")}</a>
+        ? <a href={url("/scopri", lang)} aria-current="page" data-i18n="scopri.nav.current">{t("scopri.nav.current", lang)}</a>
+        : <a href={url("/scopri", lang)} data-i18n="nav.guide">{t("nav.guide", lang)}</a>}
+      <a class="mobile-nav-action" href={`${base}#prenota`} data-i18n="cta.book">{t("cta.book", lang)}</a>
     </nav>
 
-    <div class="language-switcher" aria-label="Seleziona lingua" data-language-switcher>
-      <button type="button" class="lang-option is-active" data-lang="it" aria-label="Italiano" aria-pressed="true">
+    <div class={`language-switcher${lang === "en" ? " is-en" : ""}`} aria-label={lang === "en" ? "Choose language" : "Seleziona lingua"} data-language-switcher>
+      <button type="button" class={`lang-option${lang === "it" ? " is-active" : ""}`} data-lang="it" aria-label="Italiano" aria-pressed={lang === "it" ? "true" : "false"}>
         <span class="lang-badge" aria-hidden="true">IT</span>
       </button>
-      <button type="button" class="lang-option" data-lang="en" aria-label="English" aria-pressed="false">
+      <button type="button" class={`lang-option${lang === "en" ? " is-active" : ""}`} data-lang="en" aria-label="English" aria-pressed={lang === "en" ? "true" : "false"}>
         <span class="lang-badge" aria-hidden="true">EN</span>
       </button>
     </div>
 
-    <a class="header-action" href={`${base}#prenota`} data-i18n="cta.book">{t("cta.book")}</a>
-    <button class="menu-toggle" type="button" aria-label="Apri menu" aria-expanded="false" data-menu-toggle>
+    <a class="header-action" href={`${base}#prenota`} data-i18n="cta.book">{t("cta.book", lang)}</a>
+    <button class="menu-toggle" type="button" aria-label={lang === "en" ? "Open menu" : "Apri menu"} aria-expanded="false" data-menu-toggle>
       <span></span>
       <span></span>
     </button>

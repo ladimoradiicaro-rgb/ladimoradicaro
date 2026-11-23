@@ -1,6 +1,6 @@
 // Single place for versions and shared facts used across pages.
 export const SITE_URL = "https://www.ladimoradicaro.com";
-export const ASSET_VERSION = "20261125"; // bump when CSS/JS in /public change
+export const ASSET_VERSION = "20261127"; // bump when CSS/JS in /public change
 
 export const contacts = {
   phone: { href: "tel:+393470395338", label: "347 039 5338" },

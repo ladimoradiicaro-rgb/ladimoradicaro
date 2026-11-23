@@ -231,3 +231,46 @@
   outline: 2px solid var(--pl-accent) !important;
   outline-offset: 3px;
 }
+
+/* ---------- Location labels: sentence case like the rest of the site ---------- */
+.arrival-card span,
+.map-panel span,
+.timeline span,
+.route-card-header span {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 600 !important;
+}
+
+.route-card-header span,
+.timeline span {
+  color: var(--pl-label) !important;
+}
+
+/* ---------- Review links: same flat buttons as everywhere else ---------- */
+.review-google-link {
+  background: var(--pl-accent) !important;
+  background-image: none !important;
+  border: 1px solid var(--pl-accent) !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+.review-google-link:hover {
+  background: var(--pl-accent-ink) !important;
+}
+
+.review-google-link.secondary {
+  background: var(--pl-surface) !important;
+  border-color: var(--pl-line) !important;
+  color: var(--pl-text) !important;
+}
+
+.review-google-link.secondary:hover {
+  border-color: rgba(31, 42, 51, 0.22) !important;
+  background: var(--pl-surface) !important;
+}
+
+.review-google-link::after {
+  content: none !important;
+}

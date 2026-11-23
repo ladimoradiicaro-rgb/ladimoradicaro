@@ -1,25 +1,4 @@
 ---
-import { pick, t } from "../i18n";
-import Base from "../layouts/Base.astro";
-import GalleryHero from "../components/GalleryHero.astro";
-import GalleryGrid from "../components/react/GalleryGrid";
-import jsonLd from "../data/jsonld/galleria-verde.json";
+import GalleryGreen from "../views/GalleryGreen.astro";
 ---
-<Base
-  title="Galleria La Dimora Verde | La Dimora di Icaro"
-  description="Galleria fotografica completa de La Dimora Verde: soggiorno, cucina, camere, bagni ed esterni."
-  path="/galleria-verde"
-  header="page"
-  ogDescription="Scopri gli ambienti della Dimora Verde con la galleria fotografica completa."
-  ogImage="/assets/verde-soggiorno-cucina-08.jpeg"
-  bodyClass="gallery-body"
-  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
-  jsonLd={jsonLd}
->
-  <main class="gallery-v2 gallery-v2--green">
-    <GalleryHero home="green" cover="verde-soggiorno-cucina-08" coverAlt="Zona pranzo luminosa della Dimora Verde" />
-    <section aria-label="Galleria fotografica La Dimora Verde">
-      <GalleryGrid client:load home="green" dict={pick(["gallery."])} />
-    </section>
-  </main>
-</Base>
+<GalleryGreen lang="it" />

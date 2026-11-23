@@ -1,0 +1,30 @@
+---
+import { pick, t, url, type Lang } from "../i18n";
+
+import Base from "../layouts/Base.astro";
+import GalleryHero from "../components/GalleryHero.astro";
+import GalleryGrid from "../components/react/GalleryGrid";
+import jsonLd from "../data/jsonld/galleria-blu.json";
+
+interface Props { lang?: Lang }
+const { lang = "it" } = Astro.props;
+---
+<Base
+  lang={lang}
+  title={t("meta.blue.title", lang)}
+  description={t("meta.blue.description", lang)}
+  path="/galleria-blu"
+  header="page"
+  ogDescription={t("meta.blue.ogDescription", lang)}
+  ogImage="/assets/og/blu.jpg"
+  bodyClass="gallery-body"
+  scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
+  jsonLd={jsonLd}
+>
+  <main class="gallery-v2 gallery-v2--blue">
+    <GalleryHero home="blue" cover="blu-soggiorno-cucina-03" coverAlt={t("gallery.coverBlue", lang)} lang={lang} />
+    <section aria-label="Galleria fotografica La Dimora Blu">
+      <GalleryGrid client:load home="blue" lang={lang} dict={pick(["gallery."])} />
+    </section>
+  </main>
+</Base>

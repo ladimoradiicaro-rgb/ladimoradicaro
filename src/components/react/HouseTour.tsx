@@ -51,6 +51,13 @@ function metrics(t: Track) {
   };
 }
 
+/** Moves data-src/data-srcset into place the first time a photo is needed. */
+function loadImage(img?: HTMLImageElement) {
+  if (!img || img.getAttribute("src") || !img.dataset.src) return;
+  if (img.dataset.srcset) img.srcset = img.dataset.srcset;
+  img.src = img.dataset.src;
+}
+
 function paint(t: Track, index: number, slide: number) {
   t.shots.forEach((shot, i) => {
     let visible = false, y = 0, dim = 0, radius = 0;
@@ -121,27 +128,50 @@ function Tour({ data, lang, register }: { data: TourData; lang: Lang; register: 
       <div className="tour-stage">
         <div className="tour-frame">
           <div className="tour-shots">
-            {data.shots.map((shot, i) => (
-              <figure className="tour-shot" key={shot.file} style={{ zIndex: i + 1 }} onClick={() => openPhoto(i)}>
-                <img
-                  src={src(shot.file, 1920)}
-                  srcSet={`${src(shot.file, 1280)} 1280w, ${src(shot.file, 1920)} 1920w`}
-                  sizes="(orientation: portrait) 150vh, 100vw"
-                  alt={shot.alt}
-                  decoding="async"
-                  {...(first && i === 0 ? { fetchPriority: "high" as const } : { loading: "lazy" as const })}
-                />
-              </figure>
-            ))}
+            {data.shots.map((shot, i) => {
+              // Every photo sits full-screen in the stage, so the browser would treat all of
+              // them as visible and download all 33 at once. Only the first two get a src;
+              // the rest load a few frames ahead of the scroll (see loadImage()).
+              const eager = first && i < 2;
+              const media = {
+                src: src(shot.file, 1920),
+                srcSet: `${src(shot.file, 1280)} 1280w, ${src(shot.file, 1920)} 1920w`,
+              };
+              return (
+                <figure
+                  className="tour-shot"
+                  key={shot.file}
+                  style={{ zIndex: i + 1 }}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={shot.alt}
+                  onClick={() => openPhoto(i)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openPhoto(i);
+                    }
+                  }}
+                >
+                  <img
+                    {...(eager ? media : { "data-src": media.src, "data-srcset": media.srcSet })}
+                    sizes="(orientation: portrait) 150vh, 100vw"
+                    alt={shot.alt}
+                    decoding="async"
+                    {...(first && i === 0 ? { fetchPriority: "high" as const } : {})}
+                  />
+                </figure>
+              );
+            })}
           </div>
           <div className="tour-veil" aria-hidden="true"></div>
           {first ? (
             <div className="tour-logo" aria-hidden="true">
-              <img src="/assets/logo-site-web.png" alt="" fetchPriority="high" />
+              <img src="/assets/logo-site-web.webp" alt="" fetchPriority="high" />
             </div>
           ) : (
             <div className="tour-logo tour-chapter" aria-hidden="true">
-              <img src="/assets/titoli/dimora-blu.png" alt="" loading="lazy" />
+              <img src="/assets/titoli/dimora-blu.webp" alt="" loading="lazy" />
             </div>
           )}
           <header className="tour-head">
@@ -164,9 +194,9 @@ function Tour({ data, lang, register }: { data: TourData; lang: Lang; register: 
   );
 }
 
-export default function HouseTour({ dict }: { dict: Dict }) {
+export default function HouseTour({ dict, lang: initial = "it" }: { dict: Dict; lang?: Lang }) {
   registerDict(dict);
-  const lang = useLanguage();
+  const lang = useLanguage(initial);
   const tracks = useRef<(Track | null)[]>([]);
   const registers = useRef(tours.map((_, i) => (track: Track | null) => { tracks.current[i] = track; }));
 
@@ -199,12 +229,11 @@ export default function HouseTour({ dict }: { dict: Dict }) {
         if (lead) t.el.style.setProperty("--intro", clamp(rawAll / lead, 0, 1).toFixed(4));
 
         const index = Math.min(count - 1, Math.floor(raw));
-        if (index !== t.frame) {
-          t.frame = index;
-          // Warm up the next few photos before we reach them.
-          for (let i = index + 1; i <= index + 3 && i < count; i += 1) {
-            if (t.images[i]?.loading === "lazy") t.images[i].loading = "eager";
-          }
+        if (index !== t.frame) t.frame = index;
+        // Load this photo and the next three, but only once the tour is near the screen.
+        const rect = t.el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 1.5 && rect.bottom > -window.innerHeight * 0.5) {
+          for (let i = index; i <= index + 3 && i < count; i += 1) loadImage(t.images[i]);
         }
 
         const local = clamp(raw - index, 0, 1);
