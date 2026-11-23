@@ -421,77 +421,179 @@
   font-weight: 600;
 }
 
-/* ---------- Party: adults, children, pets ---------- */
-.booking-form--react .guests-field {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
-  justify-content: center;
-  gap: 0.75rem 2rem;
-}
-
-.booking-form--react .guests-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.booking-form--react .guests-row > span {
-  min-width: 4.5rem;
-}
-
-.booking-form--react .guests-note {
+/* ---------- Who's travelling: one card, label left / control right ---------- */
+.booking-form--react .party {
   grid-column: 1 / -1;
-  text-align: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-.booking-form--react .pets-field {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  padding: 0.7rem 0.8rem;
+.booking-form--react .party legend {
+  margin-bottom: 0.4rem;
+  padding: 0;
+  color: rgba(6, 63, 104, 0.82);
+  font-weight: 600;
+}
+
+.party-card {
   border: 1px solid rgba(4, 91, 145, 0.14);
   border-radius: 0.9rem;
-  background: rgba(255, 255, 255, 0.76);
-  cursor: pointer;
+  background: rgba(255, 255, 255, 0.85);
+  overflow: hidden;
 }
 
-.booking-form--react .pets-field input {
-  width: 1.15rem;
-  height: 1.15rem;
-  min-height: 0 !important;
-  margin: 0.15rem 0 0;
-  accent-color: #077cbd;
-  flex: 0 0 auto;
+.party-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.75rem;
+  padding: 0.6rem 0.9rem;
 }
 
-.booking-form--react .pets-field span {
+.party-row + .party-row {
+  border-top: 1px solid rgba(31, 42, 51, 0.08);
+}
+
+.party-label {
   display: grid;
-  gap: 0.15rem;
-}
-
-.booking-form--react .pets-field strong {
+  gap: 0.1rem;
+  min-width: 0;
   color: #1f2a33;
   font-weight: 600;
 }
 
-.booking-form--react .pets-field small {
+.party-label small {
   color: rgba(6, 63, 104, 0.62);
   font-size: 0.85rem;
   font-weight: 500;
 }
 
-.booking-form--react .pets-field:has(input:checked) {
-  border-color: #077cbd;
-  background: #fff;
+.party-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 0 0 auto;
 }
 
-@media (max-width: 620px) {
-  .booking-form--react .guests-field {
-    grid-template-columns: max-content;
-  }
+.party-stepper button {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid rgba(7, 124, 189, 0.45);
+  border-radius: 999px;
+  background: #fff;
+  color: #077cbd;
+  font: inherit;
+  font-size: 1.15rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
 
-  .booking-form--react .guests-row {
-    justify-content: center;
+/* 44px touch target without making the circle bigger */
+.party-stepper button {
+  position: relative;
+}
+
+.party-stepper button::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .party-stepper button:not(:disabled):hover {
+    border-color: #077cbd;
+    background: rgba(7, 124, 189, 0.08);
+  }
+}
+
+.party-stepper button:disabled {
+  border-color: rgba(31, 42, 51, 0.12);
+  color: rgba(31, 42, 51, 0.25);
+  cursor: default;
+}
+
+.party-stepper button:focus-visible,
+.party-switch:focus-visible {
+  outline: 2px solid #077cbd;
+  outline-offset: 2px;
+}
+
+.party-stepper output {
+  min-width: 2rem;
+  color: #1f2a33;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.party-pets {
+  cursor: pointer;
+}
+
+/* Switch built on the native checkbox: keyboard, label click and screen readers come for free */
+.booking-form--react .party-switch {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+  flex: 0 0 auto;
+  width: 2.9rem;
+  height: 1.7rem;
+  min-height: 0 !important;
+  margin: 0;
+  padding: 0;
+  border: 0 !important;
+  border-radius: 999px;
+  background: rgba(31, 42, 51, 0.18) !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 180ms var(--ease-out, ease);
+}
+
+.booking-form--react .party-switch::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(31, 42, 51, 0.25);
+  transition: transform 180ms var(--ease-out, ease);
+}
+
+.booking-form--react .party-switch:checked {
+  background: #077cbd !important;
+}
+
+.booking-form--react .party-switch:checked::before {
+  transform: translateX(1.2rem);
+}
+
+.party-note {
+  margin: 0.45rem 0 0;
+  color: rgba(6, 63, 104, 0.62);
+  font-size: 0.85rem;
+}
+
+.party-note.is-limit {
+  color: #b5690a;
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-form--react .party-switch,
+  .booking-form--react .party-switch::before {
+    transition: none;
   }
 }

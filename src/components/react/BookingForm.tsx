@@ -56,6 +56,9 @@ const strings = (lang: Lang) => {
     lessChild: tr("booking.form.lessChild"),
     moreChild: tr("booking.form.moreChild"),
     maxAdults: (n: number) => tr("booking.form.maxAdults", { n }),
+    party: tr("booking.form.party"),
+    petsShort: tr("booking.form.petsShort"),
+    capacityLine: (home: string, max: number, adults: number) => tr("booking.form.capacityLine", { home, max, adults }),
     sendRequest: tr("booking.form.sendRequest"),
     priceLabel: tr("booking.form.priceLabel"),
     pickCheckin: tr("booking.cal.pickCheckin"),
@@ -236,34 +239,39 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
         {closed && <p className="booking-cal-note is-closed">{tx.closed}</p>}
       </div>
 
-      <div className="guests-field">
-        <div className="guests-row">
-          <span id="booking-adults-label">{tx.adults}</span>
-          <div className="guests-stepper" role="group" aria-labelledby="booking-adults-label">
-            <button type="button" onClick={() => setAdults((n) => Math.max(1, n - 1))} disabled={adults <= 1} aria-label={tx.lessAdult}>−</button>
-            <output aria-live="polite">{adults}</output>
-            <button type="button" onClick={() => setAdults((n) => n + 1)} disabled={adults >= maxAdults || guests >= max} aria-label={tx.moreAdult}>+</button>
+      <fieldset className="party">
+        <legend>{tx.party}</legend>
+        <div className="party-card">
+          <div className="party-row">
+            <span className="party-label" id="booking-adults-label">{tx.adults}</span>
+            <div className="party-stepper" role="group" aria-labelledby="booking-adults-label">
+              <button type="button" onClick={() => setAdults((n) => Math.max(1, n - 1))} disabled={adults <= 1} aria-label={tx.lessAdult}>−</button>
+              <output aria-live="polite">{adults}</output>
+              <button type="button" onClick={() => setAdults((n) => n + 1)} disabled={adults >= maxAdults || guests >= max} aria-label={tx.moreAdult}>+</button>
+            </div>
           </div>
-        </div>
-        <div className="guests-row">
-          <span id="booking-children-label">{tx.children}</span>
-          <div className="guests-stepper" role="group" aria-labelledby="booking-children-label">
-            <button type="button" onClick={() => setChildren((n) => Math.max(0, n - 1))} disabled={children <= 0} aria-label={tx.lessChild}>−</button>
-            <output aria-live="polite">{children}</output>
-            <button type="button" onClick={() => setChildren((n) => n + 1)} disabled={guests >= max} aria-label={tx.moreChild}>+</button>
+          <div className="party-row">
+            <span className="party-label" id="booking-children-label">{tx.children}</span>
+            <div className="party-stepper" role="group" aria-labelledby="booking-children-label">
+              <button type="button" onClick={() => setChildren((n) => Math.max(0, n - 1))} disabled={children <= 0} aria-label={tx.lessChild}>−</button>
+              <output aria-live="polite">{children}</output>
+              <button type="button" onClick={() => setChildren((n) => n + 1)} disabled={guests >= max} aria-label={tx.moreChild}>+</button>
+            </div>
           </div>
+          <label className="party-row party-pets">
+            <span className="party-label">
+              {tx.petsShort}
+              <small>{tx.petsNote}</small>
+            </span>
+            <input type="checkbox" role="switch" className="party-switch" checked={pets} onChange={(e) => setPets(e.currentTarget.checked)} />
+          </label>
         </div>
-        {home !== "any" && (guests >= max || adults >= maxAdults) && (
-          <small className="guests-note">{guests >= max ? tx.capacity(max) : tx.maxAdults(maxAdults)}</small>
+        {home !== "any" && (
+          <p className={`party-note${guests >= max || adults >= maxAdults ? " is-limit" : ""}`} aria-live="polite">
+            {tx.capacityLine(homes[home].name, max, maxAdults)}
+          </p>
         )}
-        <label className="pets-field">
-          <input type="checkbox" checked={pets} onChange={(e) => setPets(e.currentTarget.checked)} />
-          <span>
-            <strong>{tx.pets}</strong>
-            <small>{tx.petsNote}</small>
-          </span>
-        </label>
-      </div>
+      </fieldset>
 
       <div className="booking-quote" aria-live="polite">
         {overlap && <p className="is-error">{tx.overlap}</p>}

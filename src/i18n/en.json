@@ -448,5 +448,8 @@
   "booking.form.lessChild": "One child less",
   "booking.form.moreChild": "One child more",
   "booking.form.maxAdults": "Up to {n} adults in this home",
-  "booking.form.petsLabel": "Pets"
+  "booking.form.petsLabel": "Pets",
+  "booking.form.party": "Who's travelling",
+  "booking.form.capacityLine": "{home}: up to {max} guests, including up to {adults} adults.",
+  "booking.form.petsShort": "Pets"
 }

@@ -448,5 +448,8 @@
   "booking.form.lessChild": "Un bambino in meno",
   "booking.form.moreChild": "Un bambino in più",
   "booking.form.maxAdults": "Massimo {n} adulti in questa dimora",
-  "booking.form.petsLabel": "Animali"
+  "booking.form.petsLabel": "Animali",
+  "booking.form.party": "Chi viaggia",
+  "booking.form.capacityLine": "{home}: fino a {max} ospiti, di cui al massimo {adults} adulti.",
+  "booking.form.petsShort": "Animali domestici"
 }
