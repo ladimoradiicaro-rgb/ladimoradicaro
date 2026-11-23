@@ -11,6 +11,10 @@ interface Props {
 }
 const { home, cover, coverAlt } = Astro.props;
 const titleKey = `galleryPage.${home}.title` as Key;
+// Avallon title image (same name in IT and EN, so no data-i18n: the switcher would replace the image).
+const titleImage = home === "green"
+  ? { src: "/assets/titoli/dimora-verde.png", width: 1097, height: 236 }
+  : { src: "/assets/titoli/dimora-blu.png", width: 972, height: 236 };
 const copyKey = `galleryPage.${home}.copy` as Key;
 ---
 <section class={`gallery-hero gallery-hero--${home}`}>
@@ -26,7 +30,9 @@ const copyKey = `galleryPage.${home}.copy` as Key;
   <div class="gallery-hero-copy">
     <div>
       <p class="gallery-hero-eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow")}</p>
-      <h1 data-i18n={titleKey}>{t(titleKey)}</h1>
+      <h1 class="gallery-hero-title">
+        <img src={titleImage.src} width={titleImage.width} height={titleImage.height} alt={t(titleKey)} />
+      </h1>
       <p class="gallery-hero-text" data-i18n={copyKey}>{t(copyKey)}</p>
     </div>
     <a class="gallery-hero-cta" href="/#prenota" data-i18n="galleryPage.book">{t("galleryPage.book")}</a>
