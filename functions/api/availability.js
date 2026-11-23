@@ -11,7 +11,7 @@
 // A date in `busy` means the NIGHT starting that day is taken.
 
 const HOMES = { verde: "ICAL_VERDE", blu: "ICAL_BLU" };
-const CACHE_SECONDS = 900; // 15 minutes: Airbnb/Booking refresh their own exports on a similar pace
+const CACHE_SECONDS = 120; // 2 minutes: near-live, while reading each feed at most ~30 times an hour per edge location
 const HORIZON_DAYS = 550;
 
 const pad = (n) => String(n).padStart(2, "0");
@@ -56,7 +56,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
 
   const feedsValue = env[HOMES[home]] || "";
   // The cache key carries a fingerprint of the configured feeds, so changing the links
-  // takes effect immediately instead of after the 15-minute cache.
+  // takes effect immediately instead of after the cache expires.
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(feedsValue));
   const fingerprint = [...new Uint8Array(digest)].slice(0, 6).map((b) => b.toString(16).padStart(2, "0")).join("");
   const cache = caches.default;
@@ -75,7 +75,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
   } else {
     const results = await Promise.allSettled(
       feeds.map((feed) =>
-        fetch(feed, { headers: { "User-Agent": "LaDimoraDiIcaro-Calendar/1.0" }, cf: { cacheTtl: 300 } }).then((r) => {
+        fetch(feed, { headers: { "User-Agent": "LaDimoraDiIcaro-Calendar/1.0" }, cf: { cacheTtl: 60 } }).then((r) => {
           if (!r.ok) throw new Error(`feed ${r.status}`);
           return r.text();
         }),
