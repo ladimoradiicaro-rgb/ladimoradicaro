@@ -146,7 +146,7 @@ img {
   margin: 0.28rem auto;
   background: var(--blue-deep);
   border-radius: 999px;
-  transition: transform 260ms cubic-bezier(0.2, 1, 0.32, 1), width 220ms ease;
+  transition: transform 260ms var(--ease-out), width 220ms ease;
 }
 
 body.menu-open .menu-toggle {
@@ -2082,11 +2082,11 @@ section[id],
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 0 9px 24px rgba(0, 0, 0, 0.12);
   transform: translateX(calc(var(--lang-index) * 100%));
-  transition: transform 760ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 360ms ease;
+  transition: transform 760ms var(--ease-out), box-shadow 360ms ease;
 }
 
 .language-switcher.is-switching::before {
-  animation: langThumbPop 920ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: langThumbPop 920ms var(--ease-out);
 }
 
 .lang-option {
@@ -2118,12 +2118,12 @@ section[id],
 }
 
 .language-switcher.is-switching .lang-option.is-active {
-  animation: langLabelSettle 820ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: langLabelSettle 820ms var(--ease-out);
 }
 
 body.language-transition main,
 body.language-transition .site-footer {
-  animation: languageContentReveal 960ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: languageContentReveal 960ms var(--ease-out);
 }
 
 body.language-transition::after {
@@ -2169,7 +2169,7 @@ body.language-transition::after {
   border-radius: 50%;
   background: radial-gradient(circle, rgba(4, 91, 145, 0.22) 0%, rgba(4, 91, 145, 0.06) 60%, transparent 100%);
   pointer-events: none;
-  animation: langDrop 680ms cubic-bezier(0.16, 1, 0.36, 1) forwards;
+  animation: langDrop 680ms var(--ease-out) forwards;
 }
 
 @keyframes langDrop {
@@ -2698,9 +2698,9 @@ body.language-transition::after {
     transform-origin: top right;
     clip-path: ellipse(0 0 at calc(100% - 2.4rem) 0.2rem);
     transition:
-      clip-path 520ms cubic-bezier(0.2, 1, 0.32, 1),
+      clip-path 520ms var(--ease-out),
       opacity 240ms ease,
-      transform 360ms cubic-bezier(0.2, 1, 0.32, 1),
+      transform 360ms var(--ease-out),
       visibility 0ms linear 420ms;
   }
 
@@ -2711,9 +2711,9 @@ body.language-transition::after {
     transform: translateY(0) scale(1);
     clip-path: ellipse(150% 135% at calc(100% - 2.4rem) 0.2rem);
     transition:
-      clip-path 560ms cubic-bezier(0.2, 1, 0.32, 1),
+      clip-path 560ms var(--ease-out),
       opacity 220ms ease,
-      transform 380ms cubic-bezier(0.2, 1, 0.32, 1);
+      transform 380ms var(--ease-out);
   }
 
   .direct-booking-section,
@@ -3007,11 +3007,11 @@ body.language-transition::after {
   font-weight: 900;
   scroll-snap-align: start;
   transition:
-    background 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    color 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    background 520ms var(--ease-out),
+    border-color 520ms var(--ease-out),
+    color 520ms var(--ease-out),
+    transform 520ms var(--ease-out),
+    box-shadow 520ms var(--ease-out);
 }
 
 .gallery-filter:hover,
@@ -3045,7 +3045,7 @@ body.language-transition::after {
 }
 
 .single-gallery-grid figure.is-filtering {
-  animation: galleryFilterIn 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: galleryFilterIn 720ms var(--ease-out) both;
   animation-delay: var(--gallery-delay, 0ms);
 }
 
@@ -3068,8 +3068,8 @@ body.language-transition::after {
   cursor: zoom-in;
   transform: scale(1.001);
   transition:
-    transform 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    filter 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform 900ms var(--ease-out),
+    filter 900ms var(--ease-out);
   will-change: transform;
 }
 
@@ -3418,7 +3418,7 @@ body.menu-open .menu-toggle span:last-child {
   border-radius: 999px;
   background: rgba(7, 124, 189, 0.08);
   color: var(--blue-deep);
-  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), background 220ms ease;
+  transition: transform 260ms var(--ease-out), background 220ms ease;
 }
 
 .faq-list details[open] summary::after {
@@ -3427,7 +3427,7 @@ body.menu-open .menu-toggle span:last-child {
 }
 
 .faq-list details p {
-  animation: faqReveal 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  animation: faqReveal 320ms var(--ease-out);
 }
 
 @keyframes faqReveal {
@@ -5126,7 +5126,7 @@ body.menu-open .menu-toggle span:last-child {
   transform-origin: center bottom;
   z-index: var(--card-z);
   transition:
-    transform 780ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 780ms var(--ease-out),
     filter 520ms ease,
     opacity 520ms ease;
 }
@@ -5325,7 +5325,7 @@ body.menu-open .menu-toggle span:last-child {
   transform-origin: center bottom;
   z-index: var(--deck-z, 1);
   transition:
-    transform 680ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 680ms var(--ease-out),
     opacity 420ms ease,
     filter 420ms ease;
 }
@@ -5578,7 +5578,7 @@ main > section:not(.hero) > *,
 }
 
 main {
-  animation: page-fade-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-fade-in 0.5s var(--ease-out) both;
 }
 
 body.is-leaving main {
@@ -6192,7 +6192,7 @@ body.lightbox-open .lightbox.is-open img {
   position: relative;
   width: 100%;
   min-height: 26rem;
-  transition: height 520ms cubic-bezier(.2,.7,.2,1);
+  transition: height 520ms var(--ease-out);
 }
 
 .masonry-card {
@@ -6210,7 +6210,7 @@ body.lightbox-open .lightbox.is-open img {
   box-shadow: 0 18px 44px rgba(4, 64, 92, 0.12);
   opacity: 0;
   transform: translateY(1rem);
-  animation: masonry-rise 620ms cubic-bezier(.2,.7,.2,1) forwards;
+  animation: masonry-rise 620ms var(--ease-out) forwards;
   animation-delay: var(--masonry-delay, 0ms);
 }
 
@@ -6228,9 +6228,9 @@ body.lightbox-open .lightbox.is-open img {
   animation: none;
   transform-origin: center;
   transition:
-    transform 780ms cubic-bezier(.2,.72,.16,1),
-    width 780ms cubic-bezier(.2,.72,.16,1),
-    height 780ms cubic-bezier(.2,.72,.16,1),
+    transform 780ms var(--ease-out),
+    width 780ms var(--ease-out),
+    height 780ms var(--ease-out),
     opacity 620ms ease,
     filter 880ms ease,
     box-shadow 260ms ease;

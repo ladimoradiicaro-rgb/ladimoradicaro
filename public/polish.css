@@ -20,7 +20,7 @@
   --pl-accent-ink: #05659b;     /* blue as text on light surfaces */
   --pl-label: #b5690a;          /* logo orange, deep enough to read on cream */
   --pl-shadow: 0 1px 2px rgba(31, 42, 51, 0.05), 0 8px 24px rgba(31, 42, 51, 0.05);
-  --pl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --pl-ease: var(--ease-out);
 }
 
 /* ---------- Labels: sentence case, no wide tracking ---------- */

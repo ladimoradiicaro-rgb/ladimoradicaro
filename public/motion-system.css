@@ -1,0 +1,177 @@
+/* ==========================================================================
+   Motion system — loaded last on every page.
+   Curves and durations follow Emil Kowalski's guidelines: UI under 300ms,
+   strong ease-out for entrances, no ease-in, transform/opacity only.
+   ========================================================================== */
+
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);        /* strong ease-out for UI */
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);    /* on-screen movement */
+  --dur-press: 140ms;
+  --dur-ui: 200ms;
+  --dur-reveal: 500ms;
+}
+
+/* ---------- Page changes: native cross-document View Transitions ----------
+   Replaces the JS fade-out that delayed every click by 300ms (ease-in) and the
+   500ms rise of <main> on load. Browsers without support simply navigate. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--dur-ui);
+  animation-timing-function: var(--ease-out);
+}
+
+main,
+body.is-leaving main {
+  animation: none !important;
+}
+
+/* ---------- Language switcher ----------
+   A toggle is hit often: the thumb slides in 220ms, labels change colour,
+   the page text fades in briefly. No pop, no droplet, no veil over the page. */
+.language-switcher::before {
+  transition: transform 220ms var(--ease-out), box-shadow var(--dur-ui) ease !important;
+}
+
+.language-switcher.is-switching::before,
+.language-switcher.is-switching .lang-option.is-active {
+  animation: none !important;
+}
+
+.lang-option {
+  transition: color 150ms ease !important;
+}
+
+.lang-drop,
+body.language-transition::after {
+  display: none !important;
+}
+
+body.language-transition main,
+body.language-transition .site-footer {
+  animation: lang-text-in 180ms var(--ease-out) !important;
+}
+
+@keyframes lang-text-in {
+  from { opacity: 0.55; }
+}
+
+/* ---------- Mobile menu ----------
+   The panel opens from the ☰ button (top-right), the links follow 30ms apart.
+   Visibility instead of display so the panel can animate both ways. */
+@media (max-width: 980px) {
+  .main-nav {
+    display: flex !important;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px) scale(0.97);
+    transform-origin: top right;
+    pointer-events: none;
+    /* Nearly opaque: the links must stay readable over the tour photos. */
+    background: rgba(255, 250, 241, 0.98) !important;
+    background-image: none !important;
+    transition:
+      opacity 160ms var(--ease-out),
+      transform 160ms var(--ease-out),
+      visibility 0s linear 160ms;
+  }
+
+  body.menu-open .main-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    transition:
+      opacity var(--dur-ui) var(--ease-out),
+      transform var(--dur-ui) var(--ease-out),
+      visibility 0s;
+  }
+
+  .main-nav a {
+    transition: opacity 120ms ease, transform 120ms ease, background-color 150ms ease !important;
+    transition-delay: 0ms !important;
+  }
+
+  body.menu-open .main-nav a {
+    transition:
+      opacity 220ms var(--ease-out),
+      transform 220ms var(--ease-out),
+      background-color 150ms ease !important;
+    transition-delay: calc(var(--menu-order, 0) * 30ms + 40ms) !important;
+  }
+}
+
+/* ---------- Reveals on scroll ----------
+   Shorter and closer: 500ms, 16px, one curve. */
+.bt .bt-word {
+  filter: blur(6px);
+  transform: translateY(0.25em);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    filter var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out) !important;
+  transition-delay: calc(var(--i) * 40ms) !important;
+}
+
+.bt.is-in .bt-word {
+  filter: blur(0);
+  transform: none;
+}
+
+.motion-ready .ac {
+  translate: 0 16px;
+  transition:
+    opacity var(--dur-reveal) var(--ease-out) var(--ac-delay, 0ms),
+    translate var(--dur-reveal) var(--ease-out) var(--ac-delay, 0ms) !important;
+}
+
+.motion-ready .ac.is-in {
+  translate: 0 0;
+}
+
+/* ---------- Press feedback ---------- */
+.button:active,
+.header-action:active,
+.tour-end-btn:active,
+.gallery-hero-cta:active,
+.photo-filters button:active,
+.guests-stepper button:active,
+.menu-toggle:active {
+  transform: scale(0.97);
+  transition: transform var(--dur-press) var(--ease-out);
+}
+
+/* ---------- Reduced motion: keep fades, drop movement ---------- */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  .main-nav,
+  body.menu-open .main-nav,
+  .main-nav a,
+  body.menu-open .main-nav a {
+    transform: none !important;
+    transition: opacity 120ms ease, visibility 0s !important;
+  }
+
+  body.language-transition main,
+  body.language-transition .site-footer {
+    animation: none !important;
+  }
+
+  .button:active,
+  .header-action:active,
+  .tour-end-btn:active,
+  .gallery-hero-cta:active,
+  .photo-filters button:active,
+  .guests-stepper button:active,
+  .menu-toggle:active {
+    transform: none;
+  }
+}

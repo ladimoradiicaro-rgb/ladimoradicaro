@@ -146,31 +146,14 @@ const applyLanguage = (language) => {
     : (currentLanguage === "en" ? "Open menu" : "Apri menu"));
 };
 
-const animateLanguageSwitch = (clickX) => {
+const animateLanguageSwitch = () => {
+  // Short text fade on the page (motion-system.css); the thumb slides on its own.
   window.clearTimeout(languageAnimationTimer);
   document.body.classList.remove("language-transition");
-  languageSwitcher?.classList.remove("is-switching");
-
-  if (languageSwitcher) {
-    const rect = languageSwitcher.getBoundingClientRect();
-    const x = clickX != null ? clickX - rect.left : rect.width / 2;
-    const pct = Math.round((x / rect.width) * 100);
-    const drop = document.createElement("span");
-    drop.className = "lang-drop";
-    drop.style.setProperty("--drop-x", `${pct}%`);
-    languageSwitcher.appendChild(drop);
-    window.setTimeout(() => drop.remove(), 720);
-  }
-
-  requestAnimationFrame(() => {
-    document.body.classList.add("language-transition");
-    languageSwitcher?.classList.add("is-switching");
-  });
-
+  requestAnimationFrame(() => document.body.classList.add("language-transition"));
   languageAnimationTimer = window.setTimeout(() => {
     document.body.classList.remove("language-transition");
-    languageSwitcher?.classList.remove("is-switching");
-  }, 1040);
+  }, 220);
 };
 
 const parseIcalDate = (value = "") => {
@@ -645,7 +628,7 @@ langButtons.forEach((button) => {
       return;
     }
 
-    animateLanguageSwitch(e.clientX);
+    animateLanguageSwitch();
     closeMenu();
     applyLanguage(nextLanguage);
     setupAvailabilityCalendar();

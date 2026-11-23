@@ -75,7 +75,7 @@ const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Nunito+Sans:wght@400;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    {styles.map((file) => <link rel="stylesheet" href={v(file)} />)}
+    {[...styles, "motion-system.css"].map((file) => <link rel="stylesheet" href={v(file)} />)}
     {needsI18n && <script is:inline defer src={v("i18n.js")}></script>}
     {scripts.map((file) => <script is:inline defer src={file.startsWith("vendor/") ? `/${file}` : v(file)}></script>)}
     {ldBlocks.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data, null, 2)} />)}
@@ -88,21 +88,5 @@ const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <slot name="after" />
     {chrome && <PageChrome />}
 
-    {chrome && (
-      <script is:inline>
-        // Page transitions: fade out before leaving for another page of the site.
-        document.addEventListener("click", (e) => {
-          const link = e.target.closest("a[href]");
-          if (!link || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey) return;
-          const href = link.getAttribute("href");
-          if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("http") || href.startsWith("//") || link.target === "_blank") return;
-          e.preventDefault();
-          document.body.classList.add("is-leaving");
-          setTimeout(() => { window.location.href = href; }, 300);
-        });
-        // Coming back with the browser's back button: don't stay faded out.
-        window.addEventListener("pageshow", () => document.body.classList.remove("is-leaving"));
-      </script>
-    )}
   </body>
 </html>
