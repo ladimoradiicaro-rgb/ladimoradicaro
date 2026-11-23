@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import HouseTour from "../components/react/HouseTour";
+import BookingForm from "../components/react/BookingForm";
 import jsonLd from "../data/jsonld/index.json";
 ---
 <Base
@@ -507,29 +508,7 @@ import jsonLd from "../data/jsonld/index.json";
           <h2 data-i18n="booking.title">Raccontaci quando vorresti arrivare.</h2>
         </div>
         <div class="prenota-left">
-          <form class="booking-form" data-booking-form>
-            <label>
-              <span data-i18n="booking.home">Dimora</span>
-              <select name="home" required>
-                <option value="La Dimora Verde">La Dimora Verde</option>
-                <option value="La Dimora Blu">La Dimora Blu</option>
-                <option value="Da valutare insieme" data-i18n="booking.homeAny">Da valutare insieme</option>
-              </select>
-            </label>
-            <label>
-              <span data-i18n="booking.checkin">Check-in</span>
-              <input type="date" name="checkin" required />
-            </label>
-            <label>
-              <span data-i18n="booking.checkout">Check-out</span>
-              <input type="date" name="checkout" required />
-            </label>
-            <label>
-              <span data-i18n="booking.guests">Ospiti</span>
-              <input type="number" name="guests" min="1" max="8" value="2" required />
-            </label>
-            <button class="button primary" type="submit" data-i18n="cta.request">Richiedi disponibilità</button>
-          </form>
+          <BookingForm client:idle />
         </div>
         <div class="prenota-right">
           <div class="direct-links link-board" aria-label="Contatti e link utili">

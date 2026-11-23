@@ -164,7 +164,8 @@
   groups.forEach((selector) => {
     const items = Array.from(document.querySelectorAll(selector));
     items.forEach((item, i) => {
-      if (item.closest(".tour-stage") || item.classList.contains("ac")) return;
+      // React islands manage their own markup; adding classes before hydration breaks it.
+      if (item.closest(".tour-stage") || item.closest("astro-island") || item.classList.contains("ac")) return;
       item.classList.add("ac");
       item.style.setProperty("--ac-delay", `${(i % 4) * 90}ms`);
       revealObserver.observe(item);
