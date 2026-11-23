@@ -1,5 +1,5 @@
 ---
-import { t } from "../i18n";
+import { pick, t } from "../i18n";
 import Base from "../layouts/Base.astro";
 import HouseTour from "../components/react/HouseTour";
 import BookingForm from "../components/react/BookingForm";
@@ -45,7 +45,7 @@ import jsonLd from "../data/jsonld/index.json";
           <h2 id="tour-title" data-i18n="tour.title">{t("tour.title")}</h2>
           <p data-i18n="tour.copy">{t("tour.copy")}</p>
         </div>
-        <HouseTour client:load />
+        <HouseTour client:load dict={pick(["tour.", "homes."])} />
       </section>
 
       <section id="tour-fine" class="tour-end" aria-labelledby="tour-end-title">
@@ -498,7 +498,7 @@ import jsonLd from "../data/jsonld/index.json";
           <h2 data-i18n="booking.title">{t("booking.title")}</h2>
         </div>
         <div class="prenota-left">
-          <BookingForm client:idle />
+          <BookingForm client:idle dict={pick(["booking."])} />
         </div>
         <div class="prenota-right">
           <div class="direct-links link-board" aria-label="Contatti e link utili">

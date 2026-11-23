@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { filters, galleries, labelKeys, type Category, type HomeId, type Photo } from "../../data/galleries";
-import { t } from "../../i18n";
+import { registerDict, t, type Dict } from "../../i18n/island";
 import { useLanguage } from "./useLanguage";
 import "./GalleryGrid.css";
 
@@ -10,7 +10,8 @@ import "./GalleryGrid.css";
 const small = (p: Photo) => `/assets/gallery/${p.file}-800.webp`;
 const large = (p: Photo) => `/assets/gallery/${p.file}-1600.webp`;
 
-export default function GalleryGrid({ home }: { home: HomeId }) {
+export default function GalleryGrid({ home, dict }: { home: HomeId; dict: Dict }) {
+  registerDict(dict);
   const lang = useLanguage();
   const [category, setCategory] = useState<Category | "all">("all");
   const chips = filters[home];
@@ -48,7 +49,7 @@ export default function GalleryGrid({ home }: { home: HomeId }) {
 
       <ul className="photo-grid" key={category}>
         {photos.map((photo, i) => (
-          <li key={photo.file} style={{ "--i": Math.min(i, 12) } as React.CSSProperties}>
+          <li key={photo.file} style={{ "--i": Math.min(i, 12) } as Record<string, string | number>}>
             <button type="button" onClick={() => open(photo)} aria-label={photo.alt}>
               <img
                 src={small(photo)}

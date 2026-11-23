@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { tours, type TourData } from "../../data/tour";
 import { useLanguage } from "./useLanguage";
-import { t, type Lang } from "../../i18n";
+import { registerDict, t, type Dict, type Lang } from "../../i18n/island";
 
 /* Scroll-driven walkthrough of the two homes.
    Each tour is a tall track with a full-screen sticky stage. Scrolling stacks the
@@ -116,7 +116,7 @@ function Tour({ data, lang, register }: { data: TourData; lang: Lang; register: 
       id={data.anchor}
       data-tour
       data-tour-lead={data.lead}
-      style={{ "--frames": data.frames } as React.CSSProperties}
+      style={{ "--frames": data.frames } as Record<string, string | number>}
     >
       <div className="tour-stage">
         <div className="tour-frame">
@@ -164,7 +164,8 @@ function Tour({ data, lang, register }: { data: TourData; lang: Lang; register: 
   );
 }
 
-export default function HouseTour() {
+export default function HouseTour({ dict }: { dict: Dict }) {
+  registerDict(dict);
   const lang = useLanguage();
   const tracks = useRef<(Track | null)[]>([]);
   const registers = useRef(tours.map((_, i) => (track: Track | null) => { tracks.current[i] = track; }));

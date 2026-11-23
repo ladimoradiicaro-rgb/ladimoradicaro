@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "./useLanguage";
-import { t, type Key, type Lang } from "../../i18n";
+import { registerDict, t, type Dict, type Key, type Lang } from "../../i18n/island";
 import "./BookingForm.css";
 
 /* Availability request: pick the home, the dates and the guests, then send the
@@ -62,7 +62,8 @@ const formatDate = (iso: string, lang: Lang, withYear = false) =>
 const track = (action: string, params: Record<string, unknown>) =>
   (window as unknown as { trackEvent?: (a: string, p: Record<string, unknown>) => void }).trackEvent?.(action, params);
 
-export default function BookingForm() {
+export default function BookingForm({ dict }: { dict: Dict }) {
+  registerDict(dict);
   const lang = useLanguage();
   const tx = useMemo(() => strings(lang), [lang]);
   const [home, setHome] = useState<HomeKey>("verde");
@@ -114,7 +115,7 @@ export default function BookingForm() {
     if (value && (!checkout || checkout <= value)) setCheckout(addDays(value, 1));
   };
 
-  const submit = (event: React.FormEvent) => {
+  const submit = (event: Event) => {
     event.preventDefault();
     setTried(true);
     if (!ready) return;
@@ -139,7 +140,7 @@ export default function BookingForm() {
 
       <label>
         <span>{tx.checkin}</span>
-        <input type="date" name="checkin" value={checkin} min={today || undefined} required onChange={(e) => onCheckin(e.target.value)} aria-invalid={tried && !checkin} />
+        <input type="date" name="checkin" value={checkin} min={today || undefined} required onChange={(e) => onCheckin(e.currentTarget.value)} aria-invalid={tried && !checkin} />
       </label>
       <label>
         <span>{tx.checkout}</span>
@@ -149,7 +150,7 @@ export default function BookingForm() {
           value={checkout}
           min={checkin ? addDays(checkin, 1) : today || undefined}
           required
-          onChange={(e) => setCheckout(e.target.value)}
+          onChange={(e) => setCheckout(e.currentTarget.value)}
           aria-invalid={datesError || (tried && !checkout)}
           aria-describedby="booking-dates-note"
         />

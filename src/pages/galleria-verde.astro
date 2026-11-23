@@ -1,5 +1,5 @@
 ---
-import { t } from "../i18n";
+import { pick, t } from "../i18n";
 import Base from "../layouts/Base.astro";
 import GalleryHero from "../components/GalleryHero.astro";
 import GalleryGrid from "../components/react/GalleryGrid";
@@ -19,7 +19,7 @@ import jsonLd from "../data/jsonld/galleria-verde.json";
   <main class="gallery-v2 gallery-v2--green">
     <GalleryHero home="green" cover="verde-soggiorno-cucina-08" coverAlt="Zona pranzo luminosa della Dimora Verde" />
     <section aria-label="Galleria fotografica La Dimora Verde">
-      <GalleryGrid client:load home="green" />
+      <GalleryGrid client:load home="green" dict={pick(["gallery."])} />
     </section>
   </main>
 </Base>

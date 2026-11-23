@@ -14,3 +14,12 @@ export function t(key: Key, lang: Lang = "it", vars?: Record<string, string | nu
   const text: string = (dictionaries[lang] as Record<string, string>)[key] ?? it[key] ?? key;
   return vars ? text.replace(/\{(\w+)\}/g, (_, name) => String(vars[name] ?? "")) : text;
 }
+
+/** Strings an island needs, by key prefix, for both languages — passed as a prop so the
+    client bundle doesn't carry the whole dictionary. */
+export type Dict = Record<Lang, Record<string, string>>;
+export function pick(prefixes: string[]): Dict {
+  const filter = (d: Record<string, string>) =>
+    Object.fromEntries(Object.entries(d).filter(([key]) => prefixes.some((p) => key.startsWith(p))));
+  return { it: filter(it), en: filter(en) };
+}
