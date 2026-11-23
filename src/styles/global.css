@@ -1,0 +1,14 @@
+/* Site-wide rules that belong to the layout rather than to a page. */
+
+/* Hide the vertical scrollbar everywhere; scrolling (wheel, touch, keys, Lenis) keeps working. */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
