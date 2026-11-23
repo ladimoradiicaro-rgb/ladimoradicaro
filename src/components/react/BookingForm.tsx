@@ -17,10 +17,11 @@ type HomeKey = "verde" | "blu" | "any";
 const WHATSAPP = "393493608146";
 const EMAIL = "ladimoradiicaro@gmail.com";
 
-const homes: Record<HomeKey, { name: string; max: number; nameKey?: Key; detailKey: Key }> = {
-  verde: { name: "La Dimora Verde", max: 7, detailKey: "booking.form.greenDetail" },
-  blu: { name: "La Dimora Blu", max: 4, detailKey: "booking.form.blueDetail" },
-  any: { name: "Da valutare insieme", max: 11, nameKey: "booking.form.any", detailKey: "booking.form.anyDetail" },
+// max = total people, maxAdults = adults among them (as stated on the site and in llms.txt).
+const homes: Record<HomeKey, { name: string; max: number; maxAdults: number; nameKey?: Key; detailKey: Key }> = {
+  verde: { name: "La Dimora Verde", max: 7, maxAdults: 5, detailKey: "booking.form.greenDetail" },
+  blu: { name: "La Dimora Blu", max: 4, maxAdults: 2, detailKey: "booking.form.blueDetail" },
+  any: { name: "Da valutare insieme", max: 11, maxAdults: 7, nameKey: "booking.form.any", detailKey: "booking.form.anyDetail" },
 };
 
 /** Strings for one language, all from src/i18n. */
@@ -44,6 +45,17 @@ const strings = (lang: Lang) => {
     thanks: tr("booking.form.thanks"),
     subject: tr("booking.form.subject"),
     label: { home: tr("booking.home"), nights: tr("booking.form.nightsLabel"), guests: tr("booking.guests") },
+    adults: tr("booking.form.adults"),
+    children: tr("booking.form.children"),
+    pets: tr("booking.form.pets"),
+    petsNote: tr("booking.form.petsNote"),
+    petsYes: tr("booking.form.petsYes"),
+    petsLabel: tr("booking.form.petsLabel"),
+    lessAdult: tr("booking.form.lessAdult"),
+    moreAdult: tr("booking.form.moreAdult"),
+    lessChild: tr("booking.form.lessChild"),
+    moreChild: tr("booking.form.moreChild"),
+    maxAdults: (n: number) => tr("booking.form.maxAdults", { n }),
     sendRequest: tr("booking.form.sendRequest"),
     priceLabel: tr("booking.form.priceLabel"),
     pickCheckin: tr("booking.cal.pickCheckin"),
@@ -87,7 +99,10 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
   const [home, setHome] = useState<HomeKey>("verde");
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
-  const [guests, setGuests] = useState(2);
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
+  const [pets, setPets] = useState(false);
+  const guests = adults + children;
   const [today, setToday] = useState("");
   const [tried, setTried] = useState(false);
 
@@ -105,8 +120,13 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
     return () => document.removeEventListener("click", onClick);
   }, []);
 
-  const max = homes[home].max;
-  useEffect(() => setGuests((g) => Math.min(g, max)), [max]);
+  const { max, maxAdults } = homes[home];
+  // Switching to a smaller home trims the party to what it can host.
+  useEffect(() => {
+    const a = Math.min(adults, maxAdults);
+    setAdults(a);
+    setChildren((c) => Math.min(c, max - a));
+  }, [max, maxAdults]);
 
   // Busy nights per home, read once from /api/availability (cached 15 min at the edge).
   type Feed = { status: "loading" | "ok" | "error"; busy: Set<string>; demo: boolean };
@@ -158,7 +178,7 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
 
   const message = useMemo(() => {
     if (closed && !ready) {
-      return [tx.nextGreeting, `${tx.label.home}: ${homeName}`, `${tx.label.guests}: ${guests}`, "", tx.thanks].join("\n");
+      return [tx.nextGreeting, `${tx.label.home}: ${homeName}`, `${tx.adults}: ${adults}`, ...(children ? [`${tx.children}: ${children}`] : []), ...(pets ? [`${tx.petsLabel}: ${tx.petsYes}`] : []), "", tx.thanks].join("\n");
     }
     const lines = [
       tx.greeting,
@@ -166,19 +186,19 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
       `${tx.checkin}: ${checkin ? formatDate(checkin, lang, true) : "-"}`,
       `${tx.checkout}: ${checkout ? formatDate(checkout, lang, true) : "-"}`,
       ...(ready ? [`${tx.label.nights}: ${nights}`] : []),
-      `${tx.label.guests}: ${guests}`,
+      `${tx.adults}: ${adults}`, ...(children ? [`${tx.children}: ${children}`] : []), ...(pets ? [`${tx.petsLabel}: ${tx.petsYes}`] : []),
       ...(offer ? [`${tx.priceLabel}: €${offer.total}`] : []),
       "",
       tx.thanks,
     ];
     return lines.join("\n");
-  }, [tx, homeName, checkin, checkout, nights, guests, ready, lang, offer?.total, closed]);
+  }, [tx, homeName, checkin, checkout, nights, adults, children, pets, ready, lang, offer?.total, closed]);
 
   const submit = (event: Event) => {
     event.preventDefault();
     setTried(true);
     if (!valid) return;
-    track("availability_request_submit", { home: homes[home].name, checkin, checkout, guests, nights, total: offer?.total });
+    track("availability_request_submit", { home: homes[home].name, checkin, checkout, adults, children, pets, nights, total: offer?.total });
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
   };
 
@@ -217,13 +237,32 @@ export default function BookingForm({ dict, lang: initial = "it" }: { dict: Dict
       </div>
 
       <div className="guests-field">
-        <span id="booking-guests-label">{tx.guests}</span>
-        <div className="guests-stepper" role="group" aria-labelledby="booking-guests-label">
-          <button type="button" onClick={() => setGuests((g) => Math.max(1, g - 1))} disabled={guests <= 1} aria-label={tx.less}>−</button>
-          <output aria-live="polite">{guests}</output>
-          <button type="button" onClick={() => setGuests((g) => Math.min(max, g + 1))} disabled={guests >= max} aria-label={tx.more}>+</button>
+        <div className="guests-row">
+          <span id="booking-adults-label">{tx.adults}</span>
+          <div className="guests-stepper" role="group" aria-labelledby="booking-adults-label">
+            <button type="button" onClick={() => setAdults((n) => Math.max(1, n - 1))} disabled={adults <= 1} aria-label={tx.lessAdult}>−</button>
+            <output aria-live="polite">{adults}</output>
+            <button type="button" onClick={() => setAdults((n) => n + 1)} disabled={adults >= maxAdults || guests >= max} aria-label={tx.moreAdult}>+</button>
+          </div>
         </div>
-        {guests >= max && home !== "any" && <small className="guests-note">{tx.capacity(max)}</small>}
+        <div className="guests-row">
+          <span id="booking-children-label">{tx.children}</span>
+          <div className="guests-stepper" role="group" aria-labelledby="booking-children-label">
+            <button type="button" onClick={() => setChildren((n) => Math.max(0, n - 1))} disabled={children <= 0} aria-label={tx.lessChild}>−</button>
+            <output aria-live="polite">{children}</output>
+            <button type="button" onClick={() => setChildren((n) => n + 1)} disabled={guests >= max} aria-label={tx.moreChild}>+</button>
+          </div>
+        </div>
+        {home !== "any" && (guests >= max || adults >= maxAdults) && (
+          <small className="guests-note">{guests >= max ? tx.capacity(max) : tx.maxAdults(maxAdults)}</small>
+        )}
+        <label className="pets-field">
+          <input type="checkbox" checked={pets} onChange={(e) => setPets(e.currentTarget.checked)} />
+          <span>
+            <strong>{tx.pets}</strong>
+            <small>{tx.petsNote}</small>
+          </span>
+        </label>
       </div>
 
       <div className="booking-quote" aria-live="polite">

@@ -437,5 +437,16 @@
   "booking.cal.pricesSoon": "I prezzi per la prenotazione diretta saranno pubblicati qui a breve: intanto scrivici per un preventivo.",
   "booking.cal.closed": "Al momento le dimore sono occupate e le prenotazioni sono chiuse. Scrivici: ti diciamo noi quando si liberano.",
   "booking.form.askNext": "Chiedi le prossime disponibilità",
-  "booking.form.nextGreeting": "Ciao, vorrei sapere quando saranno di nuovo disponibili le dimore de La Dimora di Icaro."
+  "booking.form.nextGreeting": "Ciao, vorrei sapere quando saranno di nuovo disponibili le dimore de La Dimora di Icaro.",
+  "booking.form.adults": "Adulti",
+  "booking.form.children": "Bambini",
+  "booking.form.pets": "Viaggio con animali domestici",
+  "booking.form.petsNote": "Su richiesta: ti confermiamo noi se è possibile.",
+  "booking.form.petsYes": "Sì, su richiesta",
+  "booking.form.lessAdult": "Un adulto in meno",
+  "booking.form.moreAdult": "Un adulto in più",
+  "booking.form.lessChild": "Un bambino in meno",
+  "booking.form.moreChild": "Un bambino in più",
+  "booking.form.maxAdults": "Massimo {n} adulti in questa dimora",
+  "booking.form.petsLabel": "Animali"
 }

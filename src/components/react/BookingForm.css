@@ -420,3 +420,77 @@
   color: #7a4706;
   font-weight: 600;
 }
+
+/* ---------- Party: adults, children, pets ---------- */
+.booking-form--react .guests-field {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  justify-content: start;
+  gap: 0.75rem 1.5rem;
+}
+
+.booking-form--react .guests-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.booking-form--react .guests-row > span {
+  min-width: 4.5rem;
+}
+
+.booking-form--react .guests-note {
+  grid-column: 1 / -1;
+}
+
+.booking-form--react .pets-field {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(4, 91, 145, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.76);
+  cursor: pointer;
+}
+
+.booking-form--react .pets-field input {
+  width: 1.15rem;
+  height: 1.15rem;
+  min-height: 0 !important;
+  margin: 0.15rem 0 0;
+  accent-color: #077cbd;
+  flex: 0 0 auto;
+}
+
+.booking-form--react .pets-field span {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.booking-form--react .pets-field strong {
+  color: #1f2a33;
+  font-weight: 600;
+}
+
+.booking-form--react .pets-field small {
+  color: rgba(6, 63, 104, 0.62);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.booking-form--react .pets-field:has(input:checked) {
+  border-color: #077cbd;
+  background: #fff;
+}
+
+@media (max-width: 620px) {
+  .booking-form--react .guests-field {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-form--react .guests-row {
+    justify-content: space-between;
+  }
+}
