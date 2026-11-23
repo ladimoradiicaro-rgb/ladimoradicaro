@@ -3,9 +3,15 @@
   padding-top: 0.75rem;
 }
 
-/* Legacy styles.css clips main sections, which would break the sticky filter bar. */
+/* Legacy styles.css clips main sections (breaks the sticky filter bar) and lays a
+   cream fade over their top and bottom edges (covers the first and last photos). */
 .gallery-v2 > section {
   overflow: visible !important;
+}
+
+.gallery-v2 > section::before,
+.gallery-v2 > section::after {
+  content: none !important;
 }
 
 .photo-grid-wrap--green { --home: #3f8a57; }
