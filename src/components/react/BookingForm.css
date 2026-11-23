@@ -170,3 +170,245 @@
     min-height: 0;
   }
 }
+
+/* ---------- Dates: availability calendar ---------- */
+.booking-form--react .booking-dates {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.booking-dates-step {
+  margin: 0;
+  color: #1f2a33;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.avail-cal {
+  position: relative;
+  padding: 0.75rem;
+  border: 1px solid rgba(4, 91, 145, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.avail-cal-nav {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  left: 0.55rem;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.avail-cal-nav button {
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid rgba(31, 42, 51, 0.12);
+  border-radius: 999px;
+  background: #fff;
+  color: #077cbd;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.avail-cal-nav button:disabled {
+  color: rgba(31, 42, 51, 0.25);
+  cursor: default;
+}
+
+.avail-cal-months {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.avail-cal-month h4 {
+  margin: 0.35rem 0 0.6rem;
+  color: #1f2a33;
+  font-size: 0.98rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.avail-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.avail-cal-wd {
+  padding-bottom: 0.25rem;
+  color: #7a8590;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.avail-cal-day {
+  aspect-ratio: 1;
+  min-height: 2.25rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: transparent;
+  color: #1f2a33;
+  font: inherit;
+  font-size: 0.92rem;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .avail-cal-day:not(:disabled):hover {
+    background: rgba(7, 124, 189, 0.1);
+  }
+}
+
+.avail-cal-day.is-today {
+  box-shadow: inset 0 0 0 1px rgba(7, 124, 189, 0.45);
+}
+
+.avail-cal-day.is-past {
+  color: rgba(31, 42, 51, 0.25);
+  cursor: default;
+}
+
+.avail-cal-day.is-busy {
+  color: rgba(31, 42, 51, 0.35);
+  text-decoration: line-through;
+  background: repeating-linear-gradient(135deg, rgba(31, 42, 51, 0.05) 0 4px, transparent 4px 8px);
+}
+
+.avail-cal-day.is-busy:disabled {
+  cursor: not-allowed;
+}
+
+.avail-cal-day.is-range {
+  border-radius: 0;
+  background: rgba(7, 124, 189, 0.12);
+}
+
+.avail-cal-day.is-start,
+.avail-cal-day.is-end {
+  background: #077cbd;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.avail-cal-day:focus-visible {
+  outline: 2px solid #077cbd;
+  outline-offset: 1px;
+}
+
+.avail-cal-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.7rem;
+  color: #4f5d68;
+  font-size: 0.82rem;
+}
+
+.avail-cal-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.avail-cal-legend i {
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(31, 42, 51, 0.15);
+}
+
+.avail-cal-legend i.is-busy {
+  background: repeating-linear-gradient(135deg, rgba(31, 42, 51, 0.15) 0 2px, transparent 2px 4px);
+}
+
+.avail-cal-legend i.is-selected {
+  border-color: #077cbd;
+  background: #077cbd;
+}
+
+.booking-cal-note {
+  margin: 0;
+  color: #4f5d68;
+  font-size: 0.88rem;
+}
+
+.booking-cal-note.is-demo {
+  color: #b5690a;
+}
+
+/* ---------- Price quote ---------- */
+.booking-form--react .booking-quote {
+  grid-column: 1 / -1;
+}
+
+.booking-quote p {
+  margin: 0 0 0.4rem;
+}
+
+.booking-quote .is-error {
+  color: #b3261e;
+}
+
+.booking-quote dl {
+  display: grid;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 0.8rem;
+  background: rgba(7, 124, 189, 0.06);
+}
+
+.booking-quote dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.booking-quote dt,
+.booking-quote dd {
+  margin: 0;
+  color: #4f5d68;
+}
+
+.booking-quote-total {
+  margin-top: 0.2rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid rgba(31, 42, 51, 0.1);
+}
+
+.booking-quote-total dt,
+.booking-quote-total dd {
+  color: #1f2a33;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.booking-quote-note {
+  margin-top: 0.45rem !important;
+  color: #7a8590;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 620px) {
+  .avail-cal-months {
+    grid-template-columns: 1fr;
+  }
+
+  .avail-cal-month--second {
+    display: none;
+  }
+}

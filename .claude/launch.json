@@ -4,8 +4,26 @@
     {
       "name": "Astro",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--", "--port", "4321"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "4321"
+      ],
       "port": 4321
+    },
+    {
+      "name": "Pages",
+      "runtimeExecutable": "wrangler",
+      "runtimeArgs": [
+        "pages",
+        "dev",
+        "dist",
+        "--port",
+        "8788"
+      ],
+      "port": 8788
     }
   ]
 }
