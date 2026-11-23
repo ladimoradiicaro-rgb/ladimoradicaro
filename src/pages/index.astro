@@ -1,5 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
+import HouseTour from "../components/react/HouseTour";
 import jsonLd from "../data/jsonld/index.json";
 ---
 <Base
@@ -9,7 +10,7 @@ import jsonLd from "../data/jsonld/index.json";
   header="home"
   ogDescription="Due dimore familiari a Carini, comode per Palermo, la spiaggia di Capaci e l'aeroporto Falcone Borsellino."
   ogImage="/assets/hero-soggiorno-2400.jpeg"
-  scripts={["vendor/lenis/lenis.min.js", "script.js", "motion.js", "tour.js"]}
+  scripts={["vendor/lenis/lenis.min.js", "script.js", "motion.js"]}
   jsonLd={jsonLd}
 >
   <main id="home">
@@ -42,119 +43,7 @@ import jsonLd from "../data/jsonld/index.json";
           <h2 id="tour-title" data-i18n="tour.title">Entra e guardati intorno, una stanza alla volta.</h2>
           <p data-i18n="tour.copy">Scorri per fare il giro completo: prima la Dimora Verde, poi la Dimora Blu.</p>
         </div>
-        <div class="tour tour--verde" id="foto-verde" data-tour data-tour-lead="2" style="--frames: 20">
-          <div class="tour-stage">
-            <div class="tour-frame">
-              <div class="tour-shots">
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-05-1920.webp" srcset="/assets/tour/verde-esterni-05-1280.webp 1280w, /assets/tour/verde-esterni-05-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 1 di 3" decoding="async" fetchpriority="high" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-04-1920.webp" srcset="/assets/tour/verde-esterni-04-1280.webp 1280w, /assets/tour/verde-esterni-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/verde-esterni-06-1920.webp" srcset="/assets/tour/verde-esterni-06-1280.webp 1280w, /assets/tour/verde-esterni-06-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Veranda coperta della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-soggiorno-cucina-01-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-01-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-soggiorno-cucina-02-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-02-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/verde-camere-11-1920.webp" srcset="/assets/tour/verde-camere-11-1280.webp 1280w, /assets/tour/verde-camere-11-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-08-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-08-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-08-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-07-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-07-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/verde-soggiorno-cucina-05-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-05-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-05-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina e zona pranzo della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-soggiorno-cucina-13-1920.webp" srcset="/assets/tour/verde-soggiorno-cucina-13-1280.webp 1280w, /assets/tour/verde-soggiorno-cucina-13-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-camere-07-1920.webp" srcset="/assets/tour/verde-camere-07-1280.webp 1280w, /assets/tour/verde-camere-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/verde-camere-09-1920.webp" srcset="/assets/tour/verde-camere-09-1280.webp 1280w, /assets/tour/verde-camere-09-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-04-1920.webp" srcset="/assets/tour/verde-camere-04-1280.webp 1280w, /assets/tour/verde-camere-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-01-1920.webp" srcset="/assets/tour/verde-camere-01-1280.webp 1280w, /assets/tour/verde-camere-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/verde-camere-02-1920.webp" srcset="/assets/tour/verde-camere-02-1280.webp 1280w, /assets/tour/verde-camere-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Seconda camera della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-01-1920.webp" srcset="/assets/tour/verde-bagni-01-1280.webp 1280w, /assets/tour/verde-bagni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-03-1920.webp" srcset="/assets/tour/verde-bagni-03-1280.webp 1280w, /assets/tour/verde-bagni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="5"><img src="/assets/tour/verde-bagni-04-1920.webp" srcset="/assets/tour/verde-bagni-04-1280.webp 1280w, /assets/tour/verde-bagni-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagni della Dimora Verde, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-              </div>
-              <div class="tour-veil" aria-hidden="true"></div>
-              <div class="tour-logo" aria-hidden="true">
-                <img src="/assets/logo-site-web.png" alt="" fetchpriority="high" />
-              </div>
-              <header class="tour-head">
-                <span class="tour-count"><b data-tour-current>01</b> / 06</span>
-              </header>
-              <div class="tour-progress" aria-hidden="true"><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i></div>
-              <div class="tour-captions">
-                <article class="tour-caption is-active" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v1.room">Veranda</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v2.room">Soggiorno</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v3.room">Cucina e pranzo</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v4.room">Camera matrimoniale</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v5.room">Seconda camera</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.green.name">La Dimora Verde</span></p>
-                  <h3 data-i18n="tour.v6.room">Due bagni</h3>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="tour tour--blu" id="foto-blu" data-tour data-tour-lead="1" style="--frames: 16">
-          <div class="tour-stage">
-            <div class="tour-frame">
-              <div class="tour-shots">
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-01-1920.webp" srcset="/assets/tour/blu-esterni-01-1280.webp 1280w, /assets/tour/blu-esterni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-03-1920.webp" srcset="/assets/tour/blu-esterni-03-1280.webp 1280w, /assets/tour/blu-esterni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="0"><img src="/assets/tour/blu-esterni-02-1920.webp" srcset="/assets/tour/blu-esterni-02-1280.webp 1280w, /assets/tour/blu-esterni-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Ingresso e terrazzino della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-04-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-04-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-02-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-02-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="1"><img src="/assets/tour/blu-soggiorno-cucina-11-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-11-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-11-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Soggiorno della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-01-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-01-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-08-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-08-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-08-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="2"><img src="/assets/tour/blu-soggiorno-cucina-09-1920.webp" srcset="/assets/tour/blu-soggiorno-cucina-09-1280.webp 1280w, /assets/tour/blu-soggiorno-cucina-09-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Cucina della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-04-1920.webp" srcset="/assets/tour/blu-camere-04-1280.webp 1280w, /assets/tour/blu-camere-04-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-01-1920.webp" srcset="/assets/tour/blu-camere-01-1280.webp 1280w, /assets/tour/blu-camere-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="3"><img src="/assets/tour/blu-camere-07-1920.webp" srcset="/assets/tour/blu-camere-07-1280.webp 1280w, /assets/tour/blu-camere-07-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Camera matrimoniale della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-01-1920.webp" srcset="/assets/tour/blu-bagni-01-1280.webp 1280w, /assets/tour/blu-bagni-01-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 1 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-02-1920.webp" srcset="/assets/tour/blu-bagni-02-1280.webp 1280w, /assets/tour/blu-bagni-02-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 2 di 3" loading="lazy" decoding="async" /></figure>
-                <figure class="tour-shot" data-tour-shot data-room="4"><img src="/assets/tour/blu-bagni-03-1920.webp" srcset="/assets/tour/blu-bagni-03-1280.webp 1280w, /assets/tour/blu-bagni-03-1920.webp 1920w" sizes="(orientation: portrait) 150vh, 100vw" alt="Bagno della Dimora Blu, foto 3 di 3" loading="lazy" decoding="async" /></figure>
-              </div>
-              <div class="tour-veil" aria-hidden="true"></div>
-              <div class="tour-logo tour-chapter" aria-hidden="true">
-                <img src="/assets/titoli/dimora-blu.png" alt="" loading="lazy" />
-              </div>
-              <header class="tour-head">
-                <span class="tour-count"><b data-tour-current>01</b> / 05</span>
-              </header>
-              <div class="tour-progress" aria-hidden="true"><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i><i data-tour-seg><b></b></i></div>
-              <div class="tour-captions">
-                <article class="tour-caption is-active" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
-                  <h3 data-i18n="tour.b1.room">Ingresso</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
-                  <h3 data-i18n="tour.b2.room">Soggiorno</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
-                  <h3 data-i18n="tour.b3.room">Cucina</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
-                  <h3 data-i18n="tour.b4.room">Camera</h3>
-                </article>
-                <article class="tour-caption" data-tour-caption>
-                  <p class="tour-kicker"><span data-i18n="homes.blue.name">La Dimora Blu</span></p>
-                  <h3 data-i18n="tour.b5.room">Bagno</h3>
-                </article>
-              </div>
-            </div>
-          </div>
-        </div>
+        <HouseTour client:load />
       </section>
 
       <section id="tour-fine" class="tour-end" aria-labelledby="tour-end-title">

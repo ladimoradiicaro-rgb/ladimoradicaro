@@ -35,7 +35,7 @@ body {
    The real text stays in the HTML (font-size 0) for search engines, screen readers
    and the IT/EN switch; the picture shown follows <html lang>. */
 main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]),
-.tour-caption h3[data-i18n] {
+.tour-caption h3[data-title] {
   font-size: 0 !important;
   line-height: 0 !important;
   color: transparent !important;
@@ -62,7 +62,7 @@ main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]) {
 }
 
 /* Room names on the tour photos: one line, all the same letter size */
-.tour-caption h3[data-i18n] {
+.tour-caption h3[data-title] {
   --room-h: clamp(4.2rem, 9vw, 8rem);
   height: var(--room-h);
   width: calc(var(--room-h) * var(--w) / var(--h));
@@ -73,7 +73,7 @@ main h2[data-i18n$=".title"]:not([data-i18n="tour.title"]) {
 }
 
 @media (max-width: 760px) {
-  .tour-caption h3[data-i18n] {
+  .tour-caption h3[data-title] {
     --room-h: clamp(3.4rem, 15vw, 4.6rem);
   }
 }
@@ -105,27 +105,27 @@ html[lang="en"] main h2[data-i18n="faq.title"] { --w: 1006; --h: 512; background
 main h2[data-i18n="booking.title"] { --w: 767; --h: 497; background-image: url("assets/titoli/prenota-it.png"); }
 html[lang="en"] main h2[data-i18n="booking.title"] { --w: 774; --h: 508; background-image: url("assets/titoli/prenota-en.png"); }
 
-.tour-caption h3[data-i18n="tour.v1.room"] { --w: 381; --h: 237; background-image: url("assets/titoli/veranda.png"); }
-.tour-caption h3[data-i18n="tour.v2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.v2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
-.tour-caption h3[data-i18n="tour.v3.room"] { --w: 751; --h: 237; background-image: url("assets/titoli/cucina-pranzo-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.v3.room"] { --w: 823; --h: 237; background-image: url("assets/titoli/cucina-pranzo-en.png"); }
-.tour-caption h3[data-i18n="tour.v4.room"] { --w: 951; --h: 237; background-image: url("assets/titoli/matrimoniale-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.v4.room"] { --w: 732; --h: 237; background-image: url("assets/titoli/matrimoniale-en.png"); }
-.tour-caption h3[data-i18n="tour.v5.room"] { --w: 731; --h: 237; background-image: url("assets/titoli/seconda-camera-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.v5.room"] { --w: 736; --h: 237; background-image: url("assets/titoli/seconda-camera-en.png"); }
-.tour-caption h3[data-i18n="tour.v6.room"] { --w: 505; --h: 237; background-image: url("assets/titoli/due-bagni-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.v6.room"] { --w: 692; --h: 237; background-image: url("assets/titoli/due-bagni-en.png"); }
-.tour-caption h3[data-i18n="tour.b1.room"] { --w: 449; --h: 237; background-image: url("assets/titoli/ingresso-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.b1.room"] { --w: 419; --h: 237; background-image: url("assets/titoli/ingresso-en.png"); }
-.tour-caption h3[data-i18n="tour.b2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.b2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
-.tour-caption h3[data-i18n="tour.b3.room"] { --w: 318; --h: 237; background-image: url("assets/titoli/cucina-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.b3.room"] { --w: 368; --h: 237; background-image: url("assets/titoli/cucina-en.png"); }
-.tour-caption h3[data-i18n="tour.b4.room"] { --w: 346; --h: 237; background-image: url("assets/titoli/camera-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.b4.room"] { --w: 414; --h: 237; background-image: url("assets/titoli/camera-en.png"); }
-.tour-caption h3[data-i18n="tour.b5.room"] { --w: 312; --h: 237; background-image: url("assets/titoli/bagno-it.png"); }
-html[lang="en"] .tour-caption h3[data-i18n="tour.b5.room"] { --w: 457; --h: 237; background-image: url("assets/titoli/bagno-en.png"); }
+.tour-caption h3[data-title="tour.v1.room"] { --w: 381; --h: 237; background-image: url("assets/titoli/veranda.png"); }
+.tour-caption h3[data-title="tour.v2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.v2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
+.tour-caption h3[data-title="tour.v3.room"] { --w: 751; --h: 237; background-image: url("assets/titoli/cucina-pranzo-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.v3.room"] { --w: 823; --h: 237; background-image: url("assets/titoli/cucina-pranzo-en.png"); }
+.tour-caption h3[data-title="tour.v4.room"] { --w: 951; --h: 237; background-image: url("assets/titoli/matrimoniale-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.v4.room"] { --w: 732; --h: 237; background-image: url("assets/titoli/matrimoniale-en.png"); }
+.tour-caption h3[data-title="tour.v5.room"] { --w: 731; --h: 237; background-image: url("assets/titoli/seconda-camera-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.v5.room"] { --w: 736; --h: 237; background-image: url("assets/titoli/seconda-camera-en.png"); }
+.tour-caption h3[data-title="tour.v6.room"] { --w: 505; --h: 237; background-image: url("assets/titoli/due-bagni-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.v6.room"] { --w: 692; --h: 237; background-image: url("assets/titoli/due-bagni-en.png"); }
+.tour-caption h3[data-title="tour.b1.room"] { --w: 449; --h: 237; background-image: url("assets/titoli/ingresso-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.b1.room"] { --w: 419; --h: 237; background-image: url("assets/titoli/ingresso-en.png"); }
+.tour-caption h3[data-title="tour.b2.room"] { --w: 463; --h: 237; background-image: url("assets/titoli/soggiorno-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.b2.room"] { --w: 558; --h: 237; background-image: url("assets/titoli/soggiorno-en.png"); }
+.tour-caption h3[data-title="tour.b3.room"] { --w: 318; --h: 237; background-image: url("assets/titoli/cucina-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.b3.room"] { --w: 368; --h: 237; background-image: url("assets/titoli/cucina-en.png"); }
+.tour-caption h3[data-title="tour.b4.room"] { --w: 346; --h: 237; background-image: url("assets/titoli/camera-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.b4.room"] { --w: 414; --h: 237; background-image: url("assets/titoli/camera-en.png"); }
+.tour-caption h3[data-title="tour.b5.room"] { --w: 312; --h: 237; background-image: url("assets/titoli/bagno-it.png"); }
+html[lang="en"] .tour-caption h3[data-title="tour.b5.room"] { --w: 457; --h: 237; background-image: url("assets/titoli/bagno-en.png"); }
 
 /* ---------- BlurText ---------- */
 .bt .bt-word {
