@@ -1,4 +1,5 @@
 ---
+import { t } from "../i18n";
 import Base from "../layouts/Base.astro";
 import HouseTour from "../components/react/HouseTour";
 import BookingForm from "../components/react/BookingForm";
@@ -19,30 +20,30 @@ import jsonLd from "../data/jsonld/index.json";
       <section class="hero" aria-label="Benvenuto" hidden>
         <div class="hero-media" role="img" aria-label="Casa siciliana luminosa e accogliente"></div>
         <div class="hero-content">
-          <p class="eyebrow" data-i18n="hero.eyebrow">Tra Palermo, mare e aeroporto</p>
-          <p class="hero-title" data-i18n="hero.title">Due dimore familiari tra Palermo, mare e aeroporto.</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">{t("hero.eyebrow")}</p>
+          <p class="hero-title" data-i18n="hero.title">{t("hero.title")}</p>
           <p class="licence-note">CIN IT082021C23NRN5DBU - CIR 19082021C259979</p>
           <div class="hero-actions">
-            <a class="button primary" href="#prenota" data-i18n="cta.check">Verifica disponibilità</a>
-            <a class="button ghost" href="/scopri" data-i18n="cta.guide">Apri la guida locale</a>
+            <a class="button primary" href="#prenota" data-i18n="cta.check">{t("cta.check")}</a>
+            <a class="button ghost" href="/scopri" data-i18n="cta.guide">{t("cta.guide")}</a>
           </div>
         </div>
         <aside class="arrival-card" aria-label="Punti forti">
-          <span data-i18n="hero.cardLabel">Arrivo semplice</span>
-          <strong data-i18n="hero.cardText">Check-in dalle 15:00, casa pronta e collegamenti rapidi.</strong>
+          <span data-i18n="hero.cardLabel">{t("hero.cardLabel")}</span>
+          <strong data-i18n="hero.cardText">{t("hero.cardText")}</strong>
           <div class="arrival-grid">
-            <p><b>12 min</b><small data-i18n="hero.airportSmall">dall'aeroporto</small></p>
-            <p><b>600 m</b><small data-i18n="hero.stationSmall">dalla stazione</small></p>
+            <p><b>12 min</b><small data-i18n="hero.airportSmall">{t("hero.airportSmall")}</small></p>
+            <p><b>600 m</b><small data-i18n="hero.stationSmall">{t("hero.stationSmall")}</small></p>
           </div>
         </aside>
       </section>
 
       <section id="tour" class="tour-section" aria-labelledby="tour-title">
         <div class="tour-intro visually-hidden">
-          <h1 data-i18n="hero.title">Due dimore familiari tra Palermo, mare e aeroporto.</h1>
-          <p class="eyebrow" data-i18n="tour.eyebrow">Tour delle dimore</p>
-          <h2 id="tour-title" data-i18n="tour.title">Entra e guardati intorno, una stanza alla volta.</h2>
-          <p data-i18n="tour.copy">Scorri per fare il giro completo: prima la Dimora Verde, poi la Dimora Blu.</p>
+          <h1 data-i18n="hero.title">{t("hero.title")}</h1>
+          <p class="eyebrow" data-i18n="tour.eyebrow">{t("tour.eyebrow")}</p>
+          <h2 id="tour-title" data-i18n="tour.title">{t("tour.title")}</h2>
+          <p data-i18n="tour.copy">{t("tour.copy")}</p>
         </div>
         <HouseTour client:load />
       </section>
@@ -52,42 +53,39 @@ import jsonLd from "../data/jsonld/index.json";
           <img src="/assets/tour/verde-esterni-05-1280.webp" alt="" loading="lazy" decoding="async" />
         </div>
         <div class="tour-end-inner">
-          <h2 id="tour-end-title" data-i18n="tourEnd.title">Ti aspettiamo.</h2>
+          <h2 id="tour-end-title" data-i18n="tourEnd.title">{t("tourEnd.title")}</h2>
           <div class="tour-end-actions">
-            <a class="tour-end-btn tour-end-btn--verde" href="#prenota" data-home-request="La Dimora Verde" data-i18n="tourEnd.verde">Prenota la Dimora Verde</a>
-            <a class="tour-end-btn tour-end-btn--blu" href="#prenota" data-home-request="La Dimora Blu" data-i18n="tourEnd.blu">Prenota la Dimora Blu</a>
+            <a class="tour-end-btn tour-end-btn--verde" href="#prenota" data-home-request="La Dimora Verde" data-i18n="tourEnd.verde">{t("tourEnd.verde")}</a>
+            <a class="tour-end-btn tour-end-btn--blu" href="#prenota" data-home-request="La Dimora Blu" data-i18n="tourEnd.blu">{t("tourEnd.blu")}</a>
           </div>
           <p class="tour-end-links">
-            <a href="/galleria-verde" data-i18n="tourEnd.photosVerde">Tutte le foto della Verde</a>
+            <a href="/galleria-verde" data-i18n="tourEnd.photosVerde">{t("tourEnd.photosVerde")}</a>
             <span aria-hidden="true">·</span>
-            <a href="/galleria-blu" data-i18n="tourEnd.photosBlu">Tutte le foto della Blu</a>
+            <a href="/galleria-blu" data-i18n="tourEnd.photosBlu">{t("tourEnd.photosBlu")}</a>
           </p>
         </div>
       </section>
 
       <section class="quick-paths" aria-label="Percorsi rapidi">
         <a href="/scopri">
-          <span data-i18n="quick.touristsLabel">Per turisti</span>
-          <strong data-i18n="quick.touristsText">Guida locale con mare, Palermo, ristoranti e servizi vicini.</strong>
+          <span data-i18n="quick.touristsLabel">{t("quick.touristsLabel")}</span>
+          <strong data-i18n="quick.touristsText">{t("quick.touristsText")}</strong>
         </a>
         <a href="#posizione">
-          <span data-i18n="quick.flyLabel">Per chi vola</span>
-          <strong data-i18n="quick.flyText">A 12 minuti dall'aeroporto, comoda prima o dopo il volo.</strong>
+          <span data-i18n="quick.flyLabel">{t("quick.flyLabel")}</span>
+          <strong data-i18n="quick.flyText">{t("quick.flyText")}</strong>
         </a>
         <a href="#casa">
-          <span data-i18n="quick.groupLabel">Per ogni gruppo</span>
-          <strong data-i18n="quick.groupText">Dimora Verde fino a 7 ospiti, Dimora Blu fino a 4, con limiti adulti dedicati.</strong>
+          <span data-i18n="quick.groupLabel">{t("quick.groupLabel")}</span>
+          <strong data-i18n="quick.groupText">{t("quick.groupText")}</strong>
         </a>
       </section>
 
       <section id="casa" class="section house-section">
         <div class="section-copy">
-          <p class="eyebrow" data-i18n="homes.eyebrow">Le due case</p>
-          <h2 data-i18n="homes.title">Scegli la dimora più adatta al tuo modo di viaggiare.</h2>
-          <p data-i18n="homes.copy">
-            La Dimora di Icaro nasce per accogliere famiglie, coppie e piccoli gruppi con una sensazione semplice:
-            arrivare, posare le valigie e trovare una casa vera, curata e pronta.
-          </p>
+          <p class="eyebrow" data-i18n="homes.eyebrow">{t("homes.eyebrow")}</p>
+          <h2 data-i18n="homes.title">{t("homes.title")}</h2>
+          <p data-i18n="homes.copy">{t("homes.copy")}</p>
         </div>
         <div class="homes-grid">
           <article class="home-card green-home">
@@ -95,21 +93,21 @@ import jsonLd from "../data/jsonld/index.json";
               <img src="/assets/verde-soggiorno-cucina-08.jpeg" alt="Zona pranzo luminosa della Dimora Verde" loading="lazy" />
             </figure>
             <div class="home-card-top">
-              <span data-i18n="homes.green.name">La Dimora Verde</span>
-              <small data-i18n="homes.green.meta">105 mq · fino a 7 ospiti · max 5 adulti</small>
+              <span data-i18n="homes.green.name">{t("homes.green.name")}</span>
+              <small data-i18n="homes.green.meta">{t("homes.green.meta")}</small>
             </div>
             <div class="home-card-main">
-              <h3 data-i18n="homes.green.title">La soluzione più grande, ideale per famiglie e gruppi.</h3>
-              <p data-i18n="homes.green.copy">Due camere principali, due bagni e un divano letto nella zona giorno: 3 posti letto distinti senza contare il divano come camera.</p>
+              <h3 data-i18n="homes.green.title">{t("homes.green.title")}</h3>
+              <p data-i18n="homes.green.copy">{t("homes.green.copy")}</p>
             </div>
             <ul class="home-facts">
-              <li data-i18n="homes.green.feature1">Max 7 ospiti</li>
-              <li data-i18n="homes.green.feature3">2 camere</li>
-              <li data-i18n="homes.green.feature2">105 mq</li>
+              <li data-i18n="homes.green.feature1">{t("homes.green.feature1")}</li>
+              <li data-i18n="homes.green.feature3">{t("homes.green.feature3")}</li>
+              <li data-i18n="homes.green.feature2">{t("homes.green.feature2")}</li>
             </ul>
             <div class="card-actions">
-              <a class="button ghost small" href="/galleria-verde" data-i18n="cta.gallery">Galleria</a>
-              <a class="button primary small" href="#prenota" data-home-request="La Dimora Verde" data-i18n="cta.ask">Chiedi disponibilità</a>
+              <a class="button ghost small" href="/galleria-verde" data-i18n="cta.gallery">{t("cta.gallery")}</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Verde" data-i18n="cta.ask">{t("cta.ask")}</a>
             </div>
           </article>
           <article class="home-card blue-home">
@@ -117,21 +115,21 @@ import jsonLd from "../data/jsonld/index.json";
               <img src="/assets/blu-soggiorno-cucina-03.jpeg" alt="Soggiorno e cucina della Dimora Blu" loading="lazy" />
             </figure>
             <div class="home-card-top">
-              <span data-i18n="homes.blue.name">La Dimora Blu</span>
-              <small data-i18n="homes.blue.meta">40 mq · fino a 4 ospiti · max 2 adulti</small>
+              <span data-i18n="homes.blue.name">{t("homes.blue.name")}</span>
+              <small data-i18n="homes.blue.meta">{t("homes.blue.meta")}</small>
             </div>
             <div class="home-card-main">
-              <h3 data-i18n="homes.blue.title">Più raccolta e pratica, perfetta per coppie o piccoli nuclei.</h3>
-              <p data-i18n="homes.blue.copy">Un letto matrimoniale, un divano letto e un bagno: una dimora semplice, luminosa e facile da vivere.</p>
+              <h3 data-i18n="homes.blue.title">{t("homes.blue.title")}</h3>
+              <p data-i18n="homes.blue.copy">{t("homes.blue.copy")}</p>
             </div>
             <ul class="home-facts">
-              <li data-i18n="homes.blue.feature1">Max 4 ospiti</li>
-              <li data-i18n="homes.blue.feature3">1 camera</li>
-              <li data-i18n="homes.blue.feature2">40 mq</li>
+              <li data-i18n="homes.blue.feature1">{t("homes.blue.feature1")}</li>
+              <li data-i18n="homes.blue.feature3">{t("homes.blue.feature3")}</li>
+              <li data-i18n="homes.blue.feature2">{t("homes.blue.feature2")}</li>
             </ul>
             <div class="card-actions">
-              <a class="button ghost small" href="/galleria-blu" data-i18n="cta.gallery">Galleria</a>
-              <a class="button primary small" href="#prenota" data-home-request="La Dimora Blu" data-i18n="cta.ask">Chiedi disponibilità</a>
+              <a class="button ghost small" href="/galleria-blu" data-i18n="cta.gallery">{t("cta.gallery")}</a>
+              <a class="button primary small" href="#prenota" data-home-request="La Dimora Blu" data-i18n="cta.ask">{t("cta.ask")}</a>
             </div>
           </article>
         </div>
@@ -144,124 +142,120 @@ import jsonLd from "../data/jsonld/index.json";
         <div class="timeline" aria-label="Distanze utili">
           <div class="route-card" aria-label="Indicazioni dall'aeroporto alla dimora">
             <div class="route-card-header">
-              <span data-i18n="location.routeLabel">Dal terminal a casa</span>
-              <strong data-i18n="location.routeTitle">Aeroporto Falcone Borsellino → La Dimora di Icaro</strong>
-              <small data-i18n="location.routeTime">Circa 12 minuti in auto</small>
+              <span data-i18n="location.routeLabel">{t("location.routeLabel")}</span>
+              <strong data-i18n="location.routeTitle">{t("location.routeTitle")}</strong>
+              <small data-i18n="location.routeTime">{t("location.routeTime")}</small>
             </div>
             <ol class="route-steps">
               <li>
                 <span class="route-icon" aria-hidden="true"></span>
-                <p><b data-i18n="location.step1Title">Aeroporto</b><small data-i18n="location.step1Text">Partenza dal Falcone Borsellino.</small></p>
+                <p><b data-i18n="location.step1Title">{t("location.step1Title")}</b><small data-i18n="location.step1Text">{t("location.step1Text")}</small></p>
               </li>
               <li>
                 <span class="route-icon" aria-hidden="true"></span>
-                <p><b data-i18n="location.step2Title">A29 verso Palermo</b><small data-i18n="location.step2Text">Percorso diretto e rapido.</small></p>
+                <p><b data-i18n="location.step2Title">{t("location.step2Title")}</b><small data-i18n="location.step2Text">{t("location.step2Text")}</small></p>
               </li>
               <li>
                 <span class="route-icon" aria-hidden="true"></span>
-                <p><b data-i18n="location.step3Title">Uscita Carini</b><small data-i18n="location.step3Text">Esci a Carini e prosegui verso la dimora.</small></p>
+                <p><b data-i18n="location.step3Title">{t("location.step3Title")}</b><small data-i18n="location.step3Text">{t("location.step3Text")}</small></p>
               </li>
               <li>
                 <span class="route-icon" aria-hidden="true"></span>
-                <p><b data-i18n="location.step4Title">La Dimora</b><small data-i18n="location.step4Text">Arrivo in Via Strada Statale Est, 157.</small></p>
+                <p><b data-i18n="location.step4Title">{t("location.step4Title")}</b><small data-i18n="location.step4Text">{t("location.step4Text")}</small></p>
               </li>
             </ol>
           </div>
           <div>
-            <span data-i18n="location.airportLabel">Aeroporto</span>
-            <strong data-i18n="location.airportTitle">12 minuti</strong>
-            <p data-i18n="location.airportText">Dall'aeroporto Falcone Borsellino alla dimora in auto.</p>
+            <span data-i18n="location.airportLabel">{t("location.airportLabel")}</span>
+            <strong data-i18n="location.airportTitle">{t("location.airportTitle")}</strong>
+            <p data-i18n="location.airportText">{t("location.airportText")}</p>
           </div>
           <div>
-            <span data-i18n="location.cityLabel">Città</span>
-            <strong data-i18n="location.cityTitle">Palermo in 20-30 minuti</strong>
-            <p data-i18n="location.cityText">In auto, in base al traffico. In treno il centro di Palermo si raggiunge in circa 30 minuti.</p>
+            <span data-i18n="location.cityLabel">{t("location.cityLabel")}</span>
+            <strong data-i18n="location.cityTitle">{t("location.cityTitle")}</strong>
+            <p data-i18n="location.cityText">{t("location.cityText")}</p>
           </div>
           <div>
-            <span data-i18n="location.seaLabel">Mare</span>
-            <strong data-i18n="location.seaTitle">Spiaggia di Capaci a 8 minuti</strong>
-            <p data-i18n="location.seaText">Il mare di Capaci si raggiunge in circa 8 minuti in auto, ideale per giornate semplici tra spiaggia e rientro comodo.</p>
+            <span data-i18n="location.seaLabel">{t("location.seaLabel")}</span>
+            <strong data-i18n="location.seaTitle">{t("location.seaTitle")}</strong>
+            <p data-i18n="location.seaText">{t("location.seaText")}</p>
           </div>
           <div>
-            <span data-i18n="location.stationLabel">Stazione</span>
-            <strong data-i18n="location.stationTitle">A 600 metri</strong>
-            <p data-i18n="location.stationText">La stazione più vicina è raggiungibile anche a piedi.</p>
+            <span data-i18n="location.stationLabel">{t("location.stationLabel")}</span>
+            <strong data-i18n="location.stationTitle">{t("location.stationTitle")}</strong>
+            <p data-i18n="location.stationText">{t("location.stationText")}</p>
           </div>
         </div>
       </section>
 
       <section id="servizi" class="section experience-section">
         <div class="section-heading">
-          <p class="eyebrow" data-i18n="services.eyebrow">Servizi inclusi</p>
-          <h2 data-i18n="services.title">Le comodità essenziali per un soggiorno semplice.</h2>
+          <p class="eyebrow" data-i18n="services.eyebrow">{t("services.eyebrow")}</p>
+          <h2 data-i18n="services.title">{t("services.title")}</h2>
         </div>
         <div class="services-grid">
           <article data-service-icon="wifi">
-            <h3 data-i18n="services.wifi.title">Wi-Fi</h3>
-            <p data-i18n="services.wifi.text">Connessione presente per lavorare, organizzare il viaggio o rilassarsi.</p>
+            <h3 data-i18n="services.wifi.title">{t("services.wifi.title")}</h3>
+            <p data-i18n="services.wifi.text">{t("services.wifi.text")}</p>
           </article>
           <article data-service-icon="air">
-            <h3 data-i18n="services.air.title">Aria condizionata</h3>
-            <p data-i18n="services.air.text">Ambienti freschi e piacevoli anche nelle giornate più calde.</p>
+            <h3 data-i18n="services.air.title">{t("services.air.title")}</h3>
+            <p data-i18n="services.air.text">{t("services.air.text")}</p>
           </article>
           <article data-service-icon="kitchen">
-            <h3 data-i18n="services.kitchen.title">Cucina attrezzata</h3>
-            <p data-i18n="services.kitchen.text">Tutto il necessario per colazioni, pranzi semplici e cene in casa.</p>
+            <h3 data-i18n="services.kitchen.title">{t("services.kitchen.title")}</h3>
+            <p data-i18n="services.kitchen.text">{t("services.kitchen.text")}</p>
           </article>
           <article data-service-icon="wash">
-            <h3 data-i18n="services.wash.title">Lavatrice</h3>
-            <p data-i18n="services.wash.text">Comoda per soggiorni lunghi, famiglie e viaggi leggeri.</p>
+            <h3 data-i18n="services.wash.title">{t("services.wash.title")}</h3>
+            <p data-i18n="services.wash.text">{t("services.wash.text")}</p>
           </article>
           <article data-service-icon="outdoor">
-            <h3 data-i18n="services.outdoor.title">Spazio esterno</h3>
-            <p data-i18n="services.outdoor.text">Veranda e aree esterne per vivere la casa anche fuori.</p>
+            <h3 data-i18n="services.outdoor.title">{t("services.outdoor.title")}</h3>
+            <p data-i18n="services.outdoor.text">{t("services.outdoor.text")}</p>
           </article>
           <article data-service-icon="parking">
-            <h3 data-i18n="services.parking.title">Posto auto</h3>
-            <p data-i18n="services.parking.text">Parcheggio comodo per chi arriva in macchina o noleggia un'auto.</p>
+            <h3 data-i18n="services.parking.title">{t("services.parking.title")}</h3>
+            <p data-i18n="services.parking.text">{t("services.parking.text")}</p>
           </article>
         </div>
       </section>
 
       <section class="section direct-booking-section">
         <div class="section-copy">
-          <p class="eyebrow" data-i18n="direct.eyebrow">Prenotazione diretta</p>
-          <h2 data-i18n="direct.title">Perché prenotare direttamente dal sito.</h2>
-          <p data-i18n="direct.copy">
-            Parli con chi gestisce davvero la casa, chiarisci i dettagli prima dell'arrivo e scegli la dimora più adatta al tuo soggiorno.
-          </p>
+          <p class="eyebrow" data-i18n="direct.eyebrow">{t("direct.eyebrow")}</p>
+          <h2 data-i18n="direct.title">{t("direct.title")}</h2>
+          <p data-i18n="direct.copy">{t("direct.copy")}</p>
         </div>
         <div class="direct-benefits">
           <article>
-            <strong data-i18n="direct.b1.title">Contatto diretto</strong>
-            <p data-i18n="direct.b1.text">Risposte dirette da chi gestisce la casa, senza passaggi inutili.</p>
+            <strong data-i18n="direct.b1.title">{t("direct.b1.title")}</strong>
+            <p data-i18n="direct.b1.text">{t("direct.b1.text")}</p>
           </article>
           <article>
-            <strong data-i18n="direct.b2.title">Disponibilità più chiare</strong>
-            <p data-i18n="direct.b2.text">Ti aiutiamo a verificare date, ospiti e durata del soggiorno.</p>
+            <strong data-i18n="direct.b2.title">{t("direct.b2.title")}</strong>
+            <p data-i18n="direct.b2.text">{t("direct.b2.text")}</p>
           </article>
           <article>
-            <strong data-i18n="direct.b3.title">Scelta della dimora</strong>
-            <p data-i18n="direct.b3.text">Supporto per capire se è meglio Dimora Verde o Dimora Blu.</p>
+            <strong data-i18n="direct.b3.title">{t("direct.b3.title")}</strong>
+            <p data-i18n="direct.b3.text">{t("direct.b3.text")}</p>
           </article>
           <article>
-            <strong data-i18n="direct.b4.title">Dettagli prima dell'arrivo</strong>
-            <p data-i18n="direct.b4.text">Informazioni precise su posizione, servizi e organizzazione.</p>
+            <strong data-i18n="direct.b4.title">{t("direct.b4.title")}</strong>
+            <p data-i18n="direct.b4.text">{t("direct.b4.text")}</p>
           </article>
           <article>
-            <strong data-i18n="direct.b5.title">Sconti personalizzati</strong>
-            <p data-i18n="direct.b5.text">Per soggiorni più lunghi o richieste particolari possiamo valutare soluzioni dedicate.</p>
+            <strong data-i18n="direct.b5.title">{t("direct.b5.title")}</strong>
+            <p data-i18n="direct.b5.text">{t("direct.b5.text")}</p>
           </article>
         </div>
       </section>
 
       <section id="recensioni" class="section review-section" aria-label="Recensioni degli ospiti">
         <div class="section-copy review-copy">
-          <p class="eyebrow" data-i18n="reviews.eyebrow">Recensioni</p>
-          <h2 data-i18n="reviews.title">Parole di chi ha soggiornato alla Dimora di Icaro.</h2>
-          <p data-i18n="reviews.copy">
-            Recensioni raccolte da Google e Booking, con esperienze raccontate dai nostri ospiti.
-          </p>
+          <p class="eyebrow" data-i18n="reviews.eyebrow">{t("reviews.eyebrow")}</p>
+          <h2 data-i18n="reviews.title">{t("reviews.title")}</h2>
+          <p data-i18n="reviews.copy">{t("reviews.copy")}</p>
           <div class="review-actions">
             <a
               class="review-google-link"
@@ -269,203 +263,199 @@ import jsonLd from "../data/jsonld/index.json";
               target="_blank"
               rel="noreferrer"
               data-i18n="reviews.googleCta"
-            >
-              Lascia una recensione su Google
-            </a>
+            >{t("reviews.googleCta")}</a>
             <a
               class="review-google-link secondary"
               href="https://www.booking.com/Share-p6vU03"
               target="_blank"
               rel="noreferrer"
               data-i18n="reviews.bookingCta"
-            >
-              Vedi su Booking
-            </a>
+            >{t("reviews.bookingCta")}</a>
           </div>
         </div>
         <div class="review-marquee" aria-label="Recensioni a 5 stelle in evidenza">
           <div class="review-track">
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <p data-i18n="reviews.r1.text">{t("reviews.r1.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <strong data-i18n="reviews.r1.name">{t("reviews.r1.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <p data-i18n="reviews.r2.text">{t("reviews.r2.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <strong data-i18n="reviews.r2.name">{t("reviews.r2.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <p data-i18n="reviews.r3.text">{t("reviews.r3.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <strong data-i18n="reviews.r3.name">{t("reviews.r3.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <p data-i18n="reviews.r4.text">{t("reviews.r4.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <strong data-i18n="reviews.r4.name">{t("reviews.r4.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <p data-i18n="reviews.r5.text">{t("reviews.r5.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <strong data-i18n="reviews.r5.name">{t("reviews.r5.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <p data-i18n="reviews.r6.text">{t("reviews.r6.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <strong data-i18n="reviews.r6.name">{t("reviews.r6.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <p data-i18n="reviews.r7.text">{t("reviews.r7.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <strong data-i18n="reviews.r7.name">{t("reviews.r7.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <p data-i18n="reviews.r8.text">{t("reviews.r8.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <strong data-i18n="reviews.r8.name">{t("reviews.r8.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <p data-i18n="reviews.r9.text">{t("reviews.r9.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <strong data-i18n="reviews.r9.name">{t("reviews.r9.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r1.text">Consiglio vivamente questa sistemazione. I proprietari sono stati molto gentili. L'appartamento era pulito e spazioso. Per me, 10/10.</p>
+              <p data-i18n="reviews.r1.text">{t("reviews.r1.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r1.name">🇸🇰 Erik</strong>
+                <strong data-i18n="reviews.r1.name">{t("reviews.r1.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r2.text">Rita e suo marito sono stati molto gentili e simpatici. All'arrivo ho trovato tutto pulito, un ottimo parcheggio e un bellissimo spazio esterno.</p>
+              <p data-i18n="reviews.r2.text">{t("reviews.r2.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r2.name">🇮🇹 Lara</strong>
+                <strong data-i18n="reviews.r2.name">{t("reviews.r2.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r3.text">Siamo stati ospiti per tre settimane in questa meravigliosa struttura. Luogo tranquillo, posizione strategica e proprietari gentilissimi.</p>
+              <p data-i18n="reviews.r3.text">{t("reviews.r3.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r3.name">🇮🇹 Marcello</strong>
+                <strong data-i18n="reviews.r3.name">{t("reviews.r3.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r4.text">Le condizioni di alloggio sono molto, molto buone e la disponibilità dei proprietari merita ancora più di 5 stelle.</p>
+              <p data-i18n="reviews.r4.text">{t("reviews.r4.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r4.name">🇷🇴 Marius</strong>
+                <strong data-i18n="reviews.r4.name">{t("reviews.r4.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">Google</a>
+                  <a class="review-source" href="https://share.google/8iO7H4uyvW6D3BT9E" target="_blank" rel="noreferrer" data-i18n="reviews.sourceGoogle">{t("reviews.sourceGoogle")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r5.text">La pulizia, l'aria condizionata, le dimensioni e l'attenzione della proprietaria Rita: tutto soddisfatto.</p>
+              <p data-i18n="reviews.r5.text">{t("reviews.r5.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r5.name">🇨🇭 Criss</strong>
+                <strong data-i18n="reviews.r5.name">{t("reviews.r5.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r6.text">Accoglienza, disponibilità, struttura nuova e comoda, parcheggio ampio: esperienza consigliata.</p>
+              <p data-i18n="reviews.r6.text">{t("reviews.r6.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r6.name">🇮🇹 Giuseppe</strong>
+                <strong data-i18n="reviews.r6.name">{t("reviews.r6.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r7.text">La casa era perfetta. La cura dei particolari era in tutto. La signora Rita gentilissima e disponibile.</p>
+              <p data-i18n="reviews.r7.text">{t("reviews.r7.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r7.name">🇮🇹 Stefania</strong>
+                <strong data-i18n="reviews.r7.name">{t("reviews.r7.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r8.text">Tutto perfetto, pulito e confortevole. Una settimana di relax con tutto quello che serviva vicino.</p>
+              <p data-i18n="reviews.r8.text">{t("reviews.r8.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r8.name">🇮🇹 Erica</strong>
+                <strong data-i18n="reviews.r8.name">{t("reviews.r8.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
             <article class="review-card" aria-hidden="true">
               <div class="stars" aria-label="5 stelle">★★★★★</div>
-              <p data-i18n="reviews.r9.text">Buona posizione, di buone dimensioni e servizi. Proprietario molto gentile.</p>
+              <p data-i18n="reviews.r9.text">{t("reviews.r9.text")}</p>
               <div class="review-meta">
-                <strong data-i18n="reviews.r9.name">🇩🇪 Heinol</strong>
+                <strong data-i18n="reviews.r9.name">{t("reviews.r9.name")}</strong>
                 <div class="review-sources">
-                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">Booking</a>
+                  <a class="review-source" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-i18n="reviews.sourceBooking">{t("reviews.sourceBooking")}</a>
                 </div>
               </div>
             </article>
@@ -475,37 +465,37 @@ import jsonLd from "../data/jsonld/index.json";
 
       <section id="faq" class="section faq-section">
         <div class="section-copy">
-          <p class="eyebrow" data-i18n="faq.eyebrow">Domande rapide</p>
-          <h2 data-i18n="faq.title">Le risposte che aiutano a prenotare con serenità.</h2>
+          <p class="eyebrow" data-i18n="faq.eyebrow">{t("faq.eyebrow")}</p>
+          <h2 data-i18n="faq.title">{t("faq.title")}</h2>
         </div>
         <div class="faq-list">
           <details open>
-            <summary data-i18n="faq.q1">Quale dimora devo scegliere?</summary>
-            <p data-i18n="faq.a1">La Dimora Verde è più grande, 105 mq e fino a 7 ospiti, con massimo 5 adulti. La Dimora Blu è più raccolta, 40 mq e fino a 4 ospiti, con massimo 2 adulti.</p>
+            <summary data-i18n="faq.q1">{t("faq.q1")}</summary>
+            <p data-i18n="faq.a1">{t("faq.a1")}</p>
           </details>
           <details>
-            <summary data-i18n="faq.q4">Come verifico la disponibilità?</summary>
-            <p data-i18n="faq.a4">Consulta il calendario nella sezione Prenota: le date con eventi risultano occupate. Per confermare, puoi scriverci dal form o da WhatsApp.</p>
+            <summary data-i18n="faq.q4">{t("faq.q4")}</summary>
+            <p data-i18n="faq.a4">{t("faq.a4")}</p>
           </details>
           <details>
-            <summary data-i18n="faq.q5">La casa è adatta a famiglie con bambini?</summary>
-            <p data-i18n="faq.a5">Sì, le dimore sono pensate per soggiorni familiari. È disponibile una culla su richiesta e consigliamo di indicare eventuali esigenze prima dell'arrivo.</p>
+            <summary data-i18n="faq.q5">{t("faq.q5")}</summary>
+            <p data-i18n="faq.a5">{t("faq.a5")}</p>
           </details>
           <details>
-            <summary data-i18n="faq.q7">Come funziona il check-in?</summary>
-            <p data-i18n="faq.a7">Il check-in è disponibile dalle 15:00. Prima dell'arrivo riceverai le indicazioni necessarie per organizzare ingresso, orari e dettagli pratici.</p>
+            <summary data-i18n="faq.q7">{t("faq.q7")}</summary>
+            <p data-i18n="faq.a7">{t("faq.a7")}</p>
           </details>
           <details>
-            <summary data-i18n="faq.q8">Sono possibili affitti transitori?</summary>
-            <p data-i18n="faq.a8">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+            <summary data-i18n="faq.q8">{t("faq.q8")}</summary>
+            <p data-i18n="faq.a8">{t("faq.a8")}</p>
           </details>
         </div>
       </section>
 
       <section id="prenota" class="booking-section">
         <div class="prenota-header">
-          <p class="eyebrow" data-i18n="booking.eyebrow">Prenota o chiedi informazioni</p>
-          <h2 data-i18n="booking.title">Raccontaci quando vorresti arrivare.</h2>
+          <p class="eyebrow" data-i18n="booking.eyebrow">{t("booking.eyebrow")}</p>
+          <h2 data-i18n="booking.title">{t("booking.title")}</h2>
         </div>
         <div class="prenota-left">
           <BookingForm client:idle />
@@ -513,21 +503,21 @@ import jsonLd from "../data/jsonld/index.json";
         <div class="prenota-right">
           <div class="direct-links link-board" aria-label="Contatti e link utili">
             <div class="link-board-header">
-              <span data-i18n="booking.channels">Canali ufficiali</span>
-              <p data-i18n="booking.channelsCopy">Scegli dove prenotare o contattaci via social.</p>
+              <span data-i18n="booking.channels">{t("booking.channels")}</span>
+              <p data-i18n="booking.channelsCopy">{t("booking.channelsCopy")}</p>
             </div>
             <div class="primary-links">
               <a class="link-tile booking-tile" href="https://www.booking.com/Share-p6vU03" target="_blank" rel="noreferrer" data-track="booking_click">
                 <small>Booking</small>
-                <strong data-i18n="links.booking">Prenota su Booking</strong>
+                <strong data-i18n="links.booking">{t("links.booking")}</strong>
               </a>
               <a class="link-tile" href="https://airbnb.it/h/dimoraverde" target="_blank" rel="noreferrer" data-track="airbnb_green_click">
                 <small>Airbnb</small>
-                <strong data-i18n="links.airbnbGreen">Prenota Dimora Verde</strong>
+                <strong data-i18n="links.airbnbGreen">{t("links.airbnbGreen")}</strong>
               </a>
               <a class="link-tile" href="https://airbnb.it/h/ladimorablu" target="_blank" rel="noreferrer" data-track="airbnb_blue_click">
                 <small>Airbnb</small>
-                <strong data-i18n="links.airbnbBlue">Prenota Dimora Blu</strong>
+                <strong data-i18n="links.airbnbBlue">{t("links.airbnbBlue")}</strong>
               </a>
             </div>
             <div class="quick-links">
@@ -562,11 +552,11 @@ import jsonLd from "../data/jsonld/index.json";
               </a>
             </div>
           </div>
-          <p class="transitory-note" data-i18n="booking.transitoryNote">Dal 16 settembre al 15 giugno è possibile affittare le dimore anche ad uso transitorio, con contratto di 9 mesi.</p>
+          <p class="transitory-note" data-i18n="booking.transitoryNote">{t("booking.transitoryNote")}</p>
         </div>
       </section>
     </main>
   <Fragment slot="after">
-    <a class="tour-skip" href="#tour-fine" data-i18n="tour.skip">Salta il tour</a>
+    <a class="tour-skip" href="#tour-fine" data-i18n="tour.skip">{t("tour.skip")}</a>
   </Fragment>
 </Base>

@@ -1,6 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { categoryLabels, filters, galleries, type Category, type HomeId, type Photo } from "../../data/galleries";
+import { labelKeys, filters, galleries, type Category, type HomeId, type Photo } from "../../data/galleries";
 import { useLanguage } from "./useLanguage";
+import { t } from "../../i18n";
 
 // Masonry photo wall for the gallery pages: filter chips, cards that rise and
 // come into focus once their photos are loaded, click opens the site lightbox.
@@ -125,18 +126,17 @@ function Wall({ photos, labelFor }: { photos: Photo[]; labelFor: (c: Category) =
 export default function MasonryGallery({ home }: { home: HomeId }) {
   const lang = useLanguage();
   const [category, setCategory] = useState<Category | "all">("all");
-  const labels = categoryLabels[lang];
   const chips = filters[home];
   const photos = useMemo(
     () => (category === "all" ? galleries[home] : galleries[home].filter((p) => p.category === category)),
     [home, category],
   );
-  const labelFor = (c: Category) => labels[chips.find((chip) => chip.id === c)?.label ?? c];
+  const labelFor = (c: Category) => t(labelKeys[chips.find((chip) => chip.id === c)?.label ?? c], lang);
 
   return (
     <div className={`masonry-gallery masonry-gallery-${home}`}>
       <div className="masonry-toolbar">
-        <div className="masonry-filters" aria-label={lang === "en" ? "Filter photos" : "Filtra foto"}>
+        <div className="masonry-filters" aria-label={t("gallery.filter", lang)}>
           {[{ id: "all" as const, label: "all" as const }, ...chips].map((chip) => (
             <button
               key={chip.id}
@@ -145,7 +145,7 @@ export default function MasonryGallery({ home }: { home: HomeId }) {
               aria-pressed={chip.id === category}
               onClick={() => setCategory(chip.id)}
             >
-              {labels[chip.label]}
+              {t(labelKeys[chip.label], lang)}
             </button>
           ))}
         </div>

@@ -4,13 +4,19 @@ export type Category = "living-kitchen" | "bedrooms" | "baths" | "outdoor";
 export interface Photo { category: Category; file: string; alt: string }
 export type HomeId = "green" | "blue";
 
-export const categoryLabels = {
-  it: { all: "Tutte", "living-kitchen": "Soggiorno e cucina", bedrooms: "Camere", bedroom: "Camera", baths: "Bagni", bath: "Bagno", outdoor: "Esterni" },
-  en: { all: "All", "living-kitchen": "Living and kitchen", bedrooms: "Bedrooms", bedroom: "Bedroom", baths: "Bathrooms", bath: "Bathroom", outdoor: "Outdoor" },
+/** Gallery label keys in src/i18n. */
+export const labelKeys = {
+  all: "gallery.all",
+  "living-kitchen": "gallery.livingKitchen",
+  bedrooms: "gallery.bedrooms",
+  bedroom: "gallery.bedroom",
+  baths: "gallery.baths",
+  bath: "gallery.bath",
+  outdoor: "gallery.outdoor",
 } as const;
 
 /** Filter chips per home: the Blu has one bedroom and one bathroom, so its labels are singular. */
-export const filters: Record<HomeId, { id: Category; label: keyof typeof categoryLabels.it }[]> = {
+export const filters: Record<HomeId, { id: Category; label: keyof typeof labelKeys }[]> = {
   green: [
     { id: "living-kitchen", label: "living-kitchen" },
     { id: "bedrooms", label: "bedrooms" },

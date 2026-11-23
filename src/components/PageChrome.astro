@@ -1,4 +1,5 @@
 ---
+import { t } from "../i18n";
 // Floating WhatsApp button, cookie banner and photo lightbox shared by the public pages.
 interface Props { lightbox?: boolean; cookie?: boolean }
 const { lightbox = true, cookie = true } = Astro.props;
@@ -9,9 +10,9 @@ const { lightbox = true, cookie = true } = Astro.props;
 
 {cookie && (
   <div class="cookie-banner" data-cookie-banner hidden>
-    <p data-i18n="cookie.text">Cookie tecnici e preferenze locali. Leggi la Cookie Policy.</p>
-    <a href="/cookie" data-i18n="footer.cookie">Cookie Policy</a>
-    <button type="button" class="button primary small" data-cookie-accept data-i18n="cookie.accept">Accetta</button>
+    <p data-i18n="cookie.text">{t("cookie.text")}</p>
+    <a href="/cookie" data-i18n="footer.cookie">{t("footer.cookie")}</a>
+    <button type="button" class="button primary small" data-cookie-accept data-i18n="cookie.accept">{t("cookie.accept")}</button>
   </div>
 )}
 

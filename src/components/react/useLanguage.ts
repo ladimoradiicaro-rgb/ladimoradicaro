@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-export type Lang = "it" | "en";
+import type { Lang } from "../../i18n";
+export type { Lang };
 
 const read = (): Lang => {
   try {

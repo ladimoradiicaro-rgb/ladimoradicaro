@@ -44,6 +44,8 @@ const {
 
 const canonical = new URL(path, SITE_URL).toString().replace(/\/$/, path === "/" ? "/" : "");
 const v = (file: string) => `/${file}?v=${ASSET_VERSION}`;
+// Classic scripts that switch IT/EN need the shared dictionaries first.
+const needsI18n = scripts.some((file) => file === "script.js" || file === "scopri.js");
 const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 <!doctype html>
@@ -73,6 +75,7 @@ const ldBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
       rel="stylesheet"
     />
     {styles.map((file) => <link rel="stylesheet" href={v(file)} />)}
+    {needsI18n && <script is:inline defer src={v("i18n.js")}></script>}
     {scripts.map((file) => <script is:inline defer src={file.startsWith("vendor/") ? `/${file}` : v(file)}></script>)}
     {ldBlocks.map((data) => <script is:inline type="application/ld+json" set:html={JSON.stringify(data, null, 2)} />)}
     <slot name="head" />

@@ -1,4 +1,5 @@
 ---
+import { t } from "../i18n";
 import Base from "../layouts/Base.astro";
 import jsonLd from "../data/jsonld/scopri.json";
 ---
@@ -667,53 +668,53 @@ import jsonLd from "../data/jsonld/scopri.json";
       <section class="scopri-hero">
         <div class="guide-hero-layout">
           <div class="scopri-hero-inner">
-            <p class="eyebrow" data-i18n="scopri.hero.eyebrow">LA NOSTRA GUIDA DEL TERRITORIO</p>
-            <h1 data-i18n="scopri.hero.title">Guida locale: cosa vedere, dove mangiare e dintorni</h1>
-            <p data-i18n="scopri.hero.desc">Dalla Dimora di Icaro hai il mare, Palermo, la spesa quotidiana e tanti posti per mangiare a pochi minuti. Qui abbiamo raccolto le informazioni utili dei nostri consigli in italiano e inglese.</p>
-            <a class="back-link" href="/" data-i18n="scopri.back">← Torna alla home</a>
+            <p class="eyebrow" data-i18n="scopri.hero.eyebrow">{t("scopri.hero.eyebrow")}</p>
+            <h1 data-i18n="scopri.hero.title">{t("scopri.hero.title")}</h1>
+            <p data-i18n="scopri.hero.desc">{t("scopri.hero.desc")}</p>
+            <a class="back-link" href="/" data-i18n="scopri.back">{t("scopri.back")}</a>
           </div>
           <aside class="guide-summary" aria-label="Sintesi guida">
             <div class="guide-summary-card">
-              <span data-i18n="scopri.jump.neighborhood">Vicinato</span>
+              <span data-i18n="scopri.jump.neighborhood">{t("scopri.jump.neighborhood")}</span>
               <strong>200 m · 2 km</strong>
             </div>
             <div class="guide-summary-card">
-              <span data-i18n="scopri.jump.food">Dove mangiare</span>
-              <strong data-i18n="scopri.food.eyebrow">Colazione, pranzo e cena</strong>
+              <span data-i18n="scopri.jump.food">{t("scopri.jump.food")}</span>
+              <strong data-i18n="scopri.food.eyebrow">{t("scopri.food.eyebrow")}</strong>
             </div>
             <div class="guide-summary-card">
-              <span data-i18n="scopri.jump.see">Cosa vedere</span>
-              <strong data-i18n="scopri.palermo.title">La capitale del Mediterraneo</strong>
+              <span data-i18n="scopri.jump.see">{t("scopri.jump.see")}</span>
+              <strong data-i18n="scopri.palermo.title">{t("scopri.palermo.title")}</strong>
             </div>
           </aside>
         </div>
       </section>
 
       <nav class="guide-tabs" aria-label="Sezioni della guida">
-        <a href="#vicinato" data-i18n="scopri.jump.neighborhood">Vicinato</a>
-        <a href="#mangiare" data-i18n="scopri.jump.food">Dove mangiare</a>
-        <a href="#vedere" data-i18n="scopri.jump.see">Cosa vedere</a>
-        <a href="#mare" data-i18n="tag.sea">Mare</a>
-        <a href="#serate" data-i18n="scopri.jump.evenings">Serate e tour</a>
+        <a href="#vicinato" data-i18n="scopri.jump.neighborhood">{t("scopri.jump.neighborhood")}</a>
+        <a href="#mangiare" data-i18n="scopri.jump.food">{t("scopri.jump.food")}</a>
+        <a href="#vedere" data-i18n="scopri.jump.see">{t("scopri.jump.see")}</a>
+        <a href="#mare" data-i18n="tag.sea">{t("tag.sea")}</a>
+        <a href="#serate" data-i18n="scopri.jump.evenings">{t("scopri.jump.evenings")}</a>
       </nav>
 
       <section id="vicinato" class="guide-section">
         <div class="guide-section-header">
-          <p class="eyebrow" data-i18n="scopri.neighborhood.eyebrow">A PORTATA DI CASA</p>
-          <h2 data-i18n="scopri.neighborhood.title">Vicinato e servizi quotidiani</h2>
-          <p data-i18n="scopri.neighborhood.desc">Per vivere la casa con semplicità: spesa, pane fresco, pesce, farmacia e centri commerciali sono tutti vicini, molti anche raggiungibili in pochi minuti.</p>
+          <p class="eyebrow" data-i18n="scopri.neighborhood.eyebrow">{t("scopri.neighborhood.eyebrow")}</p>
+          <h2 data-i18n="scopri.neighborhood.title">{t("scopri.neighborhood.title")}</h2>
+          <p data-i18n="scopri.neighborhood.desc">{t("scopri.neighborhood.desc")}</p>
         </div>
         <div class="concierge-grid">
           <article class="concierge-card">
-            <h3 data-i18n="scopri.neighborhood.local.title">Spesa locale</h3>
+            <h3 data-i18n="scopri.neighborhood.local.title">{t("scopri.neighborhood.local.title")}</h3>
             <ul>
-              <li data-i18n="scopri.neighborhood.local.1">Frutta, verdura e specialità locali a circa 200 metri.</li>
-              <li data-i18n="scopri.neighborhood.local.2">Macelleria Di Maggio, panificio, bar, tabacchi, gelateria e ferramenta in zona.</li>
-              <li data-i18n="scopri.neighborhood.local.3">Pescheria del Bivio a circa 750 metri, con pescato fresco.</li>
+              <li data-i18n="scopri.neighborhood.local.1">{t("scopri.neighborhood.local.1")}</li>
+              <li data-i18n="scopri.neighborhood.local.2">{t("scopri.neighborhood.local.2")}</li>
+              <li data-i18n="scopri.neighborhood.local.3">{t("scopri.neighborhood.local.3")}</li>
             </ul>
           </article>
           <article class="concierge-card">
-            <h3 data-i18n="scopri.neighborhood.markets.title">Supermercati</h3>
+            <h3 data-i18n="scopri.neighborhood.markets.title">{t("scopri.neighborhood.markets.title")}</h3>
             <ul>
               <li>Conad SuperStore · 400 m</li>
               <li>Lidl · 650 m</li>
@@ -723,18 +724,18 @@ import jsonLd from "../data/jsonld/scopri.json";
             </ul>
           </article>
           <article class="concierge-card">
-            <h3 data-i18n="scopri.neighborhood.health.title">Assistenza</h3>
+            <h3 data-i18n="scopri.neighborhood.health.title">{t("scopri.neighborhood.health.title")}</h3>
             <ul>
-              <li data-i18n="scopri.neighborhood.health.1">Farmacia a circa 750 metri.</li>
-              <li data-i18n="scopri.neighborhood.health.2">Guardia Medica a Capaci e Carini.</li>
-              <li data-i18n="scopri.neighborhood.health.3">Pronto soccorso a Palermo: Cervello, Villa Sofia e Di Cristina.</li>
+              <li data-i18n="scopri.neighborhood.health.1">{t("scopri.neighborhood.health.1")}</li>
+              <li data-i18n="scopri.neighborhood.health.2">{t("scopri.neighborhood.health.2")}</li>
+              <li data-i18n="scopri.neighborhood.health.3">{t("scopri.neighborhood.health.3")}</li>
             </ul>
           </article>
           <article class="concierge-card">
-            <h3 data-i18n="scopri.neighborhood.extra.title">Comodità extra</h3>
+            <h3 data-i18n="scopri.neighborhood.extra.title">{t("scopri.neighborhood.extra.title")}</h3>
             <ul>
-              <li data-i18n="scopri.neighborhood.extra.1">McDonald's, negozi di abbigliamento e pet store nelle vicinanze.</li>
-              <li data-i18n="scopri.neighborhood.extra.2">Il Centro Poseidon è il più grande della zona, con Decò e oltre 70 negozi.</li>
+              <li data-i18n="scopri.neighborhood.extra.1">{t("scopri.neighborhood.extra.1")}</li>
+              <li data-i18n="scopri.neighborhood.extra.2">{t("scopri.neighborhood.extra.2")}</li>
             </ul>
           </article>
         </div>
@@ -742,33 +743,33 @@ import jsonLd from "../data/jsonld/scopri.json";
 
       <section id="mangiare" class="guide-section">
         <div class="guide-section-header">
-          <p class="eyebrow" data-i18n="scopri.food.eyebrow">COLAZIONE, PRANZO E CENA</p>
-          <h2 data-i18n="scopri.food.title">Dove mangiare nei dintorni</h2>
-          <p data-i18n="scopri.food.desc">Una selezione pratica di bar, gelaterie, botteghe, pizzerie e ristoranti consigliati, dalla colazione siciliana alla cena sul mare.</p>
+          <p class="eyebrow" data-i18n="scopri.food.eyebrow">{t("scopri.food.eyebrow")}</p>
+          <h2 data-i18n="scopri.food.title">{t("scopri.food.title")}</h2>
+          <p data-i18n="scopri.food.desc">{t("scopri.food.desc")}</p>
         </div>
         <div class="food-board">
           <article class="food-lead">
-            <h3 data-i18n="scopri.food.restaurants.title">Ristoranti sul mare</h3>
-            <p data-i18n="scopri.food.restaurants.text">Sferracavallo, Mondello, Terrasini e Castellammare del Golfo offrono tante opzioni, soprattutto di pesce, spesso con vista mare.</p>
+            <h3 data-i18n="scopri.food.restaurants.title">{t("scopri.food.restaurants.title")}</h3>
+            <p data-i18n="scopri.food.restaurants.text">{t("scopri.food.restaurants.text")}</p>
           </article>
           <div class="food-stack">
             <article class="guide-list-panel">
-              <h3 data-i18n="scopri.food.breakfast.title">Colazione e bar</h3>
-              <p data-i18n="scopri.food.breakfast.text">Bar Al Ritrovo, Duci Cafè Bar & Bistrot, Bar Prano, La Nuova Foresta e Al Baglio Gelateria sono opzioni comode tra Villagrazia, Carini e il lungomare.</p>
+              <h3 data-i18n="scopri.food.breakfast.title">{t("scopri.food.breakfast.title")}</h3>
+              <p data-i18n="scopri.food.breakfast.text">{t("scopri.food.breakfast.text")}</p>
             </article>
             <article class="guide-list-panel">
-              <h3 data-i18n="scopri.food.pizza.title">Pizzerie preferite</h3>
-              <p data-i18n="scopri.food.pizza.text">La Torre, Madre Terra, Le Terrazze, Vitale, I Cumpari, La Baronia, Vitina e Oblivion sono tra le preferite indicate nella guida.</p>
+              <h3 data-i18n="scopri.food.pizza.title">{t("scopri.food.pizza.title")}</h3>
+              <p data-i18n="scopri.food.pizza.text">{t("scopri.food.pizza.text")}</p>
             </article>
           </div>
           <div class="food-stack">
             <article class="guide-list-panel">
-              <h3 data-i18n="scopri.food.gelato.title">Gelaterie</h3>
-              <p data-i18n="scopri.food.gelato.text">Al Baglio Gelateria sul lungomare, Gelateria Mannino a Carini e diverse gelaterie a Terrasini, soprattutto in piazza Duomo.</p>
+              <h3 data-i18n="scopri.food.gelato.title">{t("scopri.food.gelato.title")}</h3>
+              <p data-i18n="scopri.food.gelato.text">{t("scopri.food.gelato.text")}</p>
             </article>
             <article class="guide-list-panel">
-              <h3 data-i18n="scopri.food.palermo.title">Palermo a pranzo</h3>
-              <p data-i18n="scopri.food.palermo.text">Per street food e cucina locale: Via Maqueda, Mercato del Capo, Ballarò, Mondello e Sferracavallo.</p>
+              <h3 data-i18n="scopri.food.palermo.title">{t("scopri.food.palermo.title")}</h3>
+              <p data-i18n="scopri.food.palermo.text">{t("scopri.food.palermo.text")}</p>
             </article>
           </div>
         </div>
@@ -776,27 +777,27 @@ import jsonLd from "../data/jsonld/scopri.json";
 
       <section id="vedere" class="guide-section">
         <div class="guide-section-header">
-          <p class="eyebrow" data-i18n="scopri.carini.eyebrow">A DUE PASSI · CARINI</p>
-          <h2 data-i18n="scopri.carini.title">Il borgo di casa</h2>
-          <p data-i18n="scopri.carini.desc">Carini prende il nome dall'antica Iccara, città fondata tremila anni fa. Passeggiando per il centro si incontra un castello, chiese e una storia che pochi si aspettano a dieci minuti dall'aeroporto.</p>
+          <p class="eyebrow" data-i18n="scopri.carini.eyebrow">{t("scopri.carini.eyebrow")}</p>
+          <h2 data-i18n="scopri.carini.title">{t("scopri.carini.title")}</h2>
+          <p data-i18n="scopri.carini.desc">{t("scopri.carini.desc")}</p>
         </div>
         <div class="destination-grid">
           <article class="feature-destination is-large">
               <img src="/assets/castello-di-carini-1600.webp" alt="Castello di Carini" loading="lazy" decoding="async" />
             <div>
               <h3>Castello di Carini</h3>
-              <p data-i18n="scopri.carini.card1.desc">Una maestosa fortezza normanna dell'XI secolo che domina la città dall'alto. Famoso in tutto il mondo per la tragica storia vera della <em>Baronessa di Carini</em>, assassinata nel 1563. Da non perdere il portale gotico e i panorami mozzafiato dalle terrazze.</p>
+              <p data-i18n="scopri.carini.card1.desc" data-i18n-html set:html={t("scopri.carini.card1.desc")} />
             </div>
           </article>
           <article class="guide-list-panel">
             <h3>Chiesa Madre · Baglio · Costa Verde</h3>
             <ul>
-              <li data-i18n="scopri.carini.card2.desc">Il cuore del centro storico di Carini: una chiesa del XV secolo che si affaccia sulla piazza principale, con affreschi e opere d'arte di grande valore.</li>
-              <li data-i18n="scopri.carini.card4.desc">Tratti di costa meno affollati a pochi minuti dalla dimora: Torre Pozzillo, Torre Ulisse e la Costa Verde offrono calette e spiagge libere ancora genuine.</li>
+              <li data-i18n="scopri.carini.card2.desc">{t("scopri.carini.card2.desc")}</li>
+              <li data-i18n="scopri.carini.card4.desc">{t("scopri.carini.card4.desc")}</li>
             </ul>
           </article>
           <article class="guide-list-panel">
-            <h3 data-i18n="scopri.palermo.title">La capitale del Mediterraneo</h3>
+            <h3 data-i18n="scopri.palermo.title">{t("scopri.palermo.title")}</h3>
             <ul>
               <li>Cattedrale di Palermo</li>
               <li>Palazzo dei Normanni &amp; Cappella Palatina</li>
@@ -809,27 +810,27 @@ import jsonLd from "../data/jsonld/scopri.json";
 
       <section id="mare" class="guide-section">
         <div class="guide-section-header">
-          <p class="eyebrow" data-i18n="scopri.beaches.eyebrow">ENTRO 30 MINUTI · SPIAGGE</p>
-          <h2 data-i18n="scopri.beaches.title">Le spiagge più belle vicino a casa</h2>
-          <p data-i18n="scopri.beaches.desc">La costa che circonda Carini offre spiagge per tutti i gusti: sabbia finissima, calette rocciose, acque turchesi e lidi attrezzati.</p>
+          <p class="eyebrow" data-i18n="scopri.beaches.eyebrow">{t("scopri.beaches.eyebrow")}</p>
+          <h2 data-i18n="scopri.beaches.title">{t("scopri.beaches.title")}</h2>
+          <p data-i18n="scopri.beaches.desc">{t("scopri.beaches.desc")}</p>
         </div>
         <div class="guide-list-columns">
           <article class="guide-list-panel">
-            <h3 data-i18n="scopri.beaches.north">A nord (verso Palermo)</h3>
+            <h3 data-i18n="scopri.beaches.north">{t("scopri.beaches.north")}</h3>
             <ul>
-              <li data-i18n="scopri.beaches.n1">Spiaggia di Capaci</li>
-              <li data-i18n="scopri.beaches.n2">Isola delle Femmine</li>
-              <li data-i18n="scopri.beaches.n3">Sferracavallo</li>
-              <li data-i18n="scopri.beaches.n5">Spiaggia di Mondello</li>
+              <li data-i18n="scopri.beaches.n1">{t("scopri.beaches.n1")}</li>
+              <li data-i18n="scopri.beaches.n2">{t("scopri.beaches.n2")}</li>
+              <li data-i18n="scopri.beaches.n3">{t("scopri.beaches.n3")}</li>
+              <li data-i18n="scopri.beaches.n5">{t("scopri.beaches.n5")}</li>
             </ul>
           </article>
           <article class="guide-list-panel">
-            <h3 data-i18n="scopri.beaches.south">A sud (verso Trapani)</h3>
+            <h3 data-i18n="scopri.beaches.south">{t("scopri.beaches.south")}</h3>
             <ul>
-              <li data-i18n="scopri.beaches.s1">Costa Verde &amp; Baglio di Carini</li>
-              <li data-i18n="scopri.beaches.s2">Spiaggia Magaggiari – Cinisi</li>
-              <li data-i18n="scopri.beaches.s3">Baia di San Cataldo – Terrasini</li>
-              <li data-i18n="scopri.beaches.s5">Spiaggia di Balestrate</li>
+              <li data-i18n="scopri.beaches.s1">{t("scopri.beaches.s1")}</li>
+              <li data-i18n="scopri.beaches.s2">{t("scopri.beaches.s2")}</li>
+              <li data-i18n="scopri.beaches.s3">{t("scopri.beaches.s3")}</li>
+              <li data-i18n="scopri.beaches.s5">{t("scopri.beaches.s5")}</li>
             </ul>
           </article>
         </div>
@@ -837,26 +838,26 @@ import jsonLd from "../data/jsonld/scopri.json";
 
       <section id="serate" class="guide-section">
         <div class="guide-section-header">
-          <p class="eyebrow" data-i18n="scopri.evenings.eyebrow">SERATE E TOUR IN BARCA</p>
-          <h2 data-i18n="scopri.evenings.title">Idee semplici per la sera</h2>
-          <p data-i18n="scopri.evenings.desc">Per una passeggiata dopo il mare o una cena fuori, queste sono le zone più piacevoli indicate nella guida. Per i tour in barca conviene scegliere il porto in base alla costa che vuoi esplorare.</p>
+          <p class="eyebrow" data-i18n="scopri.evenings.eyebrow">{t("scopri.evenings.eyebrow")}</p>
+          <h2 data-i18n="scopri.evenings.title">{t("scopri.evenings.title")}</h2>
+          <p data-i18n="scopri.evenings.desc">{t("scopri.evenings.desc")}</p>
         </div>
         <div class="guide-route">
           <article class="guide-route-panel">
-            <h3 data-i18n="scopri.evenings.walks.title">Passeggiate serali</h3>
-            <p data-i18n="scopri.evenings.walks.text">Lungomare Peppino Impastato a Terrasini, Castellammare del Golfo, Mondello, Molo Trapezoidale e porto di Palermo, Isola delle Femmine, Borgo Parrini e centro storico di Palermo.</p>
+            <h3 data-i18n="scopri.evenings.walks.title">{t("scopri.evenings.walks.title")}</h3>
+            <p data-i18n="scopri.evenings.walks.text">{t("scopri.evenings.walks.text")}</p>
           </article>
           <article class="guide-route-panel">
-            <h3 data-i18n="scopri.evenings.boats.title">Tour in barca</h3>
-            <p data-i18n="scopri.evenings.boats.text">Porto di Terrasini e Castellammare per la costa verso San Vito Lo Capo; Isola delle Femmine o Mondello per la costa palermitana; Trapani per Egadi e aliscafi.</p>
+            <h3 data-i18n="scopri.evenings.boats.title">{t("scopri.evenings.boats.title")}</h3>
+            <p data-i18n="scopri.evenings.boats.text">{t("scopri.evenings.boats.text")}</p>
           </article>
           <article class="guide-route-panel">
-            <h3 data-i18n="scopri.sicily.title">Quando vuoi spingerti un po' più lontano</h3>
+            <h3 data-i18n="scopri.sicily.title">{t("scopri.sicily.title")}</h3>
             <ul>
-              <li data-i18n="scopri.sicily.nw1">Cefalù – spiaggia e cattedrale normanna</li>
-              <li data-i18n="scopri.sicily.nw4">Erice – borgo medievale in cima alla montagna</li>
-              <li data-i18n="scopri.sicily.south1">Valle dei Templi – Agrigento</li>
-              <li data-i18n="scopri.sicily.east1">Siracusa e Ortigia</li>
+              <li data-i18n="scopri.sicily.nw1">{t("scopri.sicily.nw1")}</li>
+              <li data-i18n="scopri.sicily.nw4">{t("scopri.sicily.nw4")}</li>
+              <li data-i18n="scopri.sicily.south1">{t("scopri.sicily.south1")}</li>
+              <li data-i18n="scopri.sicily.east1">{t("scopri.sicily.east1")}</li>
             </ul>
           </article>
         </div>
@@ -865,11 +866,11 @@ import jsonLd from "../data/jsonld/scopri.json";
       <section class="guide-section">
         <div class="guide-final-card">
           <div>
-            <p class="eyebrow" data-i18n="scopri.cta.eyebrow">PRENOTA IL TUO SOGGIORNO</p>
-            <h2 data-i18n="scopri.cta.title">Pronto a scoprire la Sicilia?</h2>
-            <p data-i18n="scopri.cta.desc">Dalla Dimora di Icaro hai tutto a portata di mano. Verifica le date disponibili e prenota il tuo soggiorno.</p>
+            <p class="eyebrow" data-i18n="scopri.cta.eyebrow">{t("scopri.cta.eyebrow")}</p>
+            <h2 data-i18n="scopri.cta.title">{t("scopri.cta.title")}</h2>
+            <p data-i18n="scopri.cta.desc">{t("scopri.cta.desc")}</p>
           </div>
-          <a class="button primary" href="/#prenota" data-i18n="scopri.cta.btn">Verifica disponibilità</a>
+          <a class="button primary" href="/#prenota" data-i18n="scopri.cta.btn">{t("scopri.cta.btn")}</a>
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { tours, type TourData } from "../../data/tour";
-import { useLanguage, type Lang } from "./useLanguage";
+import { useLanguage } from "./useLanguage";
+import { t, type Lang } from "../../i18n";
 
 /* Scroll-driven walkthrough of the two homes.
    Each tour is a tall track with a full-screen sticky stage. Scrolling stacks the
@@ -152,8 +153,8 @@ function Tour({ data, lang, register }: { data: TourData; lang: Lang; register: 
           <div className="tour-captions">
             {data.rooms.map((r, i) => (
               <article key={r.key} className={`tour-caption${i === room ? " is-active" : ""}`}>
-                <p className="tour-kicker"><span>{data.name}</span></p>
-                <h3 data-title={r.key}>{r[lang]}</h3>
+                <p className="tour-kicker"><span>{t(data.nameKey, lang)}</span></p>
+                <h3 data-title={r.key}>{t(r.key, lang)}</h3>
               </article>
             ))}
           </div>

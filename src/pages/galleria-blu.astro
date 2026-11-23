@@ -1,4 +1,5 @@
 ---
+import { t } from "../i18n";
 import Base from "../layouts/Base.astro";
 import MasonryGallery from "../components/react/MasonryGallery";
 import jsonLd from "../data/jsonld/galleria-blu.json";
@@ -18,13 +19,11 @@ import jsonLd from "../data/jsonld/galleria-blu.json";
       <section class="gallery-page-hero">
         <div class="gallery-page-hero-grid">
           <div class="gallery-page-copy">
-            <p class="eyebrow" data-i18n="galleryPage.eyebrow">Galleria completa</p>
-            <h1 data-i18n="galleryPage.blue.title">La Dimora Blu</h1>
-            <p data-i18n="galleryPage.blue.copy">
-              La dimora più raccolta, con zona giorno, camera, bagno e terrazzo esterno.
-            </p>
+            <p class="eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow")}</p>
+            <h1 data-i18n="galleryPage.blue.title">{t("galleryPage.blue.title")}</h1>
+            <p data-i18n="galleryPage.blue.copy">{t("galleryPage.blue.copy")}</p>
             <div class="gallery-page-actions">
-              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">Chiedi disponibilità</a>
+              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">{t("galleryPage.book")}</a>
             </div>
           </div>
           <figure class="gallery-page-cover">

@@ -1,6 +1,7 @@
 // The scroll walkthrough of the two homes. Photos live in /assets/tour/<file>-1280.webp and -1920.webp.
 // Room "key" is also the hook for the Avallon title image in motion.css (.tour-caption h3[data-title=...]).
-export interface TourRoom { key: string; it: string; en: string }
+import type { Key } from "../i18n";
+export interface TourRoom { key: Key }
 export interface TourShot { file: string; room: number; alt: string }
 export interface TourData {
   id: "green" | "blue";
@@ -10,49 +11,37 @@ export interface TourData {
   lead: number;
   /** Scroll length of the track in viewport heights (CSS --frames). */
   frames: number;
-  name: string;
+  nameKey: Key;
   rooms: TourRoom[];
   shots: TourShot[];
 }
 
-export const tours: TourData[] = [
+export const tours =  [
   {
     "id": "green",
     "anchor": "foto-verde",
     "className": "tour--verde",
     "lead": 2,
     "frames": 20,
-    "name": "La Dimora Verde",
+    "nameKey": "homes.green.name",
     "rooms": [
       {
-        "key": "tour.v1.room",
-        "it": "Veranda",
-        "en": "Veranda"
+        "key": "tour.v1.room"
       },
       {
-        "key": "tour.v2.room",
-        "it": "Soggiorno",
-        "en": "Living room"
+        "key": "tour.v2.room"
       },
       {
-        "key": "tour.v3.room",
-        "it": "Cucina e pranzo",
-        "en": "Kitchen & dining"
+        "key": "tour.v3.room"
       },
       {
-        "key": "tour.v4.room",
-        "it": "Camera matrimoniale",
-        "en": "Double bedroom"
+        "key": "tour.v4.room"
       },
       {
-        "key": "tour.v5.room",
-        "it": "Seconda camera",
-        "en": "Second bedroom"
+        "key": "tour.v5.room"
       },
       {
-        "key": "tour.v6.room",
-        "it": "Due bagni",
-        "en": "Two bathrooms"
+        "key": "tour.v6.room"
       }
     ],
     "shots": [
@@ -154,32 +143,22 @@ export const tours: TourData[] = [
     "className": "tour--blu",
     "lead": 1,
     "frames": 16,
-    "name": "La Dimora Blu",
+    "nameKey": "homes.blue.name",
     "rooms": [
       {
-        "key": "tour.b1.room",
-        "it": "Ingresso",
-        "en": "Entrance"
+        "key": "tour.b1.room"
       },
       {
-        "key": "tour.b2.room",
-        "it": "Soggiorno",
-        "en": "Living room"
+        "key": "tour.b2.room"
       },
       {
-        "key": "tour.b3.room",
-        "it": "Cucina",
-        "en": "Kitchen"
+        "key": "tour.b3.room"
       },
       {
-        "key": "tour.b4.room",
-        "it": "Camera",
-        "en": "Bedroom"
+        "key": "tour.b4.room"
       },
       {
-        "key": "tour.b5.room",
-        "it": "Bagno",
-        "en": "Bathroom"
+        "key": "tour.b5.room"
       }
     ],
     "shots": [
@@ -260,4 +239,4 @@ export const tours: TourData[] = [
       }
     ]
   }
-];
+] satisfies TourData[];
