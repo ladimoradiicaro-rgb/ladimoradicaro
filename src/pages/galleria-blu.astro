@@ -1,7 +1,8 @@
 ---
 import { t } from "../i18n";
 import Base from "../layouts/Base.astro";
-import MasonryGallery from "../components/react/MasonryGallery";
+import GalleryHero from "../components/GalleryHero.astro";
+import GalleryGrid from "../components/react/GalleryGrid";
 import jsonLd from "../data/jsonld/galleria-blu.json";
 ---
 <Base
@@ -15,27 +16,10 @@ import jsonLd from "../data/jsonld/galleria-blu.json";
   scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
   jsonLd={jsonLd}
 >
-  <main class="gallery-page gallery-page-blue">
-      <section class="gallery-page-hero">
-        <div class="gallery-page-hero-grid">
-          <div class="gallery-page-copy">
-            <p class="eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow")}</p>
-            <h1 data-i18n="galleryPage.blue.title">{t("galleryPage.blue.title")}</h1>
-            <p data-i18n="galleryPage.blue.copy">{t("galleryPage.blue.copy")}</p>
-            <div class="gallery-page-actions">
-              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">{t("galleryPage.book")}</a>
-            </div>
-          </div>
-          <figure class="gallery-page-cover">
-            <img class="cover-card cover-card-main" src="/assets/gallery/blu-soggiorno-cucina-03-1600.webp" alt="Soggiorno e cucina della Dimora Blu" />
-            <img class="cover-card cover-card-side cover-card-side-a" src="/assets/gallery/blu-camere-04-1600.webp" alt="Camera della Dimora Blu" />
-            <img class="cover-card cover-card-side cover-card-side-b" src="/assets/gallery/blu-esterni-01-1600.webp" alt="Terrazzo della Dimora Blu" />
-          </figure>
-        </div>
-      </section>
-
-      <section class="gallery-page-section" aria-label="Galleria fotografica La Dimora Blu">
-        <MasonryGallery client:visible home="blue" />
-      </section>
-    </main>
+  <main class="gallery-v2 gallery-v2--blue">
+    <GalleryHero home="blue" cover="blu-soggiorno-cucina-03" coverAlt="Soggiorno e cucina della Dimora Blu" />
+    <section aria-label="Galleria fotografica La Dimora Blu">
+      <GalleryGrid client:load home="blue" />
+    </section>
+  </main>
 </Base>

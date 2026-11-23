@@ -1,7 +1,8 @@
 ---
 import { t } from "../i18n";
 import Base from "../layouts/Base.astro";
-import MasonryGallery from "../components/react/MasonryGallery";
+import GalleryHero from "../components/GalleryHero.astro";
+import GalleryGrid from "../components/react/GalleryGrid";
 import jsonLd from "../data/jsonld/galleria-verde.json";
 ---
 <Base
@@ -15,27 +16,10 @@ import jsonLd from "../data/jsonld/galleria-verde.json";
   scripts={["vendor/lenis/lenis.min.js", "motion.js", "script.js"]}
   jsonLd={jsonLd}
 >
-  <main class="gallery-page gallery-page-green">
-      <section class="gallery-page-hero">
-        <div class="gallery-page-hero-grid">
-          <div class="gallery-page-copy">
-            <p class="eyebrow" data-i18n="galleryPage.eyebrow">{t("galleryPage.eyebrow")}</p>
-            <h1 data-i18n="galleryPage.green.title">{t("galleryPage.green.title")}</h1>
-            <p data-i18n="galleryPage.green.copy">{t("galleryPage.green.copy")}</p>
-            <div class="gallery-page-actions">
-              <a class="button primary" href="/#prenota" data-i18n="galleryPage.book">{t("galleryPage.book")}</a>
-            </div>
-          </div>
-          <figure class="gallery-page-cover">
-            <img class="cover-card cover-card-main" src="/assets/gallery/verde-soggiorno-cucina-08-1600.webp" alt="Zona pranzo luminosa della Dimora Verde" />
-            <img class="cover-card cover-card-side cover-card-side-a" src="/assets/gallery/verde-camere-06-1600.webp" alt="Camera matrimoniale della Dimora Verde" />
-            <img class="cover-card cover-card-side cover-card-side-b" src="/assets/gallery/verde-esterni-04-1600.webp" alt="Esterni della Dimora Verde" />
-          </figure>
-        </div>
-      </section>
-
-      <section class="gallery-page-section" aria-label="Galleria fotografica La Dimora Verde">
-        <MasonryGallery client:visible home="green" />
-      </section>
-    </main>
+  <main class="gallery-v2 gallery-v2--green">
+    <GalleryHero home="green" cover="verde-soggiorno-cucina-08" coverAlt="Zona pranzo luminosa della Dimora Verde" />
+    <section aria-label="Galleria fotografica La Dimora Verde">
+      <GalleryGrid client:load home="green" />
+    </section>
+  </main>
 </Base>

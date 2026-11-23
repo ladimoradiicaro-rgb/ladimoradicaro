@@ -410,5 +410,7 @@
   "gallery.bedroom": "Bedroom",
   "gallery.baths": "Bathrooms",
   "gallery.bath": "Bathroom",
-  "gallery.outdoor": "Outdoor"
+  "gallery.outdoor": "Outdoor",
+  "gallery.count": "{n} photos",
+  "gallery.back": "Back to the tour"
 }

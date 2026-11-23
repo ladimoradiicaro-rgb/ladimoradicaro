@@ -1,0 +1,145 @@
+.photo-grid-wrap {
+  --home: #077cbd;
+  padding-top: 0.75rem;
+}
+
+/* Legacy styles.css clips main sections, which would break the sticky filter bar. */
+.gallery-v2 > section {
+  overflow: visible !important;
+}
+
+.photo-grid-wrap--green { --home: #3f8a57; }
+.photo-grid-wrap--blue { --home: #077cbd; }
+
+.photo-filters {
+  position: sticky;
+  top: calc(var(--header-space, 6.5rem) - 0.5rem);
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  margin: 0 -4px;
+  padding: 0.6rem 4px;
+  background: rgba(255, 250, 241, 0.88);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  scrollbar-width: none;
+}
+
+.photo-filters::-webkit-scrollbar { display: none; }
+
+.photo-filters button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 1px solid rgba(31, 42, 51, 0.12);
+  border-radius: 999px;
+  background: #fff;
+  color: #1f2a33;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.photo-filters button:hover { border-color: rgba(31, 42, 51, 0.24); }
+
+.photo-filters button.is-active {
+  border-color: var(--home);
+  background: var(--home);
+  color: #fff;
+}
+
+.photo-filters-count {
+  color: rgba(31, 42, 51, 0.45);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-filters button.is-active .photo-filters-count { color: rgba(255, 255, 255, 0.75); }
+
+.photo-grid-count {
+  margin: 0.5rem 0 1rem;
+  color: #7a8590;
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photo-grid button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 14px;
+  aspect-ratio: 4 / 3;
+  background: #ece6dc;
+  cursor: zoom-in;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 420ms ease calc(var(--i, 0) * 30ms), filter 180ms ease;
+}
+
+.photo-grid img.is-loaded { opacity: 1; }
+.photo-grid button:hover img { filter: brightness(0.9); }
+
+.photo-grid-label {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(255, 250, 241, 0.92);
+  color: #1f2a33;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.photo-grid button:hover .photo-grid-label,
+.photo-grid button:focus-visible .photo-grid-label {
+  opacity: 1;
+  transform: none;
+}
+
+.photo-grid button:focus-visible {
+  outline: 2px solid var(--home);
+  outline-offset: 3px;
+}
+
+@media (max-width: 960px) {
+  .photo-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  .photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .photo-grid button { border-radius: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-grid img { transition: none; }
+}
